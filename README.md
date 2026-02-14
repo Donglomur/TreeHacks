@@ -75,20 +75,26 @@ uv run pytest -q
 
 ## Claude integration
 
-Use `ClaudeFAERSAgent.tool_definition()` to register a tool in your orchestrator.
+Use `ClaudeFAERSAgent.tool_definitions()` to register tools in your orchestrator.
 Route tool calls to `await ClaudeFAERSAgent.handle_tool_call(name, tool_input)`.
 
-Tool name:
+Tool names:
 
 - `faers_inverse_signal_detector`
+- `faers_suggest_events`
 
-Input schema fields:
+`faers_inverse_signal_detector` input schema fields:
 
 - `disease` (string, required)
 - `candidate_drugs` (array[string], required)
 - `disease_events` (array[string], optional)
 - `alpha` (number, default `0.05`)
 - `correction` (`none|bonferroni|fdr`, default `none`)
+
+`faers_suggest_events` input schema fields:
+
+- `drug` (string, optional)
+- `limit` (integer `1-1000`, default `10`)
 
 ## Notes
 

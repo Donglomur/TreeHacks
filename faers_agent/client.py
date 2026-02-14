@@ -216,8 +216,6 @@ class OpenFDAClient:
         total_n = total_reports if total_reports is not None else await self.get_total_reports()
         dq = await self.resolve_drug_query(drug)
         eq = self.event_query(event)
-        print("this is the dq", dq)
-        print("this is the dq", eq)
 
         a = await self.get_count(f"{dq} AND {eq}")
         await asyncio.sleep(self.delay_between_calls)
