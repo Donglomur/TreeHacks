@@ -1,0 +1,17 @@
+# Data artifacts (200MB+ binary files from Modal pipeline)
+data/
+
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
