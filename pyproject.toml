@@ -1,0 +1,12 @@
+[project]
+name = "agent1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "anthropic>=0.79.0",
+    "claude-agent-sdk>=0.1.36",
+    "openai>=2.21.0",
+    "requests>=2.32.5",
+]
