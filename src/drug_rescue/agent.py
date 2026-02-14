@@ -158,11 +158,37 @@ async def run_standalone(disease: str, data_dir: str = "./data"):
     """
     configure_tools(data_dir)
     from .tools.kg_discovery import discover_candidates_tool, kg_info_tool
+    from pathlib import Path
 
     print(f"\n{'='*60}")
     print(f"  DrugRescue — Standalone Mode (no Claude)")
     print(f"  Disease: {disease}")
     print(f"{'='*60}\n")
+
+    # ── Load name lookup files (belt + suspenders for display) ──
+    name_lookup: dict[str, str] = {}  # "Compound::DB00515" → "CISPLATIN"
+
+    # Source 1: kg_entity_lookup.json (from resolve_all_compounds.py)
+    kg_lookup_path = Path(data_dir) / "database" / "kg_entity_lookup.json"
+    if kg_lookup_path.exists():
+        with open(kg_lookup_path) as f:
+            kg_lookup = json.load(f)
+        for entity, info in kg_lookup.items():
+            if info.get("drug_name"):
+                name_lookup[entity] = info["drug_name"]
+
+    # Source 2: drugbank_to_name.json (from populate_drugbank_ids_modal.py)
+    db_name_path = Path(data_dir) / "drugbank_to_name.json"
+    if db_name_path.exists():
+        with open(db_name_path) as f:
+            db_names = json.load(f)
+        for db_id, name in db_names.items():
+            entity = f"Compound::{db_id}"
+            if entity not in name_lookup:
+                name_lookup[entity] = name
+
+    if name_lookup:
+        print(f"📝 Loaded {len(name_lookup)} drug name lookups\n")
 
     # ── Graph info ──
     info_result = await kg_info_tool({})
@@ -178,7 +204,7 @@ async def run_standalone(disease: str, data_dir: str = "./data"):
     print(f"🔬 Scoring all compounds against '{disease}'...")
     result = await discover_candidates_tool({
         "disease": disease,
-        "max_candidates": 20,
+        "max_candidates": 30,
         "min_percentile": 75.0,
         "include_novel": True,
     })
@@ -198,26 +224,78 @@ async def run_standalone(disease: str, data_dir: str = "./data"):
           f"{data['stats'].get('withdrawn', 0)} withdrawn, "
           f"{data['stats'].get('novel', 0)} novel\n")
 
+    # ── Helper: resolve display name ──
+    # Fix PubChem/MeSH naming errors
+    ENTITY_NAME_FIXES = {
+        "Compound::DB00515": "CISPLATIN",
+        "Compound::DB00853": "TEMOZOLOMIDE",
+        "Compound::DB00112": "BEVACIZUMAB",
+    }
+
+    def resolve_name(c: dict) -> str:
+        entity = c.get("drkg_entity", "")
+
+        # 1. Manual fixes (highest priority)
+        if entity in ENTITY_NAME_FIXES:
+            return ENTITY_NAME_FIXES[entity]
+
+        display_name = c["drug_name"]
+
+        # 2. If name is still a raw ID, try lookup
+        if display_name == entity.replace("Compound::", ""):
+            resolved = name_lookup.get(entity)
+            if resolved:
+                display_name = resolved
+
+        # 3. Strip MeSH "[OBSOLETE]" tag
+        if display_name.startswith("[OBSOLETE]"):
+            display_name = display_name.replace("[OBSOLETE]", "").strip()
+
+        return display_name
+
     # ── Table ──
     print(f"  {'#':<3} {'Drug':<28} {'Status':<10} {'Phase':<6} "
           f"{'Pctl':<7} {'Z':<7} {'Score':<6} {'SMILES'}")
     print(f"  {'─'*3} {'─'*28} {'─'*10} {'─'*6} {'─'*7} {'─'*7} {'─'*6} {'─'*5}")
 
-    for c in data["candidates"]:
-        smiles = "✓" if c.get("smiles") else "—"
-        phase = str(c.get("max_phase") or "—")
-        print(f"  {c['kg_rank']:<3} {c['drug_name'][:26]:<28} {c['status']:<10} "
-              f"{phase:<6} {c['kg_percentile']:<7.1f} {c['kg_z_score']:<7.2f} "
-              f"{c['kg_normalized']:<6.2f} {smiles}")
+    # Sort: dropped first, then named novel, then unknown
+    candidates = data["candidates"]
+    dropped = [c for c in candidates if c["status"] == "dropped"]
+    withdrawn = [c for c in candidates if c["status"] == "withdrawn"]
+    named_novel = [c for c in candidates if c["status"] == "novel"
+                   and resolve_name(c) != c.get("drkg_entity", "").replace("Compound::", "")]
+    unknown = [c for c in candidates if c["status"] == "novel"
+               and resolve_name(c) == c.get("drkg_entity", "").replace("Compound::", "")]
+
+    rank = 1
+    for section, label in [
+        (dropped, "🎯 DROPPED — Prime repurposing targets"),
+        (withdrawn, "⚠️  WITHDRAWN"),
+        (named_novel, "💊 KNOWN DRUGS — Approved/researched for other indications"),
+        (unknown, "🔬 UNRESOLVED — Need manual ID lookup"),
+    ]:
+        if not section:
+            continue
+        print(f"\n  {label}")
+        for c in section:
+            smiles = "✓" if c.get("smiles") else "—"
+            phase = str(c.get("max_phase") or "—")
+            display_name = resolve_name(c)
+            print(f"  {rank:<3} {display_name[:26]:<28} {c['status']:<10} "
+                  f"{phase:<6} {c['kg_percentile']:<7.1f} {c['kg_z_score']:<7.2f} "
+                  f"{c['kg_normalized']:<6.2f} {smiles}")
+            rank += 1
 
     # ── Summary ──
-    dropped = [c for c in data["candidates"] if c["status"] == "dropped"]
     if dropped:
-        print(f"\n  🎯 Top dropped drugs (prime repurposing targets):")
-        for c in dropped[:5]:
+        print(f"\n  {'='*56}")
+        print(f"  REPURPOSING CANDIDATES — Dropped Phase II/III drugs")
+        print(f"  {'='*56}")
+        for c in dropped:
             phase = f"Phase {c['max_phase']}" if c.get("max_phase") else "?"
-            print(f"     • {c['drug_name']} ({phase}, "
-                  f"KG {c['kg_percentile']:.0f}th pctl)")
+            name = resolve_name(c)
+            print(f"  • {name} ({phase}, z={c['kg_z_score']:.2f}, "
+                  f"pctl={c['kg_percentile']:.1f})")
 
     print(f"\n{'='*60}\n")
 

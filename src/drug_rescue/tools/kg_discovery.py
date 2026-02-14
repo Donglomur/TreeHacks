@@ -65,8 +65,10 @@ _pool = concurrent.futures.ThreadPoolExecutor(max_workers=2)
 
 def set_data_dir(path: str):
     """Point tools at your data/ directory. Call before first invocation."""
-    global _data_dir
+    global _data_dir, _name_lookup, _scorer
     _data_dir = path
+    _name_lookup = None  # Reset so lookup reloads from new path
+    _scorer = None        # Reset so scorer reloads from new path
 
 
 def _get_scorer():
@@ -79,6 +81,78 @@ def _get_scorer():
             db_path=str(Path(_data_dir) / "database" / "dropped_drugs.db"),
         )
     return _scorer
+
+
+# ── Name resolution ──────────────────────────────────────────────────
+# PubChem/MeSH sometimes return wrong or ugly names. Fix them here.
+
+_NAME_FIXES = {
+    "Compound::DB00515": "CISPLATIN",       # PubChem returns "TRANS-PLATIN"
+    "Compound::DB00853": "TEMOZOLOMIDE",
+    "Compound::DB00112": "BEVACIZUMAB",
+}
+
+_name_lookup: dict[str, str] | None = None
+
+
+def _get_name_lookup() -> dict[str, str]:
+    """Load drug name lookup files once. Returns entity → name mapping."""
+    global _name_lookup
+    if _name_lookup is not None:
+        return _name_lookup
+
+    _name_lookup = {}
+    data = Path(_data_dir)
+
+    # Source 1: kg_entity_lookup.json
+    p1 = data / "database" / "kg_entity_lookup.json"
+    if p1.exists():
+        try:
+            with open(p1) as f:
+                for entity, info in json.load(f).items():
+                    if info.get("drug_name"):
+                        _name_lookup[entity] = info["drug_name"]
+        except Exception:
+            pass
+
+    # Source 2: drugbank_to_name.json
+    p2 = data / "drugbank_to_name.json"
+    if p2.exists():
+        try:
+            with open(p2) as f:
+                for db_id, name in json.load(f).items():
+                    entity = f"Compound::{db_id}"
+                    if entity not in _name_lookup:
+                        _name_lookup[entity] = name
+        except Exception:
+            pass
+
+    # Apply manual fixes
+    _name_lookup.update(_NAME_FIXES)
+    logger.info("Name lookup: %d entries", len(_name_lookup))
+    return _name_lookup
+
+
+def _resolve_name(drug_name: str, drkg_entity: str) -> str:
+    """Resolve a drug name: fix overrides, strip [OBSOLETE], try lookup."""
+    lookup = _get_name_lookup()
+
+    # 1. Manual fix
+    if drkg_entity in _NAME_FIXES:
+        return _NAME_FIXES[drkg_entity]
+
+    # 2. If name is a raw ID, try lookup
+    raw_id = drkg_entity.replace("Compound::", "")
+    if drug_name == raw_id:
+        resolved = lookup.get(drkg_entity)
+        if resolved:
+            drug_name = resolved
+
+    # 3. Strip MeSH [OBSOLETE]
+    if drug_name.startswith("[OBSOLETE]"):
+        drug_name = drug_name.replace("[OBSOLETE]", "").strip()
+
+    return drug_name
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -99,7 +173,7 @@ def _run_discovery(disease: str, max_candidates: int,
     result = engine_discover(
         disease=disease,
         data_dir=_data_dir,
-        top_k=max(100, max_candidates * 3),
+        top_k=max(500, max_candidates * 10) if not include_novel else max(100, max_candidates * 3),
         max_candidates=max_candidates,
         min_percentile=min_percentile,
         include_novel=include_novel,
@@ -119,7 +193,7 @@ def _run_discovery(disease: str, max_candidates: int,
         "stats": result.stats,
         "candidates": [
             {
-                "drug_name": c.drug_name,
+                "drug_name": _resolve_name(c.drug_name, c.drkg_entity),
                 "drkg_entity": c.drkg_entity,
                 "status": c.status,
                 "chembl_id": c.chembl_id,
@@ -197,7 +271,7 @@ def _run_get_info() -> dict:
             },
             "max_candidates": {
                 "type": "integer",
-                "description": "Maximum candidates to return (default 30)",
+                "description": "Maximum candidates to return (default 20)",
                 "minimum": 1,
                 "maximum": 100,
             },
@@ -211,7 +285,7 @@ def _run_get_info() -> dict:
             "include_novel": {
                 "type": "boolean",
                 "description": "Include compounds not in dropped_drugs database "
-                "(default true). Set false to only see known dropped/withdrawn drugs.",
+                "(default false). Set true to also see approved/novel drugs.",
             },
         },
         "required": ["disease"],
@@ -225,9 +299,9 @@ async def discover_candidates_tool(args: dict[str, Any]) -> dict[str, Any]:
             _pool,
             _run_discovery,
             args["disease"],
-            args.get("max_candidates", 30),
+            args.get("max_candidates", 20),
             args.get("min_percentile", 75.0),
-            args.get("include_novel", True),
+            args.get("include_novel", False),
         )
 
         if "error" in result and "candidates" not in result:

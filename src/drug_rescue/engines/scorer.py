@@ -164,14 +164,32 @@ class KGResult:
 #  NORMALIZER
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-def normalize_kg_score(percentile: float) -> float:
-    """Percentile → 0-1. Non-linear: top 1% → 1.0, median → 0.30."""
-    if percentile >= 99:   return 1.0
-    elif percentile >= 95: return 0.85
-    elif percentile >= 90: return 0.70
+def normalize_kg_score(percentile: float, z_score: float = 0.0) -> float:
+    """
+    Percentile + z-score → 0-1 normalized score.
+
+    For top 1% (percentile >= 99), uses z-score for fine-grained ranking:
+      z >= 6.0 → 1.00
+      z >= 5.0 → 0.95
+      z >= 4.0 → 0.90
+      z >= 3.0 → 0.85
+    Below 99th percentile, uses step function.
+    """
+    if percentile >= 99:
+        # Fine-grained within top 1% using z-score
+        if z_score >= 6.0:   return 1.00
+        elif z_score >= 5.5: return 0.97
+        elif z_score >= 5.0: return 0.95
+        elif z_score >= 4.5: return 0.92
+        elif z_score >= 4.0: return 0.90
+        elif z_score >= 3.5: return 0.87
+        elif z_score >= 3.0: return 0.85
+        else:                return 0.82
+    elif percentile >= 95: return 0.75
+    elif percentile >= 90: return 0.65
     elif percentile >= 75: return 0.50
     elif percentile >= 50: return 0.30
-    else: return round(0.30 * percentile / 50.0, 4)  # 0→0.0, 50→0.30
+    else: return round(0.30 * percentile / 50.0, 4)
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -516,16 +534,17 @@ class DRKGScorer:
                 continue
             s = float(best_scores[idx])
             pctl = float(np.sum(valid <= s) / len(valid) * 100)
+            z = round((s - mean_s) / std_s, 3)
             predictions.append(KGPrediction(
                 drug_entity=self.compound_names[idx],
                 drug_name=self.compound_names[idx].replace("Compound::", ""),
                 score=round(s, 4),
                 percentile=round(pctl, 2),
-                z_score=round((s - mean_s) / std_s, 3),
+                z_score=z,
                 rank=rank + 1,
                 method=self.method,
                 relation_used=best_relations[idx],
-                normalized_score=round(normalize_kg_score(pctl), 2),
+                normalized_score=round(normalize_kg_score(pctl, z), 2),
             ))
 
         elapsed = (time.perf_counter() - t0) * 1000
