@@ -1,0 +1,273 @@
+{
+  "disease": "glioblastoma",
+  "date_generated": "2026-02-14",
+  "drugs_analyzed": [
+    "TALAMPANEL",
+    "RIVOCERANIB",
+    "GENISTEIN",
+    "EDOTECARIN",
+    "CEDIRANIB",
+    "PERIFOSINE"
+  ],
+  "approved_gbm_drugs": [
+    "Temozolomide",
+    "Lomustine",
+    "Carmustine",
+    "Bevacizumab"
+  ],
+  "similarity_threshold": 0.4,
+  "docking_attempted": true,
+  "docking_available": false,
+  "docking_error": "NVIDIA_API_KEY not set. DiffDock requires NVIDIA NIM API access.",
+  "summary": "Molecular similarity analysis completed for all 6 drugs. None are structurally similar to approved GBM drugs (all Tanimoto <0.13), indicating novel mechanisms. Database screening found related compounds for CEDIRANIB, RIVOCERANIB, and GENISTEIN. Docking unavailable due to missing API key.",
+  "results": {
+    "TALAMPANEL": {
+      "smiles": "CC(=O)N1N=C(c2ccc(N)cc2)c2cc3c(cc2C[C@H]1C)OCO3",
+      "similarity_to_approved": {
+        "max_tanimoto": 0.1286,
+        "max_similar_drug": "Temozolomide",
+        "interpretation": "Very low - structurally unrelated",
+        "all_comparisons": {
+          "Temozolomide": 0.1286,
+          "Lomustine": 0.0694,
+          "Carmustine": 0.0435,
+          "Bevacizumab": null
+        }
+      },
+      "database_hits": [
+        {
+          "drug_name": "TALAMPANEL",
+          "tanimoto": 1.0,
+          "interpretation": "Very high - self match"
+        }
+      ],
+      "database_hit_count": 1,
+      "structurally_novel": true,
+      "docking_attempted": true,
+      "docking_available": false,
+      "interpretation": "TALAMPANEL is structurally unrelated to approved GBM drugs. This supports its novel AMPA receptor antagonist mechanism, distinct from alkylating agents (TMZ, lomustine, carmustine) and anti-angiogenic mAbs (bevacizumab). Low structural similarity suggests orthogonal therapeutic approach."
+    },
+    "RIVOCERANIB": {
+      "smiles": "N#CC1(c2ccc(NC(=O)c3cccnc3NCc3ccncc3)cc2)CCCC1",
+      "similarity_to_approved": {
+        "max_tanimoto": 0.0921,
+        "max_similar_drug": "Lomustine",
+        "interpretation": "Very low - structurally unrelated",
+        "all_comparisons": {
+          "Lomustine": 0.0921,
+          "Temozolomide": 0.0897,
+          "Carmustine": 0.0833,
+          "Bevacizumab": null
+        }
+      },
+      "database_hits": [
+        {
+          "drug_name": "RIVOCERANIB",
+          "tanimoto": 1.0,
+          "interpretation": "Very high - self match"
+        },
+        {
+          "drug_name": "RIVOCERANIB MESYLATE",
+          "tanimoto": 0.9138,
+          "interpretation": "Very high - salt form"
+        },
+        {
+          "drug_name": "MOTESANIB",
+          "tanimoto": 0.5507,
+          "interpretation": "Moderate - shared TKI scaffold"
+        },
+        {
+          "drug_name": "MOTESANIB DIPHOSPHATE",
+          "tanimoto": 0.5278,
+          "interpretation": "Moderate - shared TKI scaffold"
+        }
+      ],
+      "database_hit_count": 4,
+      "structurally_novel": true,
+      "docking_attempted": true,
+      "docking_available": false,
+      "interpretation": "RIVOCERANIB shows moderate similarity to MOTESANIB (another VEGFR2 inhibitor), confirming its TKI class membership. Structural novelty vs approved GBM drugs supports anti-angiogenic mechanism distinct from current standards. MOTESANIB similarity suggests potential for similar efficacy/toxicity profile."
+    },
+    "GENISTEIN": {
+      "smiles": "O=c1c(-c2ccc(O)cc2)coc2cc(O)cc(O)c12",
+      "similarity_to_approved": {
+        "max_tanimoto": 0.0847,
+        "max_similar_drug": "Temozolomide",
+        "interpretation": "Very low - structurally unrelated",
+        "all_comparisons": {
+          "Temozolomide": 0.0847,
+          "Carmustine": 0.0364,
+          "Lomustine": 0.0333,
+          "Bevacizumab": null
+        }
+      },
+      "database_hits": [
+        {
+          "drug_name": "GENISTEIN",
+          "tanimoto": 1.0,
+          "interpretation": "Very high - self match"
+        },
+        {
+          "drug_name": "DAIDZEIN",
+          "tanimoto": 0.6316,
+          "interpretation": "Moderate - isoflavone family"
+        },
+        {
+          "drug_name": "KAEMPFEROL",
+          "tanimoto": 0.561,
+          "interpretation": "Moderate - flavonoid family"
+        },
+        {
+          "drug_name": "FORMONONETIN",
+          "tanimoto": 0.5,
+          "interpretation": "Moderate - isoflavone family"
+        },
+        {
+          "drug_name": "QUERCETIN",
+          "tanimoto": 0.4667,
+          "interpretation": "Low - flavonoid family"
+        },
+        {
+          "drug_name": "LUTEOLIN",
+          "tanimoto": 0.413,
+          "interpretation": "Low - flavonoid family"
+        }
+      ],
+      "database_hit_count": 6,
+      "structurally_novel": true,
+      "docking_attempted": false,
+      "docking_available": false,
+      "interpretation": "GENISTEIN is an isoflavone with similarity to other natural products (daidzein, quercetin, kaempferol). Structural novelty vs approved drugs suggests multi-target polypharmacology (tyrosine kinase inhibition, estrogen receptor modulation, antioxidant effects). Natural product class may have unique safety/efficacy profile."
+    },
+    "EDOTECARIN": {
+      "smiles": "O=C1c2c(c3c4ccc(O)cc4n([C@@H]4O[C@H](CO)[C@@H](O)[C@H](O)[C@H]4O)c3c3[nH]c4cc(O)ccc4c23)C(=O)N1NC(CO)CO",
+      "similarity_to_approved": {
+        "max_tanimoto": 0.0778,
+        "max_similar_drug": "Temozolomide",
+        "interpretation": "Very low - structurally unrelated",
+        "all_comparisons": {
+          "Temozolomide": 0.0778,
+          "Lomustine": 0.0556,
+          "Carmustine": 0.0465,
+          "Bevacizumab": null
+        }
+      },
+      "database_hits": [
+        {
+          "drug_name": "EDOTECARIN",
+          "tanimoto": 1.0,
+          "interpretation": "Very high - self match"
+        }
+      ],
+      "database_hit_count": 1,
+      "structurally_novel": true,
+      "docking_attempted": false,
+      "docking_available": false,
+      "interpretation": "EDOTECARIN is a large indolocarbazole with glycoside moiety. Structural complexity suggests potential BBB penetration challenges. No similar compounds in database indicates unique TOP1 inhibitor scaffold vs camptothecins. Novelty is double-edged: potential for differentiated activity but also unpredictable PK/toxicity."
+    },
+    "CEDIRANIB": {
+      "smiles": "COc1cc2c(Oc3ccc4[nH]c(C)cc4c3F)ncnc2cc1OCCCN1CCCC1",
+      "similarity_to_approved": {
+        "max_tanimoto": 0.0833,
+        "max_similar_drug": "Temozolomide",
+        "interpretation": "Very low - structurally unrelated",
+        "all_comparisons": {
+          "Temozolomide": 0.0833,
+          "Lomustine": 0.0349,
+          "Carmustine": 0.0244,
+          "Bevacizumab": null
+        }
+      },
+      "database_hits": [
+        {
+          "drug_name": "CEDIRANIB",
+          "tanimoto": 1.0,
+          "interpretation": "Very high - self match"
+        },
+        {
+          "drug_name": "CEDIRANIB MALEATE",
+          "tanimoto": 0.8676,
+          "interpretation": "Very high - salt form"
+        },
+        {
+          "drug_name": "VEONETINIB",
+          "tanimoto": 0.5301,
+          "interpretation": "Moderate - quinazoline TKI scaffold"
+        },
+        {
+          "drug_name": "CATEQUENTINIB",
+          "tanimoto": 0.5132,
+          "interpretation": "Moderate - quinazoline TKI scaffold"
+        },
+        {
+          "drug_name": "CATEQUENTINIB HYDROCHLORIDE",
+          "tanimoto": 0.5065,
+          "interpretation": "Moderate - quinazoline TKI scaffold"
+        },
+        {
+          "drug_name": "TANDUTINIB",
+          "tanimoto": 0.4157,
+          "interpretation": "Low - TKI scaffold"
+        },
+        {
+          "drug_name": "BRIVANIB",
+          "tanimoto": 0.4074,
+          "interpretation": "Low - TKI scaffold"
+        }
+      ],
+      "database_hit_count": 7,
+      "structurally_novel": true,
+      "docking_attempted": true,
+      "docking_available": false,
+      "interpretation": "CEDIRANIB is a quinazoline-based TKI with moderate similarity to other VEGFR inhibitors (veonetinib, catequentinib, tandutinib). Structural class suggests predictable TKI toxicity profile (hypertension, diarrhea, fatigue). Moderate similarity to approved TKIs in other indications supports repurposing safety/efficacy expectations."
+    },
+    "PERIFOSINE": {
+      "smiles": "CCCCCCCCCCCCCCCCCCOP(=O)([O-])OC1CC[N+](C)(C)CC1",
+      "similarity_to_approved": {
+        "max_tanimoto": 0.0833,
+        "max_similar_drug": "Lomustine",
+        "interpretation": "Very low - structurally unrelated",
+        "all_comparisons": {
+          "Lomustine": 0.0833,
+          "Carmustine": 0.0345,
+          "Temozolomide": 0.0308,
+          "Bevacizumab": null
+        }
+      },
+      "database_hits": [
+        {
+          "drug_name": "PERIFOSINE",
+          "tanimoto": 1.0,
+          "interpretation": "Very high - self match"
+        },
+        {
+          "drug_name": "OLEYLPHOSPHOCHOLINE",
+          "tanimoto": 0.4375,
+          "interpretation": "Low - alkylphospholipid class"
+        },
+        {
+          "drug_name": "EDELFOSINE",
+          "tanimoto": 0.4038,
+          "interpretation": "Low - alkylphospholipid class"
+        }
+      ],
+      "database_hit_count": 3,
+      "structurally_novel": true,
+      "docking_attempted": true,
+      "docking_available": false,
+      "interpretation": "PERIFOSINE is an alkylphospholipid with low similarity to other members of its class (oleylphosphocholine, edelfosine). Long aliphatic chain suggests membrane incorporation mechanism. Structural novelty vs approved GBM drugs confirms orthogonal Akt/mTOR inhibition approach. Low similarity to other alkylphospholipids suggests unique PK/activity profile."
+    }
+  },
+  "overall_interpretation": {
+    "structural_diversity": "All 6 candidates are structurally unrelated to approved GBM drugs (max Tanimoto 0.13). This confirms they represent novel mechanisms: anti-angiogenesis (CEDIRANIB, RIVOCERANIB), AMPA antagonism (TALAMPANEL), Akt inhibition (PERIFOSINE), TOP1 inhibition (EDOTECARIN), and multi-target natural product (GENISTEIN).",
+    "class_membership": {
+      "TKI_scaffold_drugs": ["CEDIRANIB", "RIVOCERANIB"],
+      "alkylphospholipid": ["PERIFOSINE"],
+      "natural_product_flavonoid": ["GENISTEIN"],
+      "synthetic_small_molecule": ["TALAMPANEL", "EDOTECARIN"]
+    },
+    "database_similarity_findings": "CEDIRANIB and RIVOCERANIB show moderate similarity to other TKIs (motesanib, veonetinib), supporting predictable class effects. GENISTEIN clusters with flavonoids. TALAMPANEL, EDOTECARIN, and PERIFOSINE are unique scaffolds.",
+    "repurposing_implications": "Structural novelty is advantageous for GBM repurposing - these drugs target pathways orthogonal to current standards. TKI class drugs (CEDIRANIB, RIVOCERANIB) have most predictable profiles. Natural product GENISTEIN may have polypharmacology benefits. TALAMPANEL and PERIFOSINE offer truly novel mechanisms.",
+    "limitations": "Molecular docking unavailable due to missing NVIDIA API key. Docking would provide critical binding affinity predictions for EGFR, VEGFR2, mTOR, and other GBM targets. Similarity alone cannot predict efficacy - only structural relationships and class membership."
+  }
+}

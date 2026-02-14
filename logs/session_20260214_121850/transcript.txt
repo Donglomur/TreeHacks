@@ -1,0 +1,100 @@
+I'll run the full DrugRescue pipeline for glioblastoma through all four phases: discovery → investigation → adversarial court → judgment.
+
+Starting Phase 1 now:
+============================================================
+  🔬 DISCOVERY — Phase 1: Discovery
+  Discover glioblastoma candidates
+============================================================
+  [DISCOVERY] → discover_candidates
+  [DISCOVERY] → Write
+  [DISCOVERY] → Write
+  [DISCOVERY] → Write
+  [DISCOVERY] → Write
+  [DISCOVERY] → Write
+Phase 1 complete! Now starting Phase 2:
+============================================================
+  🔎 INVESTIGATOR — Phase 2: Investigation
+  Investigate glioblastoma candidates
+============================================================
+  [INVESTIGATOR] → Read
+  [INVESTIGATOR] → Bash
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → faers_inverse_signal
+  [INVESTIGATOR] → literature_search
+  [INVESTIGATOR] → literature_search
+  [INVESTIGATOR] → literature_search
+  [INVESTIGATOR] → literature_search
+  [INVESTIGATOR] → literature_search
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_docking
+  [INVESTIGATOR] → molecular_docking
+  [INVESTIGATOR] → molecular_docking
+  [INVESTIGATOR] → Write
+  [INVESTIGATOR] → Write
+  [INVESTIGATOR] → Glob
+  [INVESTIGATOR] → Read
+  [INVESTIGATOR] → Write
+  [INVESTIGATOR] → Glob
+  [INVESTIGATOR] → Write
+  [INVESTIGATOR] → Write
+  [INVESTIGATOR] → Write
+  [INVESTIGATOR] → Write
+  [INVESTIGATOR] → Write
+Phase 2 complete! Now starting Phase 3 (advocate and skeptic IN PARALLEL):
+============================================================
+  ✅ ADVOCATE — Phase 3: Advocate
+  Build case FOR repurposing
+============================================================
+
+============================================================
+  🔴 SKEPTIC — Phase 3: Skeptic
+  Build case AGAINST repurposing
+============================================================
+  [SKEPTIC] → Read
+  [SKEPTIC] → Glob
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Read
+  [SKEPTIC] → Write
+  [SKEPTIC] → Write
+Phase 3 complete! Both advocate and skeptic briefs are ready. Now starting Phase 4 (final judgment):
+============================================================
+  ⚖️ JUDGE — Phase 4: Judgment
+  Deliver final verdict
+============================================================
+  [JUDGE] → Read
+  [JUDGE] → Read
+  [JUDGE] → Read
+  [JUDGE] → Read
+  [JUDGE] → Write
+  [JUDGE] → Write
+**Investigation complete.** Verdict: `files/court/verdict.md`
+
+All phases finished successfully: 6 glioblastoma candidates discovered, evidence gathered, adversarial briefs completed, and final judgment delivered with Rescue Scores ranging from 76/100 (CEDIRANIB) to 22/100 (EDOTECARIN).
+
+  ✅ Court adjourned — turns: 6, cost: $4.8556
+
+
+============================================================
+  Pipeline: discovery → investigator → advocate → skeptic → judge
+  Duration: 1570.9s
+============================================================

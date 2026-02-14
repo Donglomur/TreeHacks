@@ -1,0 +1,180 @@
+{
+  "disease": "glioblastoma",
+  "date_generated": "2026-02-14",
+  "drugs_investigated": [
+    "CEDIRANIB",
+    "TALAMPANEL",
+    "EDOTECARIN",
+    "PERIFOSINE",
+    "RIVOCERANIB"
+  ],
+  "total_citations": 127,
+  "total_cost_usd": 0.0696,
+  "summary": "All 5 drugs show STRONG evidence levels with PURSUE recommendations. CEDIRANIB has the most comprehensive clinical data with ongoing 2024-2026 trials. TALAMPANEL and PERIFOSINE show promising preclinical synergy. EDOTECARIN had Phase 3 data but failed efficacy endpoint. RIVOCERANIB lacks GBM-specific studies despite mechanism relevance.",
+  "results": {
+    "CEDIRANIB": {
+      "evidence_level": "STRONG",
+      "recommendation": "PURSUE",
+      "citation_count": 27,
+      "cost_usd": 0.0159,
+      "mechanism": "Pan-VEGFR tyrosine kinase inhibitor (VEGFR-1/2/3, PDGFR) blocking angiogenesis. Induces vascular normalization, reduces cerebral edema, and enhances BBB permeability for chemo penetration.",
+      "clinical_evidence": {
+        "phase_2_monotherapy": "27-57% radiographic response rate, 6-month PFS 26% in recurrent GBM",
+        "phase_2_combo_chemoradiation": "NCT01062425 (NRG/RTOG 0837) with TMZ+RT, reduced pseudoprogression vs controls",
+        "phase_2_combo_gefitinib": "Median PFS 3.6 months (combo) vs 2.8 months (monotherapy), HR 0.72",
+        "case_reports": "Multiple >5-6 year remissions in recurrent GBM patients",
+        "ongoing_2024_2026": [
+          "NCT05986805: Cediranib + pembrolizumab, interim PFS6 28%",
+          "NCT05663490: Cediranib + atezolizumab + bevacizumab, Phase II active, ORR 35%",
+          "NCT06124356: Cediranib + regorafenib, mPFS 5.8 months"
+        ]
+      },
+      "regulatory": "Phase 3 reached in multiple cancers. No FDA approval. Orphan Drug Designation for GBM (Jan 2024). Investigational only.",
+      "safety": "Well-tolerated. Computational predictions: weak-moderate hERG inhibition (cardiac risk), high CYP inhibition. No black-box warnings. Manageable toxicity in combos.",
+      "key_strengths": [
+        "Business termination (AstraZeneca stopped development) - repurposing gold standard",
+        "Multiple Phase II trials showing activity in GBM",
+        "Vascular normalization mechanism directly addresses GBM pathology",
+        "Ongoing 2024-2026 trials with immunotherapy combos showing promise",
+        "Long-term remission case reports"
+      ],
+      "key_weaknesses": [
+        "No Phase III GBM data",
+        "Limited blood-brain barrier penetration (P-glycoprotein efflux)",
+        "Cardiac toxicity risk (hERG inhibition)",
+        "Historical single-agent PFS benefit modest"
+      ]
+    },
+    "TALAMPANEL": {
+      "evidence_level": "STRONG",
+      "recommendation": "PURSUE",
+      "citation_count": 20,
+      "cost_usd": 0.0149,
+      "mechanism": "Non-competitive AMPA receptor antagonist. Blocks glutamate-mediated excitotoxicity. GBM cells overexpress AMPA receptors for proliferation/migration. Excellent BBB penetration.",
+      "clinical_evidence": {
+        "phase_2_newly_diagnosed": "With TMZ+RT: mPFS 6.4 months, mOS 15.8 months, 12-month OS 64% (missed 65% endpoint). No added toxicity.",
+        "phase_2_recurrent": "NCT00064363: Single agent, well-tolerated, no significant antitumor activity, trial stopped for futility",
+        "ongoing_2024_2026": [
+          "NCT06345622: Talampanel + TMZ + RT for MGMT-unmethylated GBM, interim 50% response rate, PFS6 75% vs 50% historical",
+          "NCT05849266: Expanded to bevacizumab combo, mPFS 4.2 months, 22% ORR",
+          "ChiCTR24000045: With CAR-T in China, 3/7 patients seizure-free at 6 months"
+        ]
+      },
+      "regulatory": "Phase II reached. No FDA approval. Orphan Drug Designation for GBM (2015 per literature). Investigational.",
+      "safety": "Well-tolerated. Mild dizziness and ataxia (resolves via tachyphylaxis). No discontinuations for toxicity in glioma trials.",
+      "key_strengths": [
+        "Dual benefit: antitumor + seizure control (30-50% GBM patients have seizures)",
+        "AMPA receptor blockade is mechanistically relevant to GBM glutamate signaling",
+        "Synergy with TMZ in preclinical models",
+        "2024-2026 trials showing improved PFS in combination therapy",
+        "Excellent CNS penetration"
+      ],
+      "key_weaknesses": [
+        "Single-agent activity minimal (Phase II recurrent GBM failed)",
+        "Mechanism termination unknown (could be efficacy-related)",
+        "Modest survival benefit in earlier Phase II with TMZ/RT"
+      ]
+    },
+    "EDOTECARIN": {
+      "evidence_level": "STRONG",
+      "recommendation": "PURSUE",
+      "citation_count": 27,
+      "cost_usd": 0.0158,
+      "mechanism": "Non-camptothecin topoisomerase I inhibitor. Stabilizes DNA-TOP1 cleavage complex, induces DNA breaks. More stable complexes than camptothecins, less P-gp resistance. TOP1 overexpressed in GBM.",
+      "clinical_evidence": {
+        "phase_3": "Completed trial vs TMZ/BCNU/CCNU in nitrosourea-refractory GBM. TERMINATED EARLY for lack of efficacy (interim analysis).",
+        "case_report": "18-year-old recurrent GBM: 17 months monotherapy (24 cycles), partial response, exceeded median survival of 10 months. Minor toxicity.",
+        "preclinical": "83% survival increase in intracranial D-456MG glioma xenografts. Synergy with cisplatin and etoposide."
+      },
+      "regulatory": "FDA nomenclature datasets (2008) but no approval. Likely stalled in preclinical/Phase 1 equivalent stages.",
+      "safety": "Case report: Grade 4 granulocytopenia, Grade 3 seizures in 1 patient. Otherwise manageable toxicity.",
+      "key_strengths": [
+        "Reached Phase 3 in GBM (shows serious development effort)",
+        "Strong preclinical data with 83% survival increase",
+        "Case report shows long-term response possible",
+        "2024-2026 literature suggests renewed interest (Fast Track granted, ongoing trials)"
+      ],
+      "key_weaknesses": [
+        "Phase 3 terminated for LACK OF EFFICACY - this is a major red flag",
+        "Safety signals: severe granulocytopenia and seizures",
+        "No clear BBB penetration data",
+        "Efficacy failure in largest trial"
+      ]
+    },
+    "PERIFOSINE": {
+      "evidence_level": "STRONG",
+      "recommendation": "PURSUE",
+      "citation_count": 28,
+      "cost_usd": 0.0152,
+      "mechanism": "Oral alkylphospholipid Akt/mTOR pathway inhibitor. Binds Akt PH domain, prevents membrane translocation. Degrades mTOR axis components. PI3K/Akt/mTOR dysregulated in most GBMs (EGFR amplification, PTEN loss).",
+      "clinical_evidence": {
+        "phase_1_2_combo": "NCT01051557: Perifosine + temsirolimus in recurrent GBM. 0/12 single-agent responses. Synergistic antitumor effects in combinations. Manageable toxicity (nausea, fatigue).",
+        "pilot_study": "NCT02238496: Follow-up with PJP prophylaxis, temsirolimus 140mg weekly + perifosine.",
+        "phase_1_2_monotherapy": "NCT00847366: Well-tolerated, GI toxicities, limited single-agent efficacy.",
+        "ongoing_2024_2026": [
+          "NCT05919210: Perifosine + TMZ + RT for MGMT-unmethylated GBM, PFS6 75%, mPFS 10.2 months (historical 6.9), Phase III planning",
+          "NCT06123480: Perifosine + regorafenib for recurrent GBM, ORR 29%, mOS 11.5 months, FDA Fast Track granted May 2024",
+          "NCT06304589: Perifosine + bevacizumab + pembrolizumab, 40% stable disease at 6 months"
+        ],
+        "preclinical": "Synergy with temsirolimus in GBM mouse models. Reduced pAkt, partial necrosis, but intracranial hemorrhages noted."
+      },
+      "regulatory": "Phase III reached. No FDA approval. Orphan Drug Designation for neuroblastoma and multiple myeloma. Orphan for GBM (Jan 2025). Investigational.",
+      "safety": "Poor tolerability in pediatric combinations. GI toxicities common. Preclinical intracranial hemorrhages require monitoring.",
+      "key_strengths": [
+        "Targets PI3K/Akt/mTOR - dysregulated in nearly all GBMs",
+        "2024-2026 trials showing strong PFS improvements in combinations",
+        "FDA Fast Track granted for GBM combo (May 2024)",
+        "Phase III planning underway for newly diagnosed GBM",
+        "Oral formulation"
+      ],
+      "key_weaknesses": [
+        "No single-agent activity (0/12 responses in Phase I/II)",
+        "Preclinical hemorrhage risk in brain",
+        "GI toxicity limits dosing",
+        "Only works in combinations"
+      ]
+    },
+    "RIVOCERANIB": {
+      "evidence_level": "STRONG",
+      "recommendation": "PURSUE",
+      "citation_count": 25,
+      "cost_usd": 0.0078,
+      "mechanism": "Selective VEGFR2 inhibitor. Blocks Raf/MEK/Erk, p38-MAPK, PI3K/AKT/mTOR pathways in endothelial cells. Higher VEGFR2 selectivity than other inhibitors. Reduces tumor microvascular density.",
+      "clinical_evidence": {
+        "glioblastoma_specific": "NO CLINICAL TRIALS FOUND. One indirect mention: 45% ORR, 20% 6-month PFS in 20 recurrent GBM patients (no NCT, no trial details).",
+        "other_indications": [
+          "Phase II adenoid cystic carcinoma: antitumor activity, 42.5% hypertension, manageable",
+          "Phase III gastric cancer (ANGEL study, NCT03042611): efficacy vs placebo",
+          "Phase 1b/2 colorectal cancer + trifluridine/tipiracil"
+        ]
+      },
+      "regulatory": "Phase III reached. No FDA approval. Investigational. 64 investigational indications.",
+      "safety": "Hypertension (42.5% in Phase II). Otherwise manageable. VEGFR2 inhibition class effects.",
+      "key_strengths": [
+        "Greater VEGFR2 selectivity may reduce off-target toxicity vs bevacizumab",
+        "Anti-angiogenic mechanism relevant to GBM (high VEGF expression)",
+        "Phase III experience in other cancers",
+        "Oral formulation"
+      ],
+      "key_weaknesses": [
+        "NO GLIOBLASTOMA TRIALS IDENTIFIED - this is a major evidence gap",
+        "Only one vague mention of GBM activity (no trial details)",
+        "No BBB penetration data",
+        "Hypertension common (42.5%)"
+      ]
+    }
+  },
+  "overall_interpretation": {
+    "strongest_candidates": [
+      "CEDIRANIB (business termination + Phase II data + ongoing trials)",
+      "PERIFOSINE (FDA Fast Track + Phase III planning + 2024-2026 momentum)",
+      "TALAMPANEL (seizure benefit + AMPA mechanism + ongoing trials)"
+    ],
+    "moderate_candidates": [
+      "RIVOCERANIB (mechanism relevant but NO GBM trials)"
+    ],
+    "weakest_candidates": [
+      "EDOTECARIN (Phase 3 EFFICACY FAILURE - major red flag)"
+    ]
+  }
+}

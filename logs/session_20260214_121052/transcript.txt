@@ -1,0 +1,34 @@
+I'll run the full 4-phase DrugRescue pipeline for glioblastoma. Starting with discovery now.
+============================================================
+  🔬 DISCOVERY — Phase 1: Discovery
+  Discover glioblastoma candidates
+============================================================
+  [DISCOVERY] → discover_candidates
+  [DISCOVERY] → Write
+  [DISCOVERY] → Write
+Phase 1 complete. Starting Phase 2: investigating the 6 dropped drugs with all evidence sources.
+============================================================
+  🔎 INVESTIGATOR — Phase 2: Investigation
+  Investigate glioblastoma candidates
+============================================================
+  [INVESTIGATOR] → Read
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → clinical_trial_failure
+  [INVESTIGATOR] → faers_inverse_signal
+  [INVESTIGATOR] → literature_search
+  [INVESTIGATOR] → literature_search
+  [INVESTIGATOR] → literature_search
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_similarity
+  [INVESTIGATOR] → molecular_docking
+  [INVESTIGATOR] → molecular_docking
+  [INVESTIGATOR] → molecular_docking
+  [INVESTIGATOR] → Write

@@ -313,6 +313,10 @@ def discover_candidates(
                 status="novel",
             )
 
+        # Filter novel AFTER enrichment (enricher can return status="novel")
+        if not include_novel and c.status == "novel":
+            continue
+
         if require_smiles and not c.smiles:
             stats["skipped_smiles"] += 1
             continue
