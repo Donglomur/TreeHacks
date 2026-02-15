@@ -1,0 +1,110 @@
+{
+  "disease": "als",
+  "drugs_screened": [
+    "OLESOXIME",
+    "THREONINE",
+    "PRIDOPIDINE",
+    "POTASSIUM",
+    "METHYLCOBALAMIN"
+  ],
+  "investigation_date": "2026-02-14",
+  "faers_database_size": 20006989,
+  "events_tested": [
+    "AMYOTROPHIC LATERAL SCLEROSIS",
+    "MOTOR NEURON DISEASE",
+    "MUSCULAR WEAKNESS",
+    "DYSPHAGIA",
+    "RESPIRATORY FAILURE"
+  ],
+  "total_tests_run": 25,
+  "correction_method": "fdr",
+  "alpha": 0.05,
+  "summary": "Screened 5 drugs × 5 ALS-related events = 25 tests using FDR correction. No significant inverse signals detected (ROR < 1 with p < 0.05). Most drugs had insufficient data (< 3 co-reports) except METHYLCOBALAMIN and POTASSIUM which showed neutral signals.",
+  "inverse_signals_found": 0,
+  "positive_risk_signals_found": 0,
+  "results": {
+    "OLESOXIME": {
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_ror": null,
+      "best_event": "AMYOTROPHIC LATERAL SCLEROSIS",
+      "report_count": 0,
+      "total_drug_reports": 0,
+      "normalized_score": 0.0,
+      "interpretation": "Insufficient data (a=0, b=0). OLESOXIME has no FAERS reports, likely because it never reached market approval.",
+      "data_quality": "INSUFFICIENT",
+      "repurposing_value": "Cannot assess protective or risk signals without real-world exposure data."
+    },
+    "THREONINE": {
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_ror": null,
+      "best_event": "MUSCULAR WEAKNESS",
+      "report_count": 1,
+      "total_drug_reports": 727,
+      "normalized_score": 0.0,
+      "interpretation": "Insufficient data (a=1). Only 1 co-report with muscular weakness. Threonine is a nutritional supplement rarely reported to FAERS.",
+      "data_quality": "INSUFFICIENT",
+      "repurposing_value": "No signal detectable. Low reporting expected for amino acid supplements."
+    },
+    "PRIDOPIDINE": {
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_ror": null,
+      "best_event": "AMYOTROPHIC LATERAL SCLEROSIS",
+      "report_count": 0,
+      "total_drug_reports": 6,
+      "normalized_score": 0.0,
+      "interpretation": "Insufficient data (a=0, b=6). Only 6 total FAERS reports for pridopidine, with no ALS co-reports.",
+      "data_quality": "INSUFFICIENT",
+      "repurposing_value": "Very limited real-world exposure in FAERS. Drug is investigational, not approved."
+    },
+    "POTASSIUM": {
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_ror": 0.999942,
+      "best_event": "AMYOTROPHIC LATERAL SCLEROSIS",
+      "best_ror_ci_lower": 0.683984,
+      "best_ror_ci_upper": 1.461853,
+      "best_p_value": 0.49987998274937256,
+      "best_q_value": 1.0,
+      "report_count": 27,
+      "total_drug_reports": 266907,
+      "normalized_score": 0.2,
+      "interpretation": "Neutral signal (ROR=1.00, CI=[0.68, 1.46], n=27). Potassium supplementation shows no association with ALS reports - neither protective nor risk-inducing.",
+      "data_quality": "ADEQUATE",
+      "repurposing_value": "No FAERS evidence for or against repurposing. Common supplement with large exposure base but neutral signal."
+    },
+    "METHYLCOBALAMIN": {
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_ror": 0.570653,
+      "best_event": "AMYOTROPHIC LATERAL SCLEROSIS",
+      "best_ror_ci_lower": 0.183883,
+      "best_ror_ci_upper": 1.77093,
+      "best_p_value": 0.16580221488201263,
+      "best_q_value": 1.0,
+      "report_count": 3,
+      "total_drug_reports": 51906,
+      "protection_pct": 42.935,
+      "normalized_score": 0.2,
+      "interpretation": "Trend toward protection (ROR=0.57) but not statistically significant (p=0.17, n=3). Suggests 43% fewer ALS reports than expected, but underpowered.",
+      "data_quality": "MARGINAL",
+      "repurposing_value": "Promising trend toward inverse signal. More data needed. Wide confidence interval crosses 1.0."
+    }
+  },
+  "key_findings": [
+    "No statistically significant inverse signals detected for any drug after FDR correction",
+    "METHYLCOBALAMIN shows most promising trend (ROR=0.57, 43% protection) but insufficient data (n=3)",
+    "POTASSIUM has adequate data (n=27) but shows perfectly neutral signal (ROR≈1.00)",
+    "OLESOXIME, THREONINE, and PRIDOPIDINE have insufficient FAERS data due to lack of market approval or nutritional supplement status",
+    "All q-values = 1.0 after FDR correction, indicating no signals survive multiple testing correction"
+  ],
+  "limitations": [
+    "Investigational drugs (OLESOXIME, PRIDOPIDINE) have minimal FAERS exposure",
+    "Nutritional supplements (THREONINE, METHYLCOBALAMIN) are underreported to FAERS",
+    "ALS is rare (2024 reports in 20M total), limiting statistical power",
+    "Lack of signal in FAERS does not rule out efficacy - most drugs lack sufficient real-world exposure data"
+  ],
+  "conclusion": "FAERS inverse signal screening provides minimal evidence for or against repurposing these candidates in ALS. METHYLCOBALAMIN shows a non-significant trend worth monitoring in future analyses. Clinical trial evidence and mechanistic data are more informative than FAERS for these investigational/nutritional agents."
+}

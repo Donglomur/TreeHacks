@@ -1,0 +1,250 @@
+{
+  "disease": "depression",
+  "date_generated": "2026-02-14",
+  "drugs_investigated": [
+    "BEFURALINE",
+    "ROXINDOLE",
+    "SEROTONIN",
+    "BENZODIAZEPINE",
+    "LITHIUM"
+  ],
+  "results": {
+    "BEFURALINE": {
+      "total_failed_trials": 0,
+      "classification": "NONE",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [],
+      "interpretation": "No depression trials found. Drug may have been dropped in other indications or never reached clinical stage."
+    },
+    "ROXINDOLE": {
+      "total_failed_trials": 0,
+      "classification": "NONE",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [],
+      "interpretation": "No depression trials found. Drug may have been dropped in other indications or never reached clinical stage."
+    },
+    "SEROTONIN": {
+      "total_failed_trials": 15,
+      "classification": "BUSINESS/LOGISTICS",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [
+        {
+          "nct_id": "NCT00553917",
+          "title": "Study to Evaluate the Effectiveness of Certain Selective Serotonin Reuptake Inhibitor (SSRI) Antidepressants During Pregnancy and Evaluate Newborn Outcomes",
+          "status": "TERMINATED",
+          "why_stopped": "Poor recruitment to experimental arms and study remained unfunded",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": []
+        },
+        {
+          "nct_id": "NCT05109195",
+          "title": "A Standard of Care Study of Patients With Major Depressive Disorder Who Have Had an Inadequate Response to a Selective Serotonin Reuptake/Serotonin-Norepinephrine Reuptake Inhibitor Antidepressant",
+          "status": "TERMINATED",
+          "why_stopped": "due to business reasons.",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": []
+        },
+        {
+          "nct_id": "NCT01040208",
+          "title": "12 Week Safety Trial of Flibanserin in Depressed Women Taking an SSRI or SNRI With Decreased Sexual Desire and Distress",
+          "status": "TERMINATED",
+          "why_stopped": "Study terminated by Sponsor for administrative reasons prior to completion",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE3"]
+        },
+        {
+          "nct_id": "NCT02969876",
+          "title": "Pattern Separation, Brain Derived Neurotrophic Factors, and Mechanisms of Vortioxetine",
+          "status": "TERMINATED",
+          "why_stopped": "Site was unable to reach Sponsor recruitment goals.",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE4"]
+        },
+        {
+          "nct_id": "NCT05594667",
+          "title": "Effect of SSRIs on Response to Psilocybin Therapy",
+          "status": "WITHDRAWN",
+          "why_stopped": "Funding",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"]
+        },
+        {
+          "nct_id": "NCT05804708",
+          "title": "Phase 2 Clinical Trial of GH001 in Postpartum Depression",
+          "status": "TERMINATED",
+          "why_stopped": "Recruitment of this patient population was more challenging than anticipated. The sponsor concluded that a sufficient amount of patients have completed the trial to demonstrate proof of concept in this patient population.",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"]
+        },
+        {
+          "nct_id": "NCT05965401",
+          "title": "Pharmacogenetic-Guided Antidepressant Prescribing in Adolescents",
+          "status": "TERMINATED",
+          "why_stopped": "Low recruitment",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["NA"]
+        }
+      ],
+      "interpretation": "MODERATE REPURPOSING CANDIDATE. 15 terminated trials, with 7 due to business/logistics (funding, recruitment), 0 safety concerns. Serotonin-related compounds in depression had mostly logistical failures."
+    },
+    "BENZODIAZEPINE": {
+      "total_failed_trials": 14,
+      "classification": "BUSINESS/LOGISTICS",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [
+        {
+          "nct_id": "NCT04082858",
+          "title": "Ketamine Interleaved With Electroconvulsive Therapy for Depression",
+          "status": "TERMINATED",
+          "why_stopped": "Inadequate recruitment due to COVID-19",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE1"]
+        },
+        {
+          "nct_id": "NCT03889756",
+          "title": "Ketamine for Severe Adolescent Depression: Intermediate-term Safety and Efficacy",
+          "status": "TERMINATED",
+          "why_stopped": "No more funding available to continue since we could not recruit throughout the pandemic.",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2", "PHASE3"]
+        },
+        {
+          "nct_id": "NCT04220125",
+          "title": "Preoperative Ketamine and Perioperative Depression",
+          "status": "WITHDRAWN",
+          "why_stopped": "No enrollment",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE4"]
+        },
+        {
+          "nct_id": "NCT02661061",
+          "title": "Ketamine for Relapse Prevention in Recurrent Depressive Disorder",
+          "status": "TERMINATED",
+          "why_stopped": "Inadequate recruitment",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE1"]
+        },
+        {
+          "nct_id": "NCT00273624",
+          "title": "Olanzapine Augmentation Therapy in Treatment-resistant Depression: a Double-blind Placebo-controlled Trial",
+          "status": "WITHDRAWN",
+          "why_stopped": "Study withdrawn before inclusion of first participant for administrative reasons",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE3"]
+        },
+        {
+          "nct_id": "NCT03436121",
+          "title": "Single-dose Ketamine for the Reduction of Pain and Depression in the Emergency Department",
+          "status": "WITHDRAWN",
+          "why_stopped": "Ketamine shortage during the funding period of the trial",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2", "PHASE3"]
+        },
+        {
+          "nct_id": "NCT00947791",
+          "title": "Treatment Study of Bipolar Depression",
+          "status": "TERMINATED",
+          "why_stopped": "Change in available resources for study procedures",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE4"]
+        },
+        {
+          "nct_id": "NCT01687478",
+          "title": "A Study of Olanzapine and Fluoxetine for Treatment-resistant Depression",
+          "status": "TERMINATED",
+          "why_stopped": "Interim assessment: Lack of efficacy",
+          "failure_category": "EFFICACY",
+          "phases": ["PHASE3"]
+        }
+      ],
+      "interpretation": "MODERATE REPURPOSING CANDIDATE. 14 terminated trials, 7 due to business/logistics, 1 efficacy failure, 0 safety concerns. Most failures were recruitment/funding related, especially during COVID-19 pandemic."
+    },
+    "LITHIUM": {
+      "total_failed_trials": 15,
+      "classification": "BUSINESS/LOGISTICS",
+      "repurposing_viable": false,
+      "safety_flags": 1,
+      "trials": [
+        {
+          "nct_id": "NCT01928446",
+          "title": "Lithium for Suicidal Behavior in Mood Disorders",
+          "status": "TERMINATED",
+          "why_stopped": "terminated early due to non-safety related DMC recommendations",
+          "failure_category": "SAFETY",
+          "phases": ["PHASE2", "PHASE3"]
+        },
+        {
+          "nct_id": "NCT01416220",
+          "title": "Lithium Versus Paroxetine in Major Depression",
+          "status": "WITHDRAWN",
+          "why_stopped": "recruitment difficulties",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE4"]
+        },
+        {
+          "nct_id": "NCT00400088",
+          "title": "Lithium Versus Paroxetine in Patients With Major Depression Who Have a Family History of Bipolar Disorder or Suicide",
+          "status": "TERMINATED",
+          "why_stopped": "Recruitment difficulties",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE3"]
+        },
+        {
+          "nct_id": "NCT01768767",
+          "title": "Trial of Ketamine and Lithium Therapy in Bipolar Depression",
+          "status": "WITHDRAWN",
+          "why_stopped": "No funding",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"]
+        },
+        {
+          "nct_id": "NCT00063362",
+          "title": "Combination Therapy for the Treatment of Bipolar Disorders",
+          "status": "TERMINATED",
+          "why_stopped": "Funding Expiration",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE3"]
+        },
+        {
+          "nct_id": "NCT01665950",
+          "title": "Simvastatin Augmentation of Lithium Treatment in Bipolar Depression",
+          "status": "TERMINATED",
+          "why_stopped": "Lack of enrollment",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"]
+        },
+        {
+          "nct_id": "NCT01784666",
+          "title": "Adjunctive Isradipine for the Treatment of Bipolar Depression",
+          "status": "TERMINATED",
+          "why_stopped": "Lack of Enrollment",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"]
+        },
+        {
+          "nct_id": "NCT00726154",
+          "title": "Pilot Study of the Effects of Circadian Rhythms on the Treatment of Bipolar I Depression.",
+          "status": "WITHDRAWN",
+          "why_stopped": "This study did not receive funding",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["NA"]
+        }
+      ],
+      "interpretation": "CAUTION: One safety-related termination (NCT01928446, DMC recommendations) but described as 'non-safety related'. Mixed picture: 8 business/logistics failures suggest viability, but 1 safety flag warrants deeper investigation."
+    }
+  },
+  "summary": {
+    "total_drugs": 5,
+    "total_trials_found": 44,
+    "business_dropouts": 22,
+    "safety_dropouts": 1,
+    "efficacy_dropouts": 1,
+    "unknown_dropouts": 2,
+    "prime_candidates": ["SEROTONIN", "BENZODIAZEPINE"],
+    "key_finding": "SEROTONIN and BENZODIAZEPINE compounds show strong business/logistics dropout patterns in depression trials, with minimal safety concerns. LITHIUM has 1 safety flag. BEFURALINE and ROXINDOLE have no clinical trial record in depression."
+  }
+}

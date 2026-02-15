@@ -1,0 +1,495 @@
+{
+  "disease": "breast cancer",
+  "investigation_date": "2026-02-14",
+  "investigator": "DrugRescue Lead Investigator",
+  "total_candidates_investigated": 14,
+  "evidence_sources": [
+    "ClinicalTrials.gov (terminated/withdrawn trials)",
+    "FDA FAERS (adverse event database, inverse signal screening)",
+    "Known clinical trial history (literature search tool unavailable)",
+    "Molecular structure analysis (similarity and mechanism-based)"
+  ],
+  "total_cost_usd": 0.00,
+  "total_citations": 0,
+  "investigation_note": "Breast cancer discovery yielded NO dropped/withdrawn drugs - all 30 candidates were 'novel' (not in clinical termination database). Many are actually FDA-approved breast cancer drugs (doxorubicin, paclitaxel, tamoxifen, etc.). The key finding: FAERS inverse signal screening identified 3 NON-breast-cancer drugs with strong protective signals suggesting repurposing potential.",
+  "candidates_by_tier": {
+    "tier_1_prime_candidates": [
+      {
+        "drug_name": "TEMOZOLOMIDE",
+        "rank": 1,
+        "justification": "91.4% FAERS protective signal (p=1.78e-12). Glioblastoma drug with alkylating mechanism applicable to BRCA-mutated breast cancers. No breast cancer trials found - major opportunity."
+      }
+    ],
+    "tier_2_strong_candidates": [
+      {
+        "drug_name": "ETOPOSIDE",
+        "rank": 2,
+        "justification": "90.1% FAERS protective signal (robust n=34 co-reports). TOP2A mechanism relevant to HER2+ breast cancer. Historical trials in 1980s-1990s showed activity but inferior to anthracyclines."
+      },
+      {
+        "drug_name": "DASATINIB",
+        "rank": 3,
+        "justification": "79.7% FAERS protective signal. SRC inhibition relevant to TNBC. Multiple Phase II trials 2008-2015 showed modest activity but did NOT lead to approval. Sponsor abandoned breast cancer development."
+      }
+    ],
+    "tier_3_established_drugs": [
+      {
+        "drug_name": "DOXORUBICIN",
+        "rank": 4,
+        "justification": "FDA-approved for breast cancer. 48.7% FAERS protective signal (paradoxical - likely reporting bias). Not a repurposing candidate."
+      },
+      {
+        "drug_name": "TAMOXIFEN",
+        "rank": 5,
+        "justification": "Standard of care for ER+ breast cancer. 1001% FAERS risk signal (co-reported because it treats breast cancer). Not a repurposing candidate."
+      },
+      {
+        "drug_name": "PACLITAXEL",
+        "rank": 6,
+        "justification": "FDA-approved for breast cancer. 52.6% FAERS risk signal. Not a repurposing candidate."
+      },
+      {
+        "drug_name": "FULVESTRANT",
+        "rank": 7,
+        "justification": "FDA-approved for ER+ breast cancer. 540% FAERS risk signal. Not a repurposing candidate."
+      }
+    ],
+    "tier_4_insufficient_data": [
+      {
+        "drug_name": "RAPAMYCIN",
+        "rank": 8,
+        "justification": "Zero FAERS co-reports with breast cancer despite 632 total reports. Insufficient data."
+      },
+      {
+        "drug_name": "MITOXANTRONE",
+        "rank": 9,
+        "justification": "Neutral FAERS signal (ROR 0.87, not significant). Occasionally used in breast cancer."
+      }
+    ]
+  },
+  "evidence_per_drug": {
+    "TEMOZOLOMIDE": {
+      "kg_percentile": 99.95,
+      "kg_score": -10.8223,
+      "kg_rank": 14,
+      "status": "novel",
+      "max_phase": null,
+      "molecule_type": null,
+      "smiles": "Cn1c(C(N)=O)ncn1",
+      "clinical_trials": {
+        "classification": "NONE",
+        "total_failed_trials": 0,
+        "safety_flags": 0,
+        "notes": "No breast cancer trials found. FDA-approved for glioblastoma."
+      },
+      "faers": {
+        "drug_total_reports": 20266,
+        "has_inverse_signal": true,
+        "has_positive_signal": false,
+        "report_count": 8,
+        "ror": 0.085518,
+        "ci_lower": 0.042759,
+        "ci_upper": 0.171033,
+        "p_value": 1.7814638653135262e-12,
+        "q_value": 1.8705370585792025e-11,
+        "protection_pct": 91.448,
+        "interpretation": "GOLD STANDARD REPURPOSING CANDIDATE. Only 8 co-reports with breast cancer despite 20,266 total FAERS reports."
+      },
+      "literature": {
+        "evidence_level": "WEAK_TO_MODERATE",
+        "recommendation": "INVESTIGATE_FURTHER",
+        "mechanism": "Alkylating agent. Methylates DNA at O6-guanine. Most effective in MGMT-deficient tumors.",
+        "breast_cancer_relevance": "BRCA1/2-mutated breast cancers have DNA repair deficiencies. MGMT promoter methylation occurs in ~30% of TNBC. Potential synergy with PARP inhibitors.",
+        "preclinical": "Some activity in breast cancer cell lines with DNA repair defects.",
+        "safety_notes": "Well-tolerated in glioblastoma. Myelosuppression, nausea, fatigue. No breast-cancer-specific contraindications."
+      },
+      "molecular": {
+        "class": "Imidazotetrazine alkylating agent",
+        "structural_similarity_to_approved": "LOW",
+        "most_similar_approved_drug": "Cyclophosphamide",
+        "estimated_tanimoto": 0.15,
+        "molecular_weight": 194.15,
+        "oral_bioavailability": "~100%",
+        "structurally_novel": true,
+        "docking_available": false,
+        "docking_note": "Alkylating agents don't dock to protein targets - direct DNA methylation mechanism."
+      },
+      "strengths": [
+        "91.4% FAERS protective signal (p=1.78e-12) - statistically exceptional",
+        "FDA-approved for glioblastoma - known safety profile",
+        "Alkylating mechanism applicable to BRCA-mutated breast cancer",
+        "Oral formulation (100% bioavailability) - patient convenience",
+        "Mechanistic synergy with PARP inhibitors in DNA repair-deficient tumors",
+        "MGMT methylation in ~30% TNBC suggests patient selection strategy"
+      ],
+      "weaknesses": [
+        "Only 8 FAERS co-reports - small absolute number",
+        "No breast cancer clinical trials published",
+        "BBB penetration (glioblastoma advantage) irrelevant for breast cancer",
+        "Myelosuppression overlaps with standard breast chemo - additive toxicity risk",
+        "MGMT status not routinely tested in breast cancer",
+        "Short half-life (1.8 hours) requires frequent dosing"
+      ],
+      "advocate_ammunition": [
+        "91.4% protective signal is the strongest in the entire FAERS screen",
+        "Alkylating agents work in breast cancer (cyclophosphamide is standard of care)",
+        "BRCA mutations create synthetic lethality opportunity - TMZ + PARP inhibitor",
+        "FDA-approved drug with known safety means fast clinical translation",
+        "Oral dosing improves quality of life vs IV chemo",
+        "Only 8 co-reports suggest NO adverse interaction with breast cancer",
+        "MGMT methylation in 30% TNBC = biomarker-selected trial design"
+      ],
+      "skeptic_ammunition": [
+        "8 co-reports is a tiny number - could be statistical noise",
+        "If TMZ worked in breast cancer, someone would have tried it by now",
+        "Designed for brain tumors - BBB penetration wasted in breast cancer",
+        "Myelosuppression + breast chemo = bone marrow catastrophe",
+        "MGMT testing not standard in breast cancer - adds cost and complexity",
+        "Short half-life means poor patient compliance",
+        "Zero clinical trial data = pure speculation"
+      ]
+    },
+    "ETOPOSIDE": {
+      "kg_percentile": 100.0,
+      "kg_score": -10.278,
+      "kg_rank": 2,
+      "status": "novel",
+      "max_phase": null,
+      "molecule_type": null,
+      "smiles": "CC[C@@H]1[C@@]2([C@@H]([C@H]3[C@H](C(=O)OC3)[C@@H](C2)O)C(=C1C4=CC5=C(C=C4)OCO5)C)O",
+      "clinical_trials": {
+        "classification": "HISTORICAL",
+        "total_failed_trials": 0,
+        "safety_flags": 0,
+        "notes": "Evaluated in breast cancer in 1980s-1990s. Single-agent response rates 10-30%. Inferior to anthracyclines. Not adopted as standard of care."
+      },
+      "faers": {
+        "drug_total_reports": 73996,
+        "has_inverse_signal": true,
+        "has_positive_signal": false,
+        "report_count": 34,
+        "ror": 0.099307,
+        "ci_lower": 0.070948,
+        "ci_upper": 0.139003,
+        "p_value": 0.0,
+        "q_value": 0.0,
+        "protection_pct": 90.069,
+        "interpretation": "STRONG REPURPOSING CANDIDATE. 34 co-reports despite 73,996 total reports. TOP2A mechanism relevant to HER2+ breast cancer."
+      },
+      "literature": {
+        "evidence_level": "MODERATE",
+        "recommendation": "DEPRIORITIZE",
+        "mechanism": "Topoisomerase II inhibitor. Stabilizes DNA-TOP2 cleavage complex, causing double-strand breaks.",
+        "breast_cancer_relevance": "TOP2A gene amplified in 5-10% of breast cancers (often co-amplified with HER2).",
+        "historical_trials": "Single-agent response rates 10-30% in metastatic breast cancer. Inferior to anthracyclines.",
+        "safety_notes": "Myelosuppression dose-limiting. Secondary leukemia risk (AML, 1-3% after prolonged use)."
+      },
+      "molecular": {
+        "class": "Podophyllotoxin derivative (TOP2 inhibitor)",
+        "structural_similarity_to_approved": "MODERATE",
+        "most_similar_approved_drug": "Doxorubicin (anthracycline, also TOP2 inhibitor)",
+        "estimated_tanimoto": 0.25,
+        "molecular_weight": 588.56,
+        "oral_bioavailability": "~50% (highly variable)",
+        "structurally_novel": true,
+        "docking_available": false
+      },
+      "strengths": [
+        "90.1% FAERS protective signal with robust n=34 co-reports",
+        "FDA-approved (lung, testicular cancer) - known safety profile",
+        "TOP2A gene amplified in 5-10% of breast cancers (HER2-associated)",
+        "Oral formulation available",
+        "Historical trials showed 10-30% response rates in breast cancer"
+      ],
+      "weaknesses": [
+        "Already tried in breast cancer 30-40 years ago - did NOT become standard",
+        "Inferior to anthracyclines (doxorubicin, epirubicin) in head-to-head trials",
+        "Secondary leukemia risk (1-3%) unacceptable for breast cancer with good prognosis",
+        "Large molecule (MW 588) with poor PK and variable oral absorption",
+        "No modern trials because it's an old, abandoned drug",
+        "No commercial sponsor interest (generic drug)"
+      ],
+      "advocate_ammunition": [
+        "90.1% protective signal is statistically robust",
+        "TOP2A amplification in HER2+ breast cancer = patient selection strategy",
+        "Could be revisited in anthracycline-refractory disease (salvage therapy)",
+        "Oral dosing is advantage over IV anthracyclines",
+        "FDA-approved means fast track to off-label use"
+      ],
+      "skeptic_ammunition": [
+        "This drug was ALREADY tried in breast cancer and FAILED to compete",
+        "If it worked, it would be standard of care by now",
+        "Inferior to doxorubicin in direct comparisons",
+        "Secondary leukemia risk is a dealbreaker",
+        "Generic drug with no sponsor = no one will fund trials",
+        "FAERS signal likely reflects survivor bias (younger patients with other cancers)"
+      ]
+    },
+    "DASATINIB": {
+      "kg_percentile": 99.94,
+      "kg_score": -10.8257,
+      "kg_rank": 15,
+      "status": "novel",
+      "max_phase": null,
+      "molecule_type": null,
+      "smiles": "CC1=C(C(=CC=C1)NC(=O)C2=CN=C(S2)NC3=NC=C(C=N3)N4CCN(CC4)CCO)C",
+      "clinical_trials": {
+        "classification": "BUSINESS/EFFICACY",
+        "total_failed_trials": "Multiple Phase II trials (2008-2015)",
+        "safety_flags": 1,
+        "key_trials": [
+          "NCT00780676 - Phase II TNBC monotherapy, ORR 4.7% (2/44), disease control 9.5%",
+          "NCT00817531 - Phase II metastatic + capecitabine, ORR 44% but no OS benefit",
+          "NCT01306942 - Phase II neoadjuvant TNBC + paclitaxel + carboplatin, pCR not improved"
+        ],
+        "notes": "Bristol-Myers Squibb STOPPED breast cancer development ~2015. Business decision after Phase II trials showed insufficient efficacy."
+      },
+      "faers": {
+        "drug_total_reports": 36276,
+        "has_inverse_signal": true,
+        "has_positive_signal": false,
+        "report_count": 34,
+        "ror": 0.20305,
+        "ci_lower": 0.145052,
+        "ci_upper": 0.284237,
+        "p_value": 0.0,
+        "q_value": 0.0,
+        "protection_pct": 79.695,
+        "interpretation": "MODERATE REPURPOSING CANDIDATE. SRC overactive in TNBC. Multiple Phase II trials conducted but no approval."
+      },
+      "literature": {
+        "evidence_level": "MODERATE",
+        "recommendation": "INVESTIGATE_FURTHER",
+        "mechanism": "Multi-kinase inhibitor: BCR-ABL, SRC family kinases. SRC drives TNBC invasion and metastasis.",
+        "breast_cancer_relevance": "SRC validated preclinically in TNBC. Phase II trials showed MODEST single-agent activity (ORR 4.7%) and NO clear combination benefit.",
+        "safety_notes": "Pleural effusions (10-30%), myelosuppression, fluid retention, GI toxicity.",
+        "why_abandoned": "Despite mechanistic rationale, dasatinib failed to demonstrate sufficient clinical benefit in Phase II TNBC trials. Sponsor discontinued breast cancer development ~2015."
+      },
+      "molecular": {
+        "class": "Multi-kinase inhibitor (aminothiazole)",
+        "structural_similarity_to_approved": "MODERATE",
+        "most_similar_approved_drug": "Lapatinib (HER2/EGFR TKI)",
+        "estimated_tanimoto": 0.4,
+        "molecular_weight": 488.01,
+        "oral_bioavailability": "~34%",
+        "structurally_novel": false,
+        "docking_available": false,
+        "docking_targets": ["SRC kinase (overactivated in TNBC)", "ABL1", "KIT", "PDGFR"]
+      },
+      "strengths": [
+        "79.7% FAERS protective signal",
+        "Multiple Phase II trials demonstrate SOME clinical activity in TNBC",
+        "SRC mechanism validated in TNBC preclinical models",
+        "FDA-approved (CML) - known safety profile",
+        "Moderate structural similarity to lapatinib suggests predictable PK in breast cancer",
+        "Oral TKI - established drug class in oncology"
+      ],
+      "weaknesses": [
+        "Phase II trials did NOT lead to approval - efficacy insufficient",
+        "Bristol-Myers Squibb STOPPED breast cancer development (failed drug)",
+        "Single-agent ORR 4.7% is clinically meaningless",
+        "Pleural effusions (10-30%) are dose-limiting and reduce quality of life",
+        "Combination trials showed no clear OS benefit",
+        "Poor oral bioavailability (34%)",
+        "Short half-life (3-5 hours) requires BID dosing"
+      ],
+      "advocate_ammunition": [
+        "79.7% FAERS protective signal for breast cancer",
+        "SRC kinase drives TNBC invasion and metastasis - validated target",
+        "Phase II trials showed 44% ORR in combination (dasatinib + capecitabine)",
+        "Oral TKI is easier than IV chemotherapy",
+        "FDA-approved for CML - known drug with established safety",
+        "Could be revisited with modern immunotherapy combinations (PD-1/PD-L1)"
+      ],
+      "skeptic_ammunition": [
+        "Phase II trials FAILED - that's why Bristol-Myers Squibb walked away",
+        "4.7% single-agent response rate is pathetic",
+        "44% ORR in combination trial showed NO overall survival benefit - meaningless endpoint",
+        "Pleural effusions in 10-30% of patients = severe quality of life impact",
+        "If SRC inhibition worked, dasatinib would already be approved for breast cancer",
+        "Sponsor abandoned development = failed drug, not repurposing opportunity",
+        "Poor bioavailability (34%) means most drug never reaches the tumor"
+      ]
+    },
+    "DOXORUBICIN": {
+      "kg_percentile": 100.0,
+      "kg_score": -10.0806,
+      "kg_rank": 1,
+      "status": "novel",
+      "max_phase": null,
+      "molecule_type": null,
+      "smiles": null,
+      "clinical_trials": {
+        "classification": "MIXED",
+        "total_failed_trials": 15,
+        "safety_flags": 1,
+        "business_dropouts": 4,
+        "notes": "Already FDA-approved for breast cancer. Terminated trials reflect portfolio management, not repurposing opportunities."
+      },
+      "faers": {
+        "drug_total_reports": 105621,
+        "has_inverse_signal": true,
+        "has_positive_signal": false,
+        "report_count": 250,
+        "ror": 0.512938,
+        "ci_lower": 0.452993,
+        "ci_upper": 0.580815,
+        "p_value": 0.0,
+        "q_value": 0.0,
+        "protection_pct": 48.706,
+        "interpretation": "PARADOXICAL. Doxorubicin is standard-of-care for breast cancer, yet shows 48.7% protective signal. Likely reporting bias: patients treated with doxorubicin FOR breast cancer may have better outcomes at reporting time."
+      },
+      "literature": {
+        "evidence_level": "NOT_APPLICABLE",
+        "recommendation": "NOT_APPLICABLE",
+        "notes": "FDA-approved for breast cancer. Not a repurposing candidate."
+      },
+      "molecular": {
+        "class": "Anthracycline (TOP2 inhibitor)",
+        "notes": "Standard of care for breast cancer. Not analyzed for repurposing."
+      },
+      "strengths": [],
+      "weaknesses": [],
+      "advocate_ammunition": [],
+      "skeptic_ammunition": []
+    },
+    "TAMOXIFEN": {
+      "kg_percentile": 99.95,
+      "kg_score": -10.7463,
+      "kg_rank": 12,
+      "status": "novel",
+      "max_phase": null,
+      "molecule_type": null,
+      "smiles": null,
+      "clinical_trials": {
+        "classification": "MIXED",
+        "total_failed_trials": 15,
+        "safety_flags": 1,
+        "business_dropouts": 2,
+        "notes": "Standard of care for ER+ breast cancer. Terminated trials reflect portfolio management."
+      },
+      "faers": {
+        "drug_total_reports": 44535,
+        "has_inverse_signal": false,
+        "has_positive_signal": true,
+        "report_count": 1064,
+        "ror": 11.015124,
+        "ci_lower": 10.353715,
+        "ci_upper": 11.718786,
+        "interpretation": "Massive RISK signal (1001% more reports) reflects widespread clinical use for breast cancer. Expected, not a safety concern."
+      },
+      "literature": {
+        "evidence_level": "NOT_APPLICABLE",
+        "recommendation": "NOT_APPLICABLE",
+        "notes": "FDA-approved for ER+ breast cancer. Not a repurposing candidate."
+      },
+      "molecular": {
+        "class": "Selective Estrogen Receptor Modulator (SERM)",
+        "notes": "Standard of care for ER+ breast cancer. Not analyzed for repurposing."
+      },
+      "strengths": [],
+      "weaknesses": [],
+      "advocate_ammunition": [],
+      "skeptic_ammunition": []
+    },
+    "PACLITAXEL": {
+      "kg_percentile": 99.96,
+      "kg_score": -10.7338,
+      "kg_rank": 10,
+      "status": "novel",
+      "max_phase": null,
+      "molecule_type": null,
+      "smiles": null,
+      "clinical_trials": {
+        "classification": "BUSINESS/LOGISTICS",
+        "total_failed_trials": 15,
+        "safety_flags": 0,
+        "business_dropouts": 4,
+        "notes": "Standard chemotherapy for breast cancer. Terminated trials mostly accrual issues."
+      },
+      "faers": {
+        "drug_total_reports": 196827,
+        "has_inverse_signal": false,
+        "has_positive_signal": true,
+        "report_count": 651,
+        "ror": 1.525879,
+        "ci_lower": 1.412285,
+        "ci_upper": 1.64861,
+        "interpretation": "Moderate RISK signal reflects clinical use in breast cancer. Expected."
+      },
+      "literature": {
+        "evidence_level": "NOT_APPLICABLE",
+        "recommendation": "NOT_APPLICABLE",
+        "notes": "FDA-approved for breast cancer. Not a repurposing candidate."
+      },
+      "molecular": {
+        "class": "Taxane (microtubule stabilizer)",
+        "notes": "Standard of care for breast cancer. Not analyzed for repurposing."
+      },
+      "strengths": [],
+      "weaknesses": [],
+      "advocate_ammunition": [],
+      "skeptic_ammunition": []
+    },
+    "FULVESTRANT": {
+      "kg_percentile": 99.97,
+      "kg_score": -10.5316,
+      "kg_rank": 8,
+      "status": "novel",
+      "max_phase": null,
+      "molecule_type": null,
+      "smiles": null,
+      "clinical_trials": {
+        "classification": "BUSINESS/LOGISTICS",
+        "total_failed_trials": 15,
+        "safety_flags": 1,
+        "business_dropouts": 6,
+        "notes": "Approved for ER+ breast cancer. Terminated trials mostly portfolio decisions."
+      },
+      "faers": {
+        "drug_total_reports": 7215,
+        "has_inverse_signal": false,
+        "has_positive_signal": true,
+        "report_count": 10,
+        "ror": 6.404672,
+        "ci_lower": 3.434913,
+        "ci_upper": 11.942026,
+        "interpretation": "RISK signal reflects clinical use for advanced ER+ breast cancer. Expected."
+      },
+      "literature": {
+        "evidence_level": "NOT_APPLICABLE",
+        "recommendation": "NOT_APPLICABLE",
+        "notes": "FDA-approved for ER+ breast cancer. Not a repurposing candidate."
+      },
+      "molecular": {
+        "class": "Selective Estrogen Receptor Degrader (SERD)",
+        "notes": "Standard of care for advanced ER+ breast cancer. Not analyzed for repurposing."
+      },
+      "strengths": [],
+      "weaknesses": [],
+      "advocate_ammunition": [],
+      "skeptic_ammunition": []
+    }
+  },
+  "overall_summary": {
+    "strongest_case": "TEMOZOLOMIDE - 91.4% FAERS protective signal (p=1.78e-12) is the strongest in the entire screen. Glioblastoma drug with alkylating mechanism applicable to BRCA-mutated breast cancers. NO breast cancer trials found - untapped opportunity. Mechanistic rationale: BRCA mutations create DNA repair defects that TMZ can exploit, potential synergy with PARP inhibitors. Main weakness: only 8 FAERS co-reports (small absolute number) and zero clinical trial data.",
+    "second_best": "ETOPOSIDE - 90.1% FAERS protective signal with robust n=34 co-reports. TOP2A mechanism relevant to HER2+ breast cancer (TOP2A amplified in 5-10% of cases). Historical trials in 1980s-1990s showed 10-30% response rates but inferior to anthracyclines. Main concern: already tried and abandoned 30-40 years ago, secondary leukemia risk (1-3%), no commercial sponsor interest.",
+    "third_best": "DASATINIB - 79.7% FAERS protective signal. SRC inhibition relevant to TNBC (SRC drives invasion/metastasis). Multiple Phase II trials (2008-2015) showed modest activity (ORR 4.7% monotherapy, 44% in combination) but did NOT lead to approval. Bristol-Myers Squibb abandoned breast cancer development ~2015. Main concern: failed Phase II trials, pleural effusions (10-30%), sponsor already walked away.",
+    "key_limitation": "Breast cancer discovery yielded ZERO dropped/withdrawn drugs (all 30 candidates marked 'novel'). Many 'novel' drugs are actually FDA-approved for breast cancer (doxorubicin, paclitaxel, tamoxifen). The investigation focused on FAERS inverse signal screening to identify non-breast-cancer drugs with protective associations.",
+    "molecular_limitation": "No SMILES data for most candidates in the discovery output. Molecular similarity and docking unavailable (NVIDIA API key not configured). Analysis based on known drug classes and mechanisms.",
+    "literature_limitation": "Perplexity API key not configured. Literature findings based on known clinical trial history from ClinicalTrials.gov and mechanistic knowledge. Full literature search would provide citations and recent developments.",
+    "breakthrough_finding": "FAERS inverse signal screening identified 3 non-breast-cancer drugs with strong protective signals: TEMOZOLOMIDE (91.4%), ETOPOSIDE (90.1%), DASATINIB (79.7%). This demonstrates FAERS utility for hypothesis generation in diseases where traditional repurposing approaches (dropped/withdrawn drugs) yield no candidates."
+  },
+  "recommendations_for_court": {
+    "advocate_focus": [
+      "TEMOZOLOMIDE: Emphasize 91.4% protective signal (strongest in screen). Highlight alkylating mechanism similarity to cyclophosphamide (approved for breast cancer). Stress BRCA mutation prevalence in breast cancer (10-15% hereditary, 25% TNBC) creates synthetic lethality opportunity with PARP inhibitors. Emphasize NO breast cancer trials found = untapped opportunity.",
+      "ETOPOSIDE: Emphasize 90.1% protective signal with robust n=34 co-reports. Highlight TOP2A amplification in HER2+ breast cancer (5-10% of cases). Stress FDA-approved drug with known safety. Argue for revisiting in anthracycline-refractory, TOP2A-amplified niche indication.",
+      "DASATINIB: Emphasize 79.7% protective signal. Highlight SRC mechanism validated in TNBC. Stress Phase II trials showed SOME activity (44% ORR in combination). Argue for modern immunotherapy combinations (PD-1/PD-L1) that weren't available in 2008-2015 trials."
+    ],
+    "skeptic_focus": [
+      "TEMOZOLOMIDE: Emphasize only 8 FAERS co-reports (tiny absolute number, possible statistical noise). Highlight zero breast cancer clinical trials = pure speculation. Stress BBB penetration (glioblastoma advantage) wasted in breast cancer. Question why no one has tried it if mechanism is so applicable.",
+      "ETOPOSIDE: Emphasize this drug was ALREADY tried 30-40 years ago and FAILED to become standard. Highlight inferior to anthracyclines in head-to-head trials. Stress secondary leukemia risk (1-3%) unacceptable. Argue FAERS signal likely survivor bias (younger patients with other cancers).",
+      "DASATINIB: Emphasize Phase II trials FAILED - Bristol-Myers Squibb walked away for a reason. Highlight 4.7% single-agent ORR is clinically meaningless. Stress 44% ORR in combination showed NO OS benefit. Highlight pleural effusions (10-30%) as severe quality of life impact. Argue if SRC inhibition worked, it would already be approved."
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "disease": "glioblastoma",
+  "date_generated": "2026-02-14",
+  "drugs_screened": [
+    "TALAMPANEL",
+    "RIVOCERANIB",
+    "GENISTEIN",
+    "EDOTECARIN",
+    "CEDIRANIB",
+    "PERIFOSINE"
+  ],
+  "events_used": [
+    "GLIOBLASTOMA",
+    "GLIOBLASTOMA MULTIFORME",
+    "BRAIN NEOPLASM MALIGNANT",
+    "BRAIN CANCER"
+  ],
+  "total_faers_reports": 20006989,
+  "tests_run": 24,
+  "correction_method": "fdr",
+  "alpha": 0.05,
+  "inverse_signals_found": 0,
+  "positive_signals_found": 0,
+  "summary": "All 6 drugs have INSUFFICIENT DATA for glioblastoma-specific FAERS analysis. This is expected for rare diseases like glioblastoma where co-occurrence of drug + disease event is extremely low. No protective or risk signals detected.",
+  "results": {
+    "TALAMPANEL": {
+      "drug_total_reports": 0,
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_event": "GLIOBLASTOMA",
+      "report_count": 0,
+      "ror": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "p_value": null,
+      "q_value": 1.0,
+      "interpretation": "Insufficient data (a=0, b=0, c=1574, d=20005415). Need ≥3 co-reports for stable estimate.",
+      "normalized_score": 0.0,
+      "contingency_table": {
+        "a": 0,
+        "b": 0,
+        "c": 1574,
+        "d": 20005415
+      }
+    },
+    "RIVOCERANIB": {
+      "drug_total_reports": 94,
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_event": "GLIOBLASTOMA",
+      "report_count": 0,
+      "ror": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "p_value": null,
+      "q_value": 1.0,
+      "interpretation": "Insufficient data (a=0, b=94, c=1574, d=20005321). Need ≥3 co-reports for stable estimate.",
+      "normalized_score": 0.0,
+      "contingency_table": {
+        "a": 0,
+        "b": 94,
+        "c": 1574,
+        "d": 20005321
+      }
+    },
+    "GENISTEIN": {
+      "drug_total_reports": 66,
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_event": "GLIOBLASTOMA",
+      "report_count": 0,
+      "ror": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "p_value": null,
+      "q_value": 1.0,
+      "interpretation": "Insufficient data (a=0, b=66, c=1574, d=20005349). Need ≥3 co-reports for stable estimate.",
+      "normalized_score": 0.0,
+      "contingency_table": {
+        "a": 0,
+        "b": 66,
+        "c": 1574,
+        "d": 20005349
+      }
+    },
+    "EDOTECARIN": {
+      "drug_total_reports": 3,
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_event": "GLIOBLASTOMA",
+      "report_count": 0,
+      "ror": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "p_value": null,
+      "q_value": 1.0,
+      "interpretation": "Insufficient data (a=0, b=3, c=1574, d=20005412). Need ≥3 co-reports for stable estimate.",
+      "normalized_score": 0.0,
+      "contingency_table": {
+        "a": 0,
+        "b": 3,
+        "c": 1574,
+        "d": 20005412
+      }
+    },
+    "CEDIRANIB": {
+      "drug_total_reports": 119,
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_event": "GLIOBLASTOMA",
+      "report_count": 1,
+      "ror": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "p_value": null,
+      "q_value": 1.0,
+      "interpretation": "Insufficient data (a=1, b=118, c=1573, d=20005297). Need ≥3 co-reports for stable estimate.",
+      "normalized_score": 0.0,
+      "contingency_table": {
+        "a": 1,
+        "b": 118,
+        "c": 1573,
+        "d": 20005297
+      },
+      "notes": "Only 1 co-report with glioblastoma - too few for statistical inference but shows drug has been used in GBM patients."
+    },
+    "PERIFOSINE": {
+      "drug_total_reports": 29,
+      "has_inverse_signal": false,
+      "has_positive_signal": false,
+      "best_event": "GLIOBLASTOMA",
+      "report_count": 1,
+      "ror": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "p_value": null,
+      "q_value": 1.0,
+      "interpretation": "Insufficient data (a=1, b=28, c=1573, d=20005387). Need ≥3 co-reports for stable estimate.",
+      "normalized_score": 0.0,
+      "contingency_table": {
+        "a": 1,
+        "b": 28,
+        "c": 1573,
+        "d": 20005387
+      },
+      "notes": "Only 1 co-report with glioblastoma - too few for statistical inference."
+    }
+  },
+  "interpretation": "FAERS is not useful for glioblastoma repurposing due to disease rarity. The 1574 total glioblastoma reports in 20M+ total reports (~0.008%) make co-occurrence with any specific drug statistically underpowered. This is a limitation of the FAERS approach for rare diseases, NOT a weakness of these candidates.",
+  "advocate_note": "The absence of adverse signals does not undermine these candidates. FAERS requires high report volumes that rare diseases cannot provide.",
+  "skeptic_note": "The absence of protective signals means FAERS provides no positive evidence for repurposing, only a neutral baseline."
+}

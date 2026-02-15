@@ -1,0 +1,115 @@
+{
+  "disease": "breast cancer",
+  "date_generated": "2026-02-14",
+  "note": "Molecular docking unavailable (NVIDIA API key not configured). Molecular similarity analysis based on known approved breast cancer drugs.",
+  "approved_breast_cancer_drugs": [
+    "Doxorubicin (anthracycline)",
+    "Paclitaxel (taxane)",
+    "Tamoxifen (SERM)",
+    "Trastuzumab (HER2 mAb)",
+    "Letrozole (aromatase inhibitor)",
+    "Palbociclib (CDK4/6 inhibitor)",
+    "Olaparib (PARP inhibitor)"
+  ],
+  "candidates_analyzed": [
+    "TEMOZOLOMIDE",
+    "DASATINIB",
+    "ETOPOSIDE"
+  ],
+  "results": {
+    "TEMOZOLOMIDE": {
+      "smiles": "Cn1c(C(N)=O)ncn1",
+      "class": "Imidazotetrazine alkylating agent",
+      "structural_similarity_to_approved": "LOW",
+      "most_similar_approved_drug": "Cyclophosphamide (alkylating agent class, but different scaffold)",
+      "estimated_tanimoto": 0.15,
+      "interpretation": "Structurally NOVEL compared to approved breast cancer drugs. Small molecule, oral bioavailability, crosses BBB (irrelevant for breast cancer). Mechanistic similarity to cyclophosphamide (alkylating), but different scaffold suggests different PK/toxicity profile.",
+      "docking_targets": [
+        "N/A - alkylating agents don't dock to protein targets. Mechanism: direct DNA methylation."
+      ],
+      "molecular_weight": 194.15,
+      "logP": -1.4,
+      "oral_bioavailability": "~100%",
+      "half_life": "1.8 hours",
+      "advantages": [
+        "Oral formulation",
+        "Small molecule (MW 194) - good tissue penetration",
+        "No protein target = no resistance via target mutation"
+      ],
+      "disadvantages": [
+        "Short half-life requires frequent dosing",
+        "Low structural similarity to approved drugs = unpredictable breast cancer PK"
+      ]
+    },
+    "DASATINIB": {
+      "smiles": "CC1=C(C(=CC=C1)NC(=O)C2=CN=C(S2)NC3=NC=C(C=N3)N4CCN(CC4)CCO)C",
+      "class": "Multi-kinase inhibitor (aminothiazole)",
+      "structural_similarity_to_approved": "MODERATE",
+      "most_similar_approved_drug": "Lapatinib (HER2/EGFR TKI, used in breast cancer)",
+      "estimated_tanimoto": 0.4,
+      "interpretation": "Moderate structural similarity to lapatinib (another TKI used in breast cancer). TKI scaffold is familiar in oncology. Dasatinib is BCR-ABL/SRC inhibitor; lapatinib is HER2/EGFR. Different targets but similar drug class.",
+      "docking_targets": [
+        "SRC kinase (overactivated in TNBC)",
+        "ABL1",
+        "KIT",
+        "PDGFR"
+      ],
+      "molecular_weight": 488.01,
+      "logP": 3.5,
+      "oral_bioavailability": "~34%",
+      "half_life": "3-5 hours",
+      "advantages": [
+        "Oral TKI - established drug class in breast cancer",
+        "Multi-kinase profile may hit multiple pathways",
+        "Moderate similarity to lapatinib suggests predictable PK"
+      ],
+      "disadvantages": [
+        "Poor oral bioavailability (34%)",
+        "Short half-life requires BID dosing",
+        "Pleural effusions (off-target toxicity)"
+      ]
+    },
+    "ETOPOSIDE": {
+      "smiles": "CC[C@@H]1[C@@]2([C@@H]([C@H]3[C@H](C(=O)OC3)[C@@H](C2)O)C(=C1C4=CC5=C(C=C4)OCO5)C)O",
+      "class": "Podophyllotoxin derivative (TOP2 inhibitor)",
+      "structural_similarity_to_approved": "MODERATE",
+      "most_similar_approved_drug": "Doxorubicin (also a TOP2 inhibitor, but anthracycline scaffold)",
+      "estimated_tanimoto": 0.25,
+      "interpretation": "Structurally different from doxorubicin (anthracycline) but shares TOP2 inhibition mechanism. Etoposide is a natural product derivative (podophyllotoxin). Large, complex molecule with poor oral bioavailability (oral formulation available but highly variable absorption).",
+      "docking_targets": [
+        "Topoisomerase II alpha (TOP2A)",
+        "Topoisomerase II beta (TOP2B)"
+      ],
+      "molecular_weight": 588.56,
+      "logP": 1.4,
+      "oral_bioavailability": "~50% (highly variable)",
+      "half_life": "4-11 hours",
+      "advantages": [
+        "TOP2A mechanism validated in breast cancer (anthracyclines work)",
+        "Oral formulation available"
+      ],
+      "disadvantages": [
+        "Large molecule (MW 588) - poor PK",
+        "Variable oral absorption",
+        "Inferior to anthracyclines in historical trials"
+      ]
+    }
+  },
+  "similarity_screening_summary": {
+    "note": "Without automated similarity screening, structural analysis is qualitative. Full molecular similarity tool would compute Tanimoto coefficients against approved breast cancer drug database.",
+    "key_finding": "All three repurposing candidates (TEMOZOLOMIDE, DASATINIB, ETOPOSIDE) have LOW to MODERATE structural similarity to approved breast cancer drugs. This suggests NOVEL mechanisms or off-target effects, which is desirable for repurposing."
+  },
+  "docking_summary": {
+    "note": "Molecular docking unavailable. Would assess binding to breast cancer targets: ER, HER2, EGFR, SRC, CDK4/6, PARP1, TOP2A.",
+    "hypothetical_targets": {
+      "TEMOZOLOMIDE": "Not applicable - alkylating agent, no protein target",
+      "DASATINIB": "SRC family kinases (validated in TNBC)",
+      "ETOPOSIDE": "TOP2A (validated in breast cancer)"
+    }
+  },
+  "recommendations": {
+    "TEMOZOLOMIDE": "Structurally novel. Would benefit from in vitro ADME studies to predict breast tumor penetration.",
+    "DASATINIB": "Moderate similarity to lapatinib suggests predictable breast cancer PK. Prioritize if pursuing TKI repurposing.",
+    "ETOPOSIDE": "Natural product with poor PK. Deprioritize unless TOP2A-amplified niche indication."
+  }
+}

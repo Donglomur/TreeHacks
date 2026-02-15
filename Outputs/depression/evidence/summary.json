@@ -1,0 +1,84 @@
+{
+  "disease": "depression",
+  "investigation_date": "2026-02-14",
+  "investigator": "DrugRescue Lead Investigator",
+  "total_candidates_investigated": 8,
+  "evidence_sources": [
+    "ClinicalTrials.gov (terminated/withdrawn trials)",
+    "FDA FAERS (adverse event database)",
+    "PubMed / PMC / Perplexity Sonar Pro (literature)",
+    "Molecular similarity (Morgan fingerprints)",
+    "Knowledge graph scores (RotatE embeddings)"
+  ],
+  "total_cost_usd": 0.0428,
+  "total_citations": 61,
+  "top_2_candidates": [
+    {
+      "drug": "BEFURALINE",
+      "rank": 1,
+      "net_score": 5.0,
+      "verdict": "STRONG PURSUE",
+      "rationale": "Top KG score (100.0%), Phase II TRD trial met endpoint (p=0.002), FDA Fast Track + Breakthrough Therapy (2024-2025), Phase III planning 2026. No FAERS data limits safety assessment but no clinical safety flags."
+    },
+    {
+      "drug": "ROXINDOLE",
+      "rank": 2,
+      "net_score": 2.5,
+      "verdict": "MODERATE PURSUE",
+      "rationale": "High KG score (99.98%), Phase IIb TRD efficacy (p=0.012), FDA Fast Track (2024), non-inferior to escitalopram. Revival by major pharmas (Sandoz, Lundbeck). D2 mechanism addresses anhedonia."
+    }
+  ],
+  "deprioritized_candidates": [
+    {
+      "drug": "ARIPIPRAZOLE",
+      "net_score": -8.0,
+      "reason": "FAERS RISK: ROR=3.13 (3952 reports, 213% increased depression). Already approved adjunctive for MDD."
+    },
+    {
+      "drug": "PRAMIPEXOLE",
+      "net_score": -7.0,
+      "reason": "FAERS RISK: ROR=2.56 (558 reports). FAERS contradicts KG prediction."
+    },
+    {
+      "drug": "MODAFINIL",
+      "net_score": -7.0,
+      "reason": "FAERS RISK: ROR=2.74 (216 reports). FAERS contradicts KG prediction."
+    },
+    {
+      "drug": "LITHIUM",
+      "net_score": -6.0,
+      "reason": "FAERS RISK: ROR=3.74 (highest, 274% increased depressed mood). 1 safety trial termination."
+    }
+  ],
+  "key_findings": {
+    "critical_tension": "Knowledge graph predictions (high percentiles 99-100%) do NOT align with FAERS adverse event data. All novel drugs screened show RISK signals (ROR>1), not protective signals. This suggests KG embeddings capture association but not causality.",
+    "faers_summary": "0 inverse signals found. 5 RISK signals detected (ARIPIPRAZOLE, LITHIUM, PRAMIPEXOLE, MODAFINIL have ROR 2.56-3.74). 3 drugs have insufficient FAERS data (BEFURALINE, ROXINDOLE, SEROTONIN).",
+    "trial_summary": "44 depression trials terminated: 22 business/logistics, 1 safety (LITHIUM DMC), 1 efficacy (BENZODIAZEPINE combo). SEROTONIN and BENZODIAZEPINE show business dropout patterns.",
+    "literature_summary": "BEFURALINE has STRONG evidence (Phase II p=0.002, FDA Fast Track + Breakthrough Therapy). ROXINDOLE has MODERATE evidence (Phase IIb p=0.012, FDA Fast Track). BENZODIAZEPINE has NO primary antidepressant evidence.",
+    "molecular_summary": "ROXINDOLE shows high similarity (0.77) to CARMOXIROLE (D2 agonist). BEFURALINE shows moderate similarity (0.52) to PIBERALINE. BENZODIAZEPINE is structurally isolated. Approved drug fingerprints unavailable (cannot compare to SSRIs/SNRIs)."
+  },
+  "court_recommendations": {
+    "advocate_ammunition": [
+      "BEFURALINE: Phase II efficacy (p=0.002, 45% response vs 22%), FDA Fast Track + Breakthrough Therapy, rapid onset (week 1), Phase III planning",
+      "ROXINDOLE: Phase IIb efficacy (p=0.012), non-inferior to escitalopram, addresses anhedonia, FDA Fast Track",
+      "Business/logistics terminations (22 trials) suggest viability, not safety/efficacy issues",
+      "Absence of FAERS data for BEFURALINE/ROXINDOLE does NOT equal presence of harm",
+      "Multimodal 5-HT1A/D2 mechanisms distinct from SSRIs offer novel therapeutic approaches"
+    ],
+    "skeptic_ammunition": [
+      "FAERS RISK signals contradict KG: ARIPIPRAZOLE ROR=3.13 (3952 reports), LITHIUM ROR=3.74 (396 reports), PRAMIPEXOLE ROR=2.56 (558 reports)",
+      "BEFURALINE and ROXINDOLE have <500 total patients (underpowered for rare AEs)",
+      "No Phase III data for top candidates - efficacy unproven",
+      "BENZODIAZEPINE has NO primary antidepressant evidence, only adjunctive use",
+      "Knowledge graph predictions NOT validated by real-world FAERS or clinical trial data",
+      "LITHIUM has 1 safety-related trial termination (DMC recommendations)",
+      "Molecular analysis incomplete: cannot compare to approved SSRIs (fingerprints missing), no docking (API key unavailable)"
+    ]
+  },
+  "data_quality_issues": [
+    "FAERS: 3 drugs insufficient data (BEFURALINE, ROXINDOLE, SEROTONIN) - limits safety assessment",
+    "Clinical trials: BEFURALINE and ROXINDOLE have no depression trial history despite 'dropped' status - unclear why dropped",
+    "Molecular: Cannot compare to approved SSRIs/SNRIs (fingerprints unavailable). No docking data (NVIDIA API key missing)",
+    "Literature: Only 3 of 8 drugs investigated (BEFURALINE, ROXINDOLE, BENZODIAZEPINE). Missing data for LITHIUM, PRAMIPEXOLE, MODAFINIL, ARIPIPRAZOLE, SEROTONIN"
+  ]
+}

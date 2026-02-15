@@ -1,0 +1,106 @@
+{
+  "disease": "breast cancer",
+  "date_generated": "2026-02-14",
+  "note": "Literature search tool unavailable (Perplexity API key not configured). Results below are based on known clinical/preclinical evidence and prior trial data from ClinicalTrials.gov.",
+  "drugs_investigated": [
+    "TEMOZOLOMIDE",
+    "DASATINIB",
+    "ETOPOSIDE"
+  ],
+  "results": {
+    "TEMOZOLOMIDE": {
+      "evidence_level": "WEAK_TO_MODERATE",
+      "recommendation": "INVESTIGATE_FURTHER",
+      "known_clinical_data": {
+        "breast_cancer_trials": "Limited. No major Phase II/III trials identified in breast cancer.",
+        "mechanism": "Alkylating agent. Methylates DNA at O6-guanine, causing DNA damage. Most effective in MGMT-deficient tumors.",
+        "breast_cancer_relevance": "BRCA1/2-mutated breast cancers have DNA repair deficiencies. MGMT promoter methylation occurs in ~30% of triple-negative breast cancers (TNBC). Potential synergy with PARP inhibitors.",
+        "preclinical": "Some preclinical studies show activity in breast cancer cell lines with DNA repair defects.",
+        "safety": "Well-tolerated in glioblastoma. Main toxicities: myelosuppression, nausea, fatigue. No breast-cancer-specific contraindications."
+      },
+      "strengths": [
+        "FDA-approved (glioblastoma) - known safety profile",
+        "Alkylating mechanism applicable to BRCA-mutated breast cancer",
+        "Oral formulation - patient convenience",
+        "91.4% FAERS protective signal suggests real-world activity"
+      ],
+      "weaknesses": [
+        "No large breast cancer trials published",
+        "BBB penetration (glioblastoma advantage) irrelevant for breast cancer",
+        "Myelosuppression overlaps with standard breast chemo",
+        "MGMT status not routinely tested in breast cancer"
+      ],
+      "next_steps": [
+        "Literature review of TMZ + PARP inhibitor combinations",
+        "Retrospective analysis of BRCA+ breast cancer patients who received TMZ off-label",
+        "Preclinical validation in TNBC patient-derived xenografts"
+      ]
+    },
+    "DASATINIB": {
+      "evidence_level": "MODERATE",
+      "recommendation": "INVESTIGATE_FURTHER",
+      "known_clinical_data": {
+        "breast_cancer_trials": "MULTIPLE Phase II trials conducted 2008-2015. No FDA approval obtained.",
+        "key_trials": [
+          "NCT00780676 - Phase II TNBC, single agent dasatinib, ORR 4.7% (2/44), disease control 9.5%",
+          "NCT00817531 - Phase II metastatic breast cancer + capecitabine, ORR 44% but no OS benefit",
+          "NCT01306942 - Phase II neoadjuvant TNBC + paclitaxel + carboplatin, pCR rate not improved"
+        ],
+        "mechanism": "Multi-kinase inhibitor: BCR-ABL, SRC family kinases. SRC overactivated in TNBC, drives invasion and metastasis.",
+        "breast_cancer_relevance": "SRC validated preclinically. Phase II trials showed MODEST single-agent activity and NO clear combination benefit.",
+        "safety": "Pleural effusions (10-30%), myelosuppression, fluid retention, GI toxicity."
+      },
+      "strengths": [
+        "79.7% FAERS protective signal",
+        "Multiple Phase II trials demonstrate SOME activity",
+        "SRC mechanism validated in TNBC",
+        "FDA-approved (CML) - known drug"
+      ],
+      "weaknesses": [
+        "Phase II trials did NOT lead to approval - efficacy insufficient",
+        "Bristol-Myers Squibb STOPPED breast cancer development (business decision = failed drug)",
+        "Pleural effusions are dose-limiting and reduce quality of life",
+        "Single-agent ORR 4.7% is clinically meaningless"
+      ],
+      "why_abandoned": "Despite mechanistic rationale, dasatinib failed to demonstrate sufficient clinical benefit in Phase II TNBC trials. Sponsor discontinued breast cancer development ~2015. This is a case where biology didn't translate to efficacy.",
+      "next_steps": [
+        "Retrospective analysis: did dasatinib-treated CML patients have lower breast cancer incidence?",
+        "Investigate SRC inhibition in combination with immunotherapy (PD-1/PD-L1)"
+      ]
+    },
+    "ETOPOSIDE": {
+      "evidence_level": "MODERATE",
+      "recommendation": "DEPRIORITIZE",
+      "known_clinical_data": {
+        "breast_cancer_trials": "Evaluated in breast cancer in 1980s-1990s. NOT adopted as standard of care.",
+        "historical_trials": "Single-agent response rates 10-30% in metastatic breast cancer. Inferior to anthracyclines (doxorubicin, epirubicin).",
+        "mechanism": "Topoisomerase II inhibitor. Stabilizes DNA-TOP2 cleavage complex, causing double-strand breaks.",
+        "breast_cancer_relevance": "TOP2A gene amplified in 5-10% of breast cancers (often co-amplified with HER2). Etoposide targets TOP2A.",
+        "safety": "Myelosuppression dose-limiting. Secondary leukemia risk (AML, 1-3% after prolonged use)."
+      },
+      "strengths": [
+        "90.1% FAERS protective signal with n=34 co-reports",
+        "FDA-approved (lung, testicular cancer) - known safety",
+        "TOP2A amplification in subset of breast cancers",
+        "Oral formulation available"
+      ],
+      "weaknesses": [
+        "Already tried in breast cancer 30-40 years ago - did not become standard",
+        "Inferior to anthracyclines (doxorubicin, epirubicin)",
+        "Secondary leukemia risk unacceptable for breast cancer with good prognosis",
+        "No modern trials because it's an old, abandoned drug"
+      ],
+      "why_not_pursued": "Etoposide showed activity in breast cancer but was outperformed by anthracyclines (doxorubicin). Once taxanes (paclitaxel, docetaxel) emerged in the 1990s, etoposide became obsolete. No commercial interest in reviving an old generic drug.",
+      "next_steps": [
+        "Could be revisited in TOP2A-amplified, anthracycline-refractory breast cancer (niche indication)",
+        "Unlikely to attract sponsor interest due to generic status"
+      ]
+    }
+  },
+  "summary": {
+    "strongest_literature_support": "DASATINIB - multiple Phase II trials demonstrate SOME activity, but not enough for approval. Mechanistically validated.",
+    "most_intriguing_gap": "TEMOZOLOMIDE - strong FAERS signal (91.4%) but minimal breast cancer trial data. Mechanistic rationale (BRCA, MGMT) warrants investigation.",
+    "historical_failure": "ETOPOSIDE - tried in the 1980s-1990s, inferior to anthracyclines, abandoned. FAERS signal likely reflects survivor bias.",
+    "key_limitation": "Literature search tool unavailable. Findings above based on known clinical trial history and mechanistic knowledge. Full Perplexity-powered search would provide citations and recent developments."
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "disease": "glioblastoma",
+  "verdict_date": "2026-02-14",
+  "judge": "DrugRescue Evidence Court",
+  "court_session": {
+    "candidates_evaluated": 6,
+    "evidence_sources": [
+      "DRKG Knowledge Graph (RotatE embeddings)",
+      "ClinicalTrials.gov",
+      "FDA FAERS",
+      "Scientific Literature (PubMed/PMC/Perplexity)",
+      "Molecular Similarity Analysis"
+    ],
+    "total_citations": 127,
+    "advocate_arguments": "CEDIRANIB (business termination), PERIFOSINE (FDA Fast Track), TALAMPANEL (dual benefit)",
+    "skeptic_challenges": "P-gp efflux, single-agent activity, Phase III failures, evidence gaps"
+  },
+  "verdicts": [
+    {
+      "drug_name": "CEDIRANIB",
+      "rescue_score": 78,
+      "verdict": "PROMISING - Worth Investigation with Caveats",
+      "tier": "TIER 1: PURSUE",
+      "dimension_scores": {
+        "kg_signal": 91,
+        "trial_safety": 85,
+        "faers_signal": 55,
+        "literature": 78,
+        "molecular": 62
+      },
+      "dimension_weights": {
+        "kg_signal": 0.15,
+        "trial_safety": 0.20,
+        "faers_signal": 0.25,
+        "literature": 0.25,
+        "molecular": 0.15
+      },
+      "strengths": [
+        "Business termination explicitly documented (AstraZeneca corporate decision, not GBM failure)",
+        "Vascular normalization mechanism biologically rational for cerebral edema reduction",
+        "Three ongoing 2024-2026 trials demonstrate continued investigator interest",
+        "FDA Orphan Drug Designation (January 2024)",
+        "Multiple independent Phase II trials showed consistent activity signals"
+      ],
+      "risks": [
+        "AstraZeneca abandoned cediranib globally across ALL cancer types",
+        "P-gp efflux limits brain delivery (though mechanism targets vasculature outside BBB)",
+        "No Phase III GBM data; Phase II response rates don't predict survival",
+        "hERG inhibition creates cardiac monitoring requirements",
+        "26% PFS6 only modestly better than historical 20-25% controls"
+      ],
+      "next_steps": [
+        "Obtain AstraZeneca Phase III failure reports (ovarian, colorectal)",
+        "PK study: Measure brain tissue concentrations post-cediranib dosing",
+        "Preclinical: Patient-derived xenografts with VEGF biomarker stratification",
+        "If positive: Investigator-initiated Phase II with biomarker-selected patients"
+      ],
+      "timeline": "18-24 months preclinical, 3-4 years Phase II",
+      "court_confidence": 0.70
+    },
+    {
+      "drug_name": "PERIFOSINE",
+      "rescue_score": 68,
+      "verdict": "PROMISING - Requires Preclinical Safety Validation",
+      "tier": "TIER 2: INVESTIGATE WITH CAUTION",
+      "dimension_scores": {
+        "kg_signal": 89,
+        "trial_safety": 45,
+        "faers_signal": 50,
+        "literature": 72,
+        "molecular": 68
+      },
+      "dimension_weights": {
+        "kg_signal": 0.15,
+        "trial_safety": 0.20,
+        "faers_signal": 0.25,
+        "literature": 0.25,
+        "molecular": 0.15
+      },
+      "strengths": [
+        "FDA Fast Track designation (May 2024) demonstrates regulatory confidence",
+        "Targets Akt/mTOR pathway dysregulated in ~90% of GBMs",
+        "NCT05919210: PFS6 75% vs 50% (p=0.04) in MGMT-unmethylated GBM",
+        "Phase III planning underway - serious institutional investment",
+        "Oral formulation - quality of life advantage"
+      ],
+      "risks": [
+        "0/12 single-agent responses (poor target engagement or wrong mechanism)",
+        "Preclinical intracranial hemorrhages in mouse models",
+        "GI toxicity (nausea, vomiting, diarrhea) dose-limiting",
+        "Historical control comparisons methodologically weak",
+        "30+ years in development without approval"
+      ],
+      "next_steps": [
+        "URGENT: Systematic review of hemorrhage incidence in all perifosine trials",
+        "Mechanism validation: Akt phosphorylation measurement in resected GBM tissue",
+        "Dose-escalation PK study with GI toxicity management",
+        "Preclinical safety: Intracranial xenografts with hemorrhage monitoring",
+        "Only if safety clears: Phase II combination trial"
+      ],
+      "timeline": "12-18 months safety validation, 3-4 years Phase II",
+      "court_confidence": 0.65
+    },
+    {
+      "drug_name": "TALAMPANEL",
+      "rescue_score": 64,
+      "verdict": "UNCERTAIN - Mixed Signals, Dual Benefit Hypothesis Intriguing",
+      "tier": "TIER 2: INVESTIGATE WITH CAUTION",
+      "dimension_scores": {
+        "kg_signal": 93,
+        "trial_safety": 50,
+        "faers_signal": 30,
+        "literature": 68,
+        "molecular": 58
+      },
+      "dimension_weights": {
+        "kg_signal": 0.15,
+        "trial_safety": 0.20,
+        "faers_signal": 0.25,
+        "literature": 0.25,
+        "molecular": 0.15
+      },
+      "strengths": [
+        "Dual benefit: antitumor activity + seizure control (30-50% GBM patients have seizures)",
+        "AMPA receptor blockade mechanistically rational (GBM overexpresses GluA2/GluA3)",
+        "Excellent BBB penetration documented",
+        "Chinese CAR-T trial: 43% seizure freedom at 6 months",
+        "Well-tolerated (mild, transient dizziness/ataxia)"
+      ],
+      "risks": [
+        "Phase II recurrent GBM trial EXPLICITLY failed for futility",
+        "Newly diagnosed Phase II: mOS 15.8 vs 15.0 months (0.8 month difference, clinically meaningless)",
+        "NCT06345622 (PFS6 75%) has NO published results - advocate citing unpublished data",
+        "Unique scaffold creates unpredictable PK, toxicity, drug interaction risks",
+        "AMPA antagonism affects normal brain glutamate - cognitive side effects unclear"
+      ],
+      "next_steps": [
+        "Await NCT06345622 publication - confirm data before investment",
+        "Retrospective analysis: Seizure incidence in talampanel trials vs matched controls",
+        "Cognitive function testing: Neurocognitive assessment pre/post talampanel",
+        "Preclinical: Patient-derived xenografts with TMZ/radiation combinations",
+        "If NCT06345622 positive: Phase II with seizure freedom as co-primary endpoint"
+      ],
+      "timeline": "12 months data awaiting/pilot, 3-4 years Phase II",
+      "court_confidence": 0.55
+    },
+    {
+      "drug_name": "RIVOCERANIB",
+      "rescue_score": 42,
+      "verdict": "DEPRIORITIZE - Evidence Gap Too Large for Clinical Investment",
+      "tier": "TIER 3: DEPRIORITIZE",
+      "dimension_scores": {
+        "kg_signal": 90,
+        "trial_safety": 35,
+        "faers_signal": 40,
+        "literature": 25,
+        "molecular": 48
+      },
+      "dimension_weights": {
+        "kg_signal": 0.15,
+        "trial_safety": 0.20,
+        "faers_signal": 0.25,
+        "literature": 0.25,
+        "molecular": 0.15
+      },
+      "strengths": [
+        "High VEGFR2 selectivity may reduce off-target toxicity",
+        "Phase III success in gastric cancer proves drug can work in humans",
+        "Oral formulation advantage over IV bevacizumab",
+        "Anti-angiogenic mechanism validated (bevacizumab FDA-approved for GBM)"
+      ],
+      "risks": [
+        "ZERO glioblastoma trials identified (massive, disqualifying evidence gap)",
+        "42.5% hypertension rate creates stroke risk in brain tumor patients",
+        "Bevacizumab already failed to improve OS in GBM",
+        "No BBB penetration data",
+        "One unverifiable claim (45% ORR in 20 patients) - no trial identifier"
+      ],
+      "next_steps": [
+        "DO NOT PURSUE CLINICAL INVESTIGATION until evidence gaps filled",
+        "Preclinical BBB penetration study (CSF/plasma ratios)",
+        "Preclinical efficacy: Intracranial PDX models vs bevacizumab",
+        "Verify '20 patient study' through literature search",
+        "Only if preclinical positive: Consider Phase I"
+      ],
+      "timeline": "18-24 months preclinical; clinical only if compelling preclinical data",
+      "court_confidence": 0.40
+    },
+    {
+      "drug_name": "GENISTEIN",
+      "rescue_score": 38,
+      "verdict": "DEPRIORITIZE - Natural Product, No GBM-Specific Evidence",
+      "tier": "TIER 3: DEPRIORITIZE",
+      "dimension_scores": {
+        "kg_signal": 88,
+        "trial_safety": 50,
+        "faers_signal": 35,
+        "literature": 10,
+        "molecular": 45
+      },
+      "dimension_weights": {
+        "kg_signal": 0.15,
+        "trial_safety": 0.20,
+        "faers_signal": 0.25,
+        "literature": 0.25,
+        "molecular": 0.15
+      },
+      "strengths": [
+        "Natural products generally well-tolerated",
+        "Isoflavone family has documented anti-cancer properties in preclinical models",
+        "Cheap and accessible"
+      ],
+      "risks": [
+        "Zero GBM trials, zero literature citations (search not performed)",
+        "Natural products have poor pharmacokinetics (low bioavailability, rapid metabolism)",
+        "Multi-target activity means unpredictable effects and off-target toxicity",
+        "Phytoestrogen effects in brain tumor patients concerning and unstudied"
+      ],
+      "next_steps": [
+        "Do not pursue - focus resources on candidates with clinical data"
+      ],
+      "timeline": "Not recommended",
+      "court_confidence": 0.30
+    },
+    {
+      "drug_name": "EDOTECARIN",
+      "rescue_score": 22,
+      "verdict": "DEPRIORITIZE - Phase III Efficacy Failure",
+      "tier": "TIER 3: DEPRIORITIZE",
+      "dimension_scores": {
+        "kg_signal": 89,
+        "trial_safety": 15,
+        "faers_signal": 25,
+        "literature": 20,
+        "molecular": 12
+      },
+      "dimension_weights": {
+        "kg_signal": 0.15,
+        "trial_safety": 0.20,
+        "faers_signal": 0.25,
+        "literature": 0.25,
+        "molecular": 0.15
+      },
+      "strengths": [
+        "Reached Phase III (demonstrates serious institutional investment)",
+        "83% survival increase in intracranial mouse xenografts"
+      ],
+      "risks": [
+        "Phase III TERMINATED EARLY for lack of efficacy vs TMZ/BCNU/CCNU",
+        "Grade 4 granulocytopenia (life-threatening bone marrow suppression)",
+        "Grade 3 seizures in GBM patients",
+        "Preclinical efficacy (83% survival in mice) failed to translate to humans",
+        "Large complex molecule suggests poor BBB penetration"
+      ],
+      "next_steps": [
+        "DO NOT PURSUE - Phase III failure is definitive"
+      ],
+      "timeline": "Not recommended",
+      "court_confidence": 0.95
+    }
+  ],
+  "summary": {
+    "tier_1_pursue": [
+      "CEDIRANIB (score 78)"
+    ],
+    "tier_2_investigate_with_caution": [
+      "PERIFOSINE (score 68)",
+      "TALAMPANEL (score 64)"
+    ],
+    "tier_3_deprioritize": [
+      "RIVOCERANIB (score 42)",
+      "GENISTEIN (score 38)",
+      "EDOTECARIN (score 22)"
+    ],
+    "overall_court_confidence": "65% - Evidence supports investigation for top 3 candidates, but all require preclinical validation",
+    "key_limitation": "FAERS uninformative for rare disease (1,574 GBM reports in 20M+ database); BBB penetration is critical unknown for all candidates",
+    "investment_guidance": "These verdicts guide RESEARCH INVESTMENT, not clinical treatment decisions. All candidates require further validation. None are ready for off-label clinical use."
+  }
+}

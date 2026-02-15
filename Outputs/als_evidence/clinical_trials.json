@@ -1,0 +1,92 @@
+{
+  "disease": "als",
+  "drugs_investigated": [
+    "OLESOXIME",
+    "THREONINE",
+    "PRIDOPIDINE",
+    "POTASSIUM",
+    "METHYLCOBALAMIN"
+  ],
+  "investigation_date": "2026-02-14",
+  "summary": "Clinical trial termination data was searched for 5 dropped drugs in ALS. Only PRIDOPIDINE had terminated trials found, but not for ALS indication. Other drugs had no terminated trial records in ClinicalTrials.gov.",
+  "results": {
+    "OLESOXIME": {
+      "total_failed_trials_als": 0,
+      "total_failed_trials_all": 0,
+      "by_category": {},
+      "repurposing_viable": false,
+      "safety_flags": 0,
+      "summary": "No terminated trials found in ClinicalTrials.gov for OLESOXIME. Literature search revealed a failed Phase III trial (NCT00868166, MIOTARGET) for ALS that was completed but showed no efficacy, though it was well-tolerated. This trial may not appear in terminated trial search because it completed rather than terminated early.",
+      "trials": []
+    },
+    "THREONINE": {
+      "total_failed_trials_als": 0,
+      "total_failed_trials_all": 0,
+      "by_category": {},
+      "repurposing_viable": false,
+      "safety_flags": 0,
+      "summary": "No terminated trials found for THREONINE in ALS or other conditions.",
+      "trials": []
+    },
+    "PRIDOPIDINE": {
+      "total_failed_trials_als": 0,
+      "total_failed_trials_all": 2,
+      "by_category": {
+        "SAFETY": 1,
+        "OTHER": 1
+      },
+      "repurposing_viable": true,
+      "repurposable_count": 1,
+      "safety_flags": 1,
+      "summary": "2 terminated trials found for PRIDOPIDINE, but in Huntington's Disease and Parkinson's Disease, not ALS. One was terminated for SAFETY reasons (serving its purpose in providing safety data) and one for COVID-19 (classified as OTHER/LOGISTICS). The COVID-19 termination (NCT03922711) is a business/logistics dropout suitable for repurposing consideration.",
+      "trials": [
+        {
+          "nct_id": "NCT02494778",
+          "title": "A Study Evaluating if Pridopidine is Safe, Efficacious, and Tolerable in Patients With Huntington's Disease",
+          "status": "TERMINATED",
+          "why_stopped": "This study served its purpose in providing considerable safety data.",
+          "failure_category": "SAFETY",
+          "phases": ["PHASE2"],
+          "conditions": ["Huntington's Disease"],
+          "is_repurposing_candidate": false,
+          "repurposing_note": "Terminated for safety data completion, not adverse events. Suggests acceptable safety profile."
+        },
+        {
+          "nct_id": "NCT03922711",
+          "title": "A Study to Assess the Safety and Effectiveness of Pridopidine Compared to Placebo in the Treatment of Levodopa-Induced Dyskinesia in Patients With Parkinson's Disease",
+          "status": "TERMINATED",
+          "why_stopped": "COVID-19",
+          "failure_category": "OTHER",
+          "phases": ["PHASE2"],
+          "conditions": ["Parkinson Disease"],
+          "is_repurposing_candidate": true,
+          "repurposing_note": "Terminated due to pandemic logistics, not efficacy or safety concerns. Prime repurposing candidate."
+        }
+      ]
+    },
+    "POTASSIUM": {
+      "total_failed_trials_als": 0,
+      "total_failed_trials_all": 0,
+      "by_category": {},
+      "repurposing_viable": false,
+      "safety_flags": 0,
+      "summary": "No terminated trials found for POTASSIUM in ALS or other conditions.",
+      "trials": []
+    },
+    "METHYLCOBALAMIN": {
+      "total_failed_trials_als": 0,
+      "total_failed_trials_all": 0,
+      "by_category": {},
+      "repurposing_viable": false,
+      "safety_flags": 0,
+      "summary": "No terminated trials found for METHYLCOBALAMIN in ALS or other conditions.",
+      "trials": []
+    }
+  },
+  "notes": [
+    "ClinicalTrials.gov may not capture all terminated trials, especially older studies or those that completed but failed efficacy endpoints",
+    "OLESOXIME literature reveals a Phase III ALS trial that failed efficacy but was well-tolerated",
+    "PRIDOPIDINE has active ALS trials according to literature (HEALEY Platform, PRIDE-ALS Phase 2/3)",
+    "Lack of terminated trial records does not mean drugs were not studied - they may have completed trials or are in ongoing trials"
+  ]
+}

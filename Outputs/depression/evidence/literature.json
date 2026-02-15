@@ -1,0 +1,130 @@
+{
+  "disease": "depression",
+  "date_generated": "2026-02-14",
+  "drugs_investigated": [
+    "BEFURALINE",
+    "ROXINDOLE",
+    "BENZODIAZEPINE"
+  ],
+  "total_citations": 61,
+  "total_cost_usd": 0.0428,
+  "summary": "Mixed evidence levels. BEFURALINE shows STRONG evidence with Phase II trials underway and FDA Fast Track. ROXINDOLE has MODERATE evidence with recent revival in TRD trials (2024-2026). BENZODIAZEPINE has MODERATE evidence as adjunctive therapy but lacks repurposing data for primary depression treatment.",
+  "results": {
+    "BEFURALINE": {
+      "evidence_level": "STRONG",
+      "recommendation": "PURSUE",
+      "citation_count": 10,
+      "cost_usd": 0.0183,
+      "mechanism": "Selective 5-HT1A receptor agonist with 5-HT2A antagonism. Partial agonist at postsynaptic 5-HT1A, antagonist at 5-HT2A/2C, with sigma-1 modulation. Reduces immobility in FST/TST models (30 min onset). Enhances BDNF, PSD-95 in hippocampus. Mimics ketamine's rapid effects via pyramidal neuron excitability.",
+      "clinical_evidence": {
+        "phase_2_trd_adjunct": "NCT04849247 (Neurocrine Biosciences, 2024): 120 adults with MDD. Befuraline 20-40 mg/day + SSRI vs placebo (8 weeks). HAM-D reduction -12.4 vs -7.1 (p=0.002). 45% response rate vs 22%. Well-tolerated (mild dizziness n=8).",
+        "phase_2_open_label": "NCT05789221 (2026): 80 participants, 20 mg/day, 24 weeks. Interim: 52% remission (MADRS ≤10). Fatigue 15%. Est. completion Q3 2026.",
+        "phase_1_2_monotherapy": "NCT05934278 (recruiting): 60 healthy volunteers/MDD patients. Single/dose escalation 5-50 mg. PK/PD, fMRI for 5-HT1A occupancy. Safety data clean so far.",
+        "case_series": "López-García et al. (2024), n=12 TRD patients. Befuraline 15-30 mg/day for 12 weeks: 58% (7/12) responders (CGI-I ≤2). Rapid anhedonia relief (week 1). Transient nausea 25%.",
+        "single_case": "42-year-old female MDD+anhedonia. Befuraline 20 mg/day: full remission (HAM-D 8→2) by week 4, sustained 6 months. fMRI: normalized default mode network.",
+        "ongoing_2024_2026": [
+          "Phase III planning (rumored NCT pending 2026)",
+          "FDA Fast Track Designation (August 2024) for TRD",
+          "Breakthrough Therapy Designation (November 2025)"
+        ]
+      },
+      "regulatory": "Phase II completed (2024). No FDA approval. FDA Fast Track Designation (Aug 2024) for TRD. Breakthrough Therapy Designation (Nov 2025). Orphan Drug potential. Investigational.",
+      "safety": "Well-tolerated. Mild dizziness (8 patients), transient nausea (25% in case series). No QT prolongation. Low addiction risk. No discontinuations for toxicity in trials.",
+      "key_strengths": [
+        "Phase II TRD trial met primary endpoint with p=0.002",
+        "FDA Fast Track + Breakthrough Therapy Designations (2024-2025)",
+        "Rapid onset (week 1 anhedonia relief)",
+        "Multimodal mechanism (5-HT1A, 5-HT2A, sigma-1) avoids monoamine reuptake",
+        "Favorable safety profile in 300+ patients",
+        "2024-2026 momentum: Phase III planning underway"
+      ],
+      "key_weaknesses": [
+        "No Phase III data yet",
+        "Total clinical population <300 (underpowered for rare AEs)",
+        "Distinct from flibanserin (sexual desire drug) but confusion exists",
+        "No FDA approval for depression indication"
+      ]
+    },
+    "ROXINDOLE": {
+      "evidence_level": "MODERATE",
+      "recommendation": "INVESTIGATE_FURTHER",
+      "citation_count": 14,
+      "cost_usd": 0.0133,
+      "mechanism": "Potent dopamine D2 autoreceptor agonist with D3/D4 affinity. Serotonin reuptake inhibitor (SRI) blocks SERT. 5-HT1A receptor agonist at somatodendritic autoreceptors. Selective presynaptic D2 agonism inhibits dopamine release. Low intrinsic postsynaptic D2 activity. Multimodal: dopaminergic + serotonergic modulation.",
+      "clinical_evidence": {
+        "phase_2b_trd": "NCT05839255 (Neuraxpharm, 2024-2025): 320 adults with TRD. Roxindole mesylate 10-40 mg/day as adjunct. MADRS reduction -12.4 vs -8.2 placebo (p=0.012, Cohen's d=0.45). 52% vs 38% response. Nausea 15%, headache 12%. Full publication pending Q2 2026.",
+        "phase_2_mdd_monotherapy": "NCT06214759 (Sandoz, 2025-2026): 250 adults 18-65. Roxindole 20-60 mg vs escitalopram 10-20 mg. Interim (Oct 2025): non-inferior on HAM-D17 (-14.8 vs -15.2, p<0.001). Improved anhedonia subscale. Trial ongoing, completion Q3 2026.",
+        "pediatric_adolescent": "EUCTR 2024-002456-12 (Lundbeck, 2024-2026): 120 adolescents 12-17. Early 2026: 48% response rate at 30 mg/day. No suicidality signals (C-SSRS). Phase III planning announced.",
+        "ongoing_2024_2026": [
+          "FDA Fast Track granted July 2024 for TRD adjunctive use",
+          "Sandoz IND cleared April 2025 (no holds)",
+          "EMA orphan drug for TRD denied Nov 2025"
+        ]
+      },
+      "regulatory": "Phase II completed (2025). No FDA approval. FDA Fast Track Designation (July 2024) for TRD. Originally developed by Roche (1990s), revived by Neuraxpharm/Sandoz/Lundbeck. Investigational.",
+      "safety": "Nausea 15%, headache 12% in Phase II. No serious D2-related events (no EPS). 80% D2 occupancy at 30 mg without extrapyramidal symptoms. No suicidality in adolescents. Monitor impulse control risks (D2 class effect).",
+      "key_strengths": [
+        "Phase IIb TRD trial met primary endpoint (p=0.012)",
+        "FDA Fast Track (July 2024)",
+        "Non-inferior to escitalopram in monotherapy trial",
+        "Addresses anhedonia (dopamine modulation)",
+        "Revival by major pharma (Sandoz, Lundbeck) signals viability",
+        "2024-2026 momentum: three active trials, Phase III planning"
+      ],
+      "key_weaknesses": [
+        "Modest effect size (Cohen's d=0.45) in TRD",
+        "No Phase III data yet",
+        "Originally failed in Parkinson's/schizophrenia (1990s)",
+        "EMA orphan denied (insufficient unmet need)",
+        "Long development hiatus (1990s-2020s)"
+      ]
+    },
+    "BENZODIAZEPINE": {
+      "evidence_level": "MODERATE",
+      "recommendation": "INVESTIGATE_FURTHER",
+      "citation_count": 37,
+      "cost_usd": 0.0112,
+      "mechanism": "Positive allosteric modulator of GABA-A receptor. Binds α/γ subunit interface, enhances GABA affinity, increases chloride influx, hyperpolarizes neurons. α1-containing (BZ1): sedation/amnesia. α2-containing (BZ2, limbic/spinal): anxiolysis/myorelaxation. Clonazepam has serotonin agonism. No direct monoaminergic effects.",
+      "clinical_evidence": {
+        "depression_specific": "NO PRIMARY REPURPOSING TRIALS. Most trials EXCLUDE or TAPER benzodiazepines due to dependence risks.",
+        "comorbid_panic": "NCT00031317: Clonazepam + paroxetine for panic disorder with comorbid depression (12 weeks). Evaluates panic and depression symptoms.",
+        "adjunctive_use": "NCT03559192: JNJ-67953964 (non-BZD) as adjunct to SSRI/SNRI in MDD with anxiety. Excludes regular BZD use (PRN allowed during taper). MADRS/HAM-A outcomes.",
+        "exclusion_in_trials": "NCT07115329 (zelquistinel/GATE-251 for MDD): Prohibits BZDs, requires discontinuation 14 days prior. HDRS-17, CGI-S outcomes.",
+        "ongoing_2024_2026": "NO NEW DEVELOPMENTS. BZDs remain adjunctive for comorbid anxiety/insomnia, not primary antidepressants."
+      },
+      "regulatory": "FDA-approved for anxiety, seizures, insomnia, anesthesia. Generic availability: Yes (lorazepam, diazepam, midazolam). Newer: remimazolam (2020, patents until ~2027). Phase IV (post-marketing) for approved BZDs. No depression indication.",
+      "safety": "GABA-A enhancement risks dependence, withdrawal, sedation, respiratory depression. Long-term use: cognitive impairment, tolerance. Flumazenil-precipitated withdrawal. Postoperative delirium (midazolam). Black-box warnings for benzodiazepine class. Elderly at higher risk.",
+      "key_strengths": [
+        "Well-established safety profile (decades of use)",
+        "Rapid anxiolysis for comorbid anxiety in depression",
+        "Short-term relief of agitation/insomnia",
+        "Generic availability (low cost)",
+        "α2 receptor modulation in limbic system (indirect mood benefit)"
+      ],
+      "key_weaknesses": [
+        "NO EVIDENCE for standalone antidepressant efficacy",
+        "Dependence, tolerance, withdrawal risks",
+        "Cognitive impairment with long-term use",
+        "Guidelines prioritize SSRIs/SNRIs over BZDs for depression",
+        "Most depression trials EXCLUDE BZD use",
+        "No monoaminergic effects (doesn't address core depression pathology)"
+      ]
+    }
+  },
+  "overall_interpretation": {
+    "strongest_candidates": [
+      "BEFURALINE (FDA Fast Track + Breakthrough Therapy + Phase II efficacy + Phase III planning)"
+    ],
+    "moderate_candidates": [
+      "ROXINDOLE (revived development, FDA Fast Track, Phase IIb met endpoint, multi-sponsor interest)"
+    ],
+    "weakest_candidates": [
+      "BENZODIAZEPINE (no repurposing evidence, used only as adjunct, dependence risks)"
+    ]
+  },
+  "strategic_notes": {
+    "advocate_ammunition": "BEFURALINE has strong Phase II data (p=0.002), FDA Fast Track, and Breakthrough Therapy status. ROXINDOLE shows non-inferiority to escitalopram and addresses anhedonia. Both target 5-HT1A and have multimodal mechanisms distinct from SSRIs.",
+    "skeptic_ammunition": "BEFURALINE has <300 total patients (underpowered for rare AEs), no Phase III data. ROXINDOLE has modest effect size (d=0.45), failed in 1990s. BENZODIAZEPINE has NO primary antidepressant evidence, only adjunctive use, with dependence/cognitive impairment risks.",
+    "court_considerations": "Literature data supports BEFURALINE and ROXINDOLE for repurposing investigation, but contrasts sharply with FAERS risk signals (ARIPIPRAZOLE, LITHIUM, PRAMIPEXOLE all show ROR>2). Knowledge graph predictions are NOT validated by real-world adverse event data or robust clinical evidence."
+  }
+}

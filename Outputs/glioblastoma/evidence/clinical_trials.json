@@ -1,0 +1,96 @@
+{
+  "disease": "glioblastoma",
+  "date_generated": "2026-02-14",
+  "drugs_investigated": [
+    "TALAMPANEL",
+    "RIVOCERANIB",
+    "GENISTEIN",
+    "EDOTECARIN",
+    "CEDIRANIB",
+    "PERIFOSINE"
+  ],
+  "results": {
+    "TALAMPANEL": {
+      "total_failed_trials": 1,
+      "classification": "UNKNOWN",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [
+        {
+          "nct_id": "NCT00062504",
+          "title": "Phase 2 Trial Using Talampanel in Patients With Recurrent High Grade Gliomas",
+          "status": "TERMINATED",
+          "why_stopped": "Not specified",
+          "failure_category": "UNKNOWN",
+          "phases": ["PHASE2"],
+          "conditions": [
+            "Glioblastoma Multiforme",
+            "Anaplastic Astrocytoma",
+            "Anaplastic Oligodendroglioma",
+            "Anaplastic Mixed Oligoastrocytoma"
+          ]
+        }
+      ],
+      "interpretation": "Phase 2 trial terminated without specified reason. No safety concerns mentioned. Candidate for repurposing."
+    },
+    "RIVOCERANIB": {
+      "total_failed_trials": 0,
+      "classification": "NONE",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [],
+      "interpretation": "No glioblastoma trials found. Drug may have been dropped in other indications."
+    },
+    "GENISTEIN": {
+      "total_failed_trials": 0,
+      "classification": "NONE",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [],
+      "interpretation": "No glioblastoma trials found. Drug may have been dropped in other indications."
+    },
+    "EDOTECARIN": {
+      "total_failed_trials": 0,
+      "classification": "NONE",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [],
+      "interpretation": "No glioblastoma trials found. Drug may have been dropped in other indications."
+    },
+    "CEDIRANIB": {
+      "total_failed_trials": 1,
+      "classification": "BUSINESS/LOGISTICS",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [
+        {
+          "nct_id": "NCT01310855",
+          "title": "Cediranib Maleate With or Without Gefitinib in Treating Patients With Recurrent or Progressive Glioblastoma",
+          "status": "TERMINATED",
+          "why_stopped": "closed to recruitment early due to AstraZeneca not developing cediranib further",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"],
+          "conditions": ["Glioblastoma"]
+        }
+      ],
+      "interpretation": "PRIME REPURPOSING CANDIDATE. Phase 2 trial stopped solely due to corporate decision to cease drug development. No safety or efficacy concerns. This is the gold standard for repurposing."
+    },
+    "PERIFOSINE": {
+      "total_failed_trials": 0,
+      "classification": "NONE",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "trials": [],
+      "interpretation": "No glioblastoma trials found. Drug may have been dropped in other indications."
+    }
+  },
+  "summary": {
+    "total_drugs": 6,
+    "total_trials_found": 2,
+    "business_dropouts": 1,
+    "safety_dropouts": 0,
+    "unknown_dropouts": 1,
+    "prime_candidates": ["CEDIRANIB"],
+    "key_finding": "CEDIRANIB is a gold-standard repurposing candidate: terminated Phase 2 glioblastoma trial due to corporate decision (AstraZeneca ceased development), not safety or efficacy."
+  }
+}

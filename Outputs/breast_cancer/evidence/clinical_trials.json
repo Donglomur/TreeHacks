@@ -1,0 +1,147 @@
+{
+  "disease": "breast cancer",
+  "date_generated": "2026-02-14",
+  "drugs_investigated": [
+    "DOXORUBICIN",
+    "TAMOXIFEN",
+    "PACLITAXEL",
+    "FULVESTRANT"
+  ],
+  "note": "These are FDA-approved breast cancer drugs. Trial terminations reflect portfolio management, not repurposing opportunities.",
+  "results": {
+    "DOXORUBICIN": {
+      "total_failed_trials": 15,
+      "classification": "MIXED",
+      "repurposing_viable": false,
+      "safety_flags": 1,
+      "business_dropouts": 4,
+      "trials": [
+        {
+          "nct_id": "NCT02131506",
+          "title": "A Study of Lapatinib in Combination With Caelyx in Patients With Advanced HER2 Positive Pretreated Breast Cancer",
+          "status": "TERMINATED",
+          "why_stopped": "Safety reasons",
+          "failure_category": "SAFETY",
+          "phases": ["PHASE1"],
+          "conditions": ["HER-2 Positive Breast Cancer"]
+        },
+        {
+          "nct_id": "NCT00542191",
+          "title": "Phase II Trial of Neoadjuvant Metronomic Chemotherapy in Triple-Negative Breast Cancer",
+          "status": "TERMINATED",
+          "why_stopped": "Enrollment Completed",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"],
+          "conditions": ["Breast Cancer"]
+        },
+        {
+          "nct_id": "NCT00082095",
+          "title": "To Compare Treatment With Doxorubicin or Capecitabine for Metastatic Breast Cancer in Women 60 Years and Older",
+          "status": "TERMINATED",
+          "why_stopped": "The study was terminated due to poor recruitment (after enrolling 62 of planned 300 patients in 20 months)",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE3"],
+          "conditions": ["Metastatic Breast Cancer"]
+        }
+      ],
+      "interpretation": "Already approved for breast cancer. 15 terminated trials mostly due to accrual issues (business/logistics). 1 safety-related termination in a combination study (lapatinib + Caelyx). Not a repurposing candidate."
+    },
+    "TAMOXIFEN": {
+      "total_failed_trials": 15,
+      "classification": "MIXED",
+      "repurposing_viable": false,
+      "safety_flags": 1,
+      "business_dropouts": 2,
+      "trials": [
+        {
+          "nct_id": "NCT05128773",
+          "title": "Study of Amcenestrant (SAR439859) Versus Tamoxifen for Patients With Hormone Receptor-positive (HR+) Early Breast Cancer",
+          "status": "TERMINATED",
+          "why_stopped": "Sponsor decision to prematurely stop the study, not linked to any safety concern",
+          "failure_category": "SAFETY",
+          "phases": ["PHASE3"],
+          "conditions": ["Breast Cancer"]
+        },
+        {
+          "nct_id": "NCT02395627",
+          "title": "Reversing Therapy Resistance With Epigenetic-Immune Modification",
+          "status": "TERMINATED",
+          "why_stopped": "Insufficient efficacy in an unselected patient population",
+          "failure_category": "EFFICACY",
+          "phases": ["PHASE2"],
+          "conditions": ["Breast Neoplasms"]
+        }
+      ],
+      "interpretation": "Standard of care for ER+ breast cancer. Terminated trials mostly reflect slow accrual or combination study failures, not tamoxifen itself. Not a repurposing candidate."
+    },
+    "PACLITAXEL": {
+      "total_failed_trials": 15,
+      "classification": "BUSINESS/LOGISTICS",
+      "repurposing_viable": true,
+      "safety_flags": 0,
+      "business_dropouts": 4,
+      "trials": [
+        {
+          "nct_id": "NCT00542191",
+          "title": "Phase II Trial of Neoadjuvant Metronomic Chemotherapy in Triple-Negative Breast Cancer",
+          "status": "TERMINATED",
+          "why_stopped": "Enrollment Completed",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"],
+          "conditions": ["Breast Cancer"]
+        },
+        {
+          "nct_id": "NCT00251095",
+          "title": "Comparison of Safety and Efficacy of TOCOSOL(R) Paclitaxel Versus Taxol(R) for Treatment of Metastatic Breast Cancer",
+          "status": "TERMINATED",
+          "why_stopped": "Failed primary endpoint",
+          "failure_category": "EFFICACY",
+          "phases": ["PHASE3"],
+          "conditions": ["Breast Neoplasm"]
+        },
+        {
+          "nct_id": "NCT04251169",
+          "title": "Pembrolizumab + Paclitaxel in HR+/HER2- Non-luminal (by PAM50) Advanced Breast Cancer After CDK4/6 Inhibitor Progression",
+          "status": "TERMINATED",
+          "why_stopped": "The enrollment was stopped prematurely due to the lack of funding",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE2"],
+          "conditions": ["Metastatic Breast Cancer"]
+        }
+      ],
+      "interpretation": "Standard chemotherapy for breast cancer. 15 terminated trials with NO safety flags. Mostly accrual issues and combination study portfolio decisions. Already in clinical use - not a repurposing candidate."
+    },
+    "FULVESTRANT": {
+      "total_failed_trials": 15,
+      "classification": "BUSINESS/LOGISTICS",
+      "repurposing_viable": false,
+      "safety_flags": 1,
+      "business_dropouts": 6,
+      "trials": [
+        {
+          "nct_id": "NCT00774878",
+          "title": "Study of AVE1642 (IGF-1R/CD221) in Combination With Fulvestrant (Faslodex®) in Postmenopausal Patients With Advanced Hormono-dependent Breast Cancer",
+          "status": "TERMINATED",
+          "why_stopped": "Company decision to discontinue the AVE1642 development program, not due to any safety or efficacy concerns",
+          "failure_category": "SAFETY",
+          "phases": ["PHASE2"],
+          "conditions": ["Breast Neoplasms"]
+        },
+        {
+          "nct_id": "NCT00543127",
+          "title": "Fulvestrant (Faslodex) + Anastrozole (Arimidex) vs Anastrozole",
+          "status": "TERMINATED",
+          "why_stopped": "Unjustified decision of company that funded the trial.",
+          "failure_category": "BUSINESS/LOGISTICS",
+          "phases": ["PHASE3"],
+          "conditions": ["Breast Cancer"]
+        }
+      ],
+      "interpretation": "Approved for ER+ breast cancer. 6 business-related terminations mostly due to accrual or portfolio decisions. 1 safety termination was due to discontinuation of the combination partner (AVE1642), not fulvestrant. Not a repurposing candidate."
+    }
+  },
+  "summary": {
+    "key_finding": "All four drugs investigated (DOXORUBICIN, TAMOXIFEN, PACLITAXEL, FULVESTRANT) are already FDA-approved for breast cancer treatment. Their terminated trials reflect normal clinical development portfolio management, not repurposing opportunities.",
+    "repurposing_insight": "For true repurposing candidates in breast cancer, investigate drugs with INVERSE FAERS signals that are NOT currently approved for breast cancer (e.g., TEMOZOLOMIDE, DASATINIB, ETOPOSIDE)."
+  }
+}

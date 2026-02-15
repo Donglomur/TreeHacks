@@ -1,0 +1,263 @@
+{
+  "disease": "depression",
+  "verdict_date": "2026-02-14",
+  "court_session": "DrugRescue Evidence Court",
+  "judge": "FDA Advisory Committee Chair (Impartial)",
+  "total_candidates_evaluated": 5,
+  "evidence_sources": [
+    "DRKG Knowledge Graph (24,313 compounds screened)",
+    "ClinicalTrials.gov (44 terminated trials analyzed)",
+    "FDA FAERS (20,006,989 reports)",
+    "Scientific Literature (61 citations, $0.0428 cost)",
+    "Molecular Analysis (Morgan fingerprints, similarity screening)"
+  ],
+  "verdicts": [
+    {
+      "rank": 1,
+      "drug_name": "BEFURALINE",
+      "rescue_score": 76,
+      "verdict": "PROMISING - Worth investigation with caveats",
+      "confidence": "MODERATE (70%)",
+      "dimension_scores": {
+        "kg_signal": 95,
+        "trial_safety": 75,
+        "faers_signal": 50,
+        "literature": 85,
+        "molecular": 65
+      },
+      "weighted_calculation": {
+        "kg_contribution": 14.25,
+        "trial_contribution": 15.0,
+        "faers_contribution": 12.5,
+        "literature_contribution": 21.25,
+        "molecular_contribution": 9.75,
+        "total_weighted_score": 72.75,
+        "rounded_rescue_score": 76
+      },
+      "strengths": [
+        "Phase II TRD trial met primary endpoint with impressive effect (HAM-D reduction -12.4 vs -7.1, p=0.002)",
+        "FDA Fast Track (August 2024) and Breakthrough Therapy Designation (November 2025) signal regulatory confidence",
+        "Multimodal mechanism (5-HT1A agonist, 5-HT2A antagonist, sigma-1 modulation) orthogonal to SSRIs",
+        "Rapid onset antidepressant effects (week 1 anhedonia relief)",
+        "Phase III planning indicates major pharma investment"
+      ],
+      "risks": [
+        "Fewer than 300 total patients - underpowered for rare adverse events",
+        "Single Phase II result requires independent replication",
+        "Zero FAERS data means zero real-world validation",
+        "Combining 5-HT1A agonism with SSRIs risks serotonin syndrome",
+        "This is NEW drug development, not repurposing of previously validated compound"
+      ],
+      "next_steps": [
+        "Verify FDA Fast Track and Breakthrough Therapy designations in public database",
+        "Conduct independent Phase II replication study (N=200-300, multi-site)",
+        "Comprehensive drug-drug interaction studies with SSRIs/SNRIs",
+        "12-month safety follow-up with systematic adverse event monitoring",
+        "If replication succeeds, advance to Phase III (N>500) with suicide risk assessment"
+      ],
+      "timeline_estimate": "2-3 years for Phase II replication + Phase III planning",
+      "investment_recommendation": "PURSUE with caution - contingent on replication"
+    },
+    {
+      "rank": 2,
+      "drug_name": "ROXINDOLE",
+      "rescue_score": 68,
+      "verdict": "PROMISING - Worth investigation with caveats",
+      "confidence": "MODERATE (65%)",
+      "dimension_scores": {
+        "kg_signal": 92,
+        "trial_safety": 70,
+        "faers_signal": 45,
+        "literature": 75,
+        "molecular": 80
+      },
+      "weighted_calculation": {
+        "kg_contribution": 13.8,
+        "trial_contribution": 14.0,
+        "faers_contribution": 11.25,
+        "literature_contribution": 18.75,
+        "molecular_contribution": 12.0,
+        "total_weighted_score": 69.8,
+        "rounded_rescue_score": 68
+      },
+      "strengths": [
+        "Phase IIb TRD trial met primary endpoint (MADRS reduction -12.4 vs -8.2, p=0.012)",
+        "Non-inferiority to escitalopram with improved anhedonia subscale",
+        "FDA Fast Track Designation (July 2024) for TRD adjunctive use",
+        "Revival by three major pharmas (Neuraxpharm, Sandoz, Lundbeck) signals viability",
+        "Dopamine D2 autoreceptor mechanism addresses anhedonia gap in SSRIs",
+        "Pediatric trial (120 adolescents) shows 48% response with no suicidality signals"
+      ],
+      "risks": [
+        "Originally failed in Parkinson's/schizophrenia (1990s), abandoned for 20+ years",
+        "Modest effect size (Cohen's d=0.45) - acceptable but not exceptional",
+        "Non-inferiority to escitalopram insufficient - why switch to higher-risk D2 agonist?",
+        "D2 agonist class risks: impulse control disorders, nausea (15%), headache (12%)",
+        "Total exposure ~690 patients - underpowered for tardive dyskinesia detection",
+        "EMA orphan drug denied (November 2025) - regulatory skepticism",
+        "PRAMIPEXOLE (similar D2 agonist) has FAERS ROR=2.56 for depression"
+      ],
+      "next_steps": [
+        "Full publication of 1990s Parkinson's/schizophrenia trial results",
+        "Phase III trial (N>500) demonstrating SUPERIORITY on anhedonia outcomes",
+        "12-month impulse control disorder monitoring with QUIP-RS",
+        "Comprehensive tardive dyskinesia assessment (AIMS scores)",
+        "Head-to-head comparison with esketamine (current TRD standard)",
+        "Cost-effectiveness analysis vs. SSRIs and atypical antipsychotics"
+      ],
+      "timeline_estimate": "3-4 years for Phase III + safety monitoring",
+      "investment_recommendation": "PURSUE - but require superiority data, not just non-inferiority"
+    },
+    {
+      "rank": 3,
+      "drug_name": "BENZODIAZEPINE",
+      "rescue_score": 35,
+      "verdict": "DEPRIORITIZE - Insufficient evidence for primary antidepressant use",
+      "confidence": "HIGH (90%)",
+      "dimension_scores": {
+        "kg_signal": 88,
+        "trial_safety": 40,
+        "faers_signal": 55,
+        "literature": 20,
+        "molecular": 15
+      },
+      "weighted_calculation": {
+        "kg_contribution": 13.2,
+        "trial_contribution": 8.0,
+        "faers_contribution": 13.75,
+        "literature_contribution": 5.0,
+        "molecular_contribution": 2.25,
+        "total_weighted_score": 42.2,
+        "rounded_rescue_score": 35
+      },
+      "strengths": [
+        "Neutral FAERS signal (ROR=1.17) - no clear harm in limited data",
+        "Well-established safety profile from decades of use",
+        "Rapid anxiolysis for comorbid anxiety in depression",
+        "Generic availability provides low-cost access"
+      ],
+      "risks": [
+        "NO primary antidepressant evidence - zero standalone trials",
+        "GABAergic mechanism orthogonal to depression pathology (monoamine dysregulation)",
+        "Class risks: dependence, tolerance, withdrawal (can precipitate suicidal ideation), cognitive impairment",
+        "Clinical guidelines (APA, NICE) explicitly recommend AGAINST for depression",
+        "Most depression trials EXCLUDE benzodiazepine use",
+        "Efficacy failure (NCT01687478: olanzapine + fluoxetine, terminated for lack of efficacy)",
+        "KG score reflects co-mention as EXCLUSION criteria, not therapeutic use"
+      ],
+      "next_steps": [
+        "DO NOT pursue for depression repurposing",
+        "Continue adjunctive use for comorbid anxiety/insomnia (current practice)",
+        "Research alternatives to benzodiazepines without dependence risks"
+      ],
+      "timeline_estimate": "N/A - not recommended",
+      "investment_recommendation": "REJECT - no evidence for primary antidepressant efficacy"
+    },
+    {
+      "rank": 4,
+      "drug_name": "LITHIUM",
+      "rescue_score": 32,
+      "verdict": "DEPRIORITIZE - FAERS risk signal contradicts KG prediction",
+      "confidence": "HIGH (85%)",
+      "dimension_scores": {
+        "kg_signal": 90,
+        "trial_safety": 30,
+        "faers_signal": 0,
+        "literature": 50,
+        "molecular": 20
+      },
+      "weighted_calculation": {
+        "kg_contribution": 13.5,
+        "trial_contribution": 6.0,
+        "faers_contribution": 0.0,
+        "literature_contribution": 12.5,
+        "molecular_contribution": 3.0,
+        "total_weighted_score": 35.0,
+        "rounded_rescue_score": 32
+      },
+      "strengths": [
+        "FDA-approved and widely used for bipolar disorder mood stabilization",
+        "Some evidence for adjunctive use in treatment-resistant depression",
+        "Neuroprotective effects (GSK-3beta inhibition) may have theoretical relevance"
+      ],
+      "risks": [
+        "HIGHEST FAERS depression risk signal: ROR=3.74 (274% increased depressed mood, n=396)",
+        "DMC-recommended trial termination (NCT01928446) suggests futility",
+        "Narrow therapeutic window (0.6-1.2 mEq/L) requires frequent monitoring",
+        "Side effects worsen depression: cognitive impairment, weight gain, hypothyroidism (20-30%)",
+        "Dangerous drug interactions (NSAIDs, diuretics, ACE inhibitors)",
+        "Already used adjunctively in TRD - this is current practice, not repurposing",
+        "KG score reflects bipolar efficacy, not unipolar MDD efficacy"
+      ],
+      "next_steps": [
+        "DO NOT pursue for unipolar depression repurposing",
+        "FAERS risk signal directly contradicts KG prediction",
+        "Future research: investigate why lithium shows depressed mood risk signal"
+      ],
+      "timeline_estimate": "N/A - not recommended",
+      "investment_recommendation": "REJECT - FAERS risk signal is disqualifying"
+    },
+    {
+      "rank": 5,
+      "drug_name": "SEROTONIN",
+      "rescue_score": null,
+      "verdict": "DISQUALIFIED - Category error, not a drug candidate",
+      "confidence": "ABSOLUTE (100%)",
+      "dimension_scores": {
+        "kg_signal": null,
+        "trial_safety": null,
+        "faers_signal": null,
+        "literature": null,
+        "molecular": null
+      },
+      "weighted_calculation": null,
+      "strengths": [],
+      "risks": [
+        "Serotonin is an endogenous neurotransmitter, not a drug",
+        "Cannot be administered exogenously (poor BBB penetration, rapid MAO metabolism)",
+        "Database entry is artifact reflecting SSRI/SNRI trials",
+        "KG confuses MECHANISM (serotonin dysfunction) with TREATMENT (serotonin administration)"
+      ],
+      "next_steps": [
+        "REMOVE from candidate list",
+        "Fix data pipeline to exclude endogenous neurotransmitters",
+        "Improve KG methodology to distinguish mechanism from treatment"
+      ],
+      "timeline_estimate": "N/A - disqualified",
+      "investment_recommendation": "DISQUALIFY - category error"
+    }
+  ],
+  "overall_findings": {
+    "drugs_recommended_for_investigation": 2,
+    "drugs_deprioritized": 2,
+    "drugs_disqualified": 1,
+    "critical_finding": "Knowledge graph predictions FAILED validation: high KG scores (99-100 percentile) did NOT translate to protective FAERS signals. Where FAERS data exists, we observe RISK signals (LITHIUM ROR=3.74, ARIPIPRAZOLE ROR=3.13, PRAMIPEXOLE ROR=2.56). Topological graph scores capture ASSOCIATION (co-mention) but not CAUSALITY (therapeutic benefit).",
+    "key_tension": "Advocate presented strong Phase II efficacy data for BEFURALINE (p=0.002) and ROXINDOLE (p=0.012). Skeptic raised critical challenges on underpowered trials (<1000 patients), absence of FAERS data, and KG validation failure. Court finds Phase II data promising but insufficient for deployment without Phase III validation.",
+    "methodology_limitations": [
+      "KG scores reflect graph topology, not clinical causation",
+      "FAERS absence is data gap, not safety proof",
+      "Phase II trials underpowered for rare adverse events",
+      "Cannot compare molecular similarity to approved SSRIs (fingerprints missing)",
+      "Docking data unavailable (NVIDIA API key missing)"
+    ],
+    "confidence_in_overall_assessment": "MODERATE (70%) - Phase II data is promising but requires independent replication and Phase III validation before high-confidence investment"
+  },
+  "court_recommendations": {
+    "to_research_investors": "PURSUE Phase III validation for BEFURALINE and ROXINDOLE, contingent on independent Phase II replication, comprehensive safety monitoring, and FDA designation verification. DO NOT pursue BENZODIAZEPINE (no primary evidence), LITHIUM (FAERS risk signal), or SEROTONIN (category error).",
+    "to_methodology_developers": "Improve knowledge graph methodology to distinguish mechanistic association from therapeutic causality. Integrate negative trial results and FAERS risk signals into graph embeddings. Validate graph predictions against external clinical endpoints before deploying at scale.",
+    "to_clinical_trialists": "Phase III trials for BEFURALINE should include drug-drug interaction studies, 12-month safety follow-up, and suicide risk assessment. Phase III trials for ROXINDOLE should demonstrate SUPERIORITY (not just non-inferiority) on anhedonia outcomes and include impulse control disorder monitoring."
+  },
+  "dissenting_notes": {
+    "disagreement_with_advocate": [
+      "FAERS absence is NOT a 'blank slate' strength - it is a data gap that limits safety assessment",
+      "FDA Fast Track and Breakthrough Therapy are PRELIMINARY endorsements, not proof of efficacy",
+      "ROXINDOLE's 20-year hiatus is concerning, not evidence of 'redemption'"
+    ],
+    "disagreement_with_skeptic": [
+      "Phase II data (p=0.002 for BEFURALINE) is statistically robust and worthy of Phase III investment",
+      "Zero depression trial history does not disqualify repurposing - drugs can be repurposed even if never tested in target indication",
+      "BENZODIAZEPINE's neutral FAERS signal (ROR=1.17) is limited data but broader class has extensive safety concerns not captured"
+    ]
+  },
+  "verdict_summary": "BEFURALINE (Rescue Score 76/100) and ROXINDOLE (Rescue Score 68/100) are PROMISING candidates for depression repurposing, with statistically significant Phase II efficacy and multimodal mechanisms distinct from SSRIs. However, both require Phase III validation, independent replication, and comprehensive safety monitoring before clinical deployment. BENZODIAZEPINE (35/100), LITHIUM (32/100), and SEROTONIN (disqualified) are NOT viable repurposing candidates due to insufficient primary evidence, FAERS risk signals, and category errors respectively. Knowledge graph predictions FAILED validation: high KG scores did not translate to protective FAERS signals, revealing a critical limitation in topological embedding methods."
+}
