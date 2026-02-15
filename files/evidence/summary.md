@@ -1,11 +1,17 @@
 # Glioblastoma Drug Repurposing Investigation
 ## DrugRescue Lead Investigator Report
 
-**Date:** 2026-02-14
+**Date:** 2026-02-14 (Cached evidence reused 2026-02-15)
 **Disease:** Glioblastoma
 **Candidates Investigated:** 6 dropped drugs
 **Total Cost:** $0.0696
 **Total Citations:** 127
+
+---
+
+## CACHE STATUS: VALID EVIDENCE REUSED
+
+All evidence files were previously generated on 2026-02-14 and are valid for current investigation. No tool calls were required - all data reused from cache.
 
 ---
 
@@ -26,11 +32,11 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 
 ## Tier 1: Prime Candidates
 
-### 1. CEDIRANIB (RANK 1/6) 🏆
+### 1. CEDIRANIB (RANK 1/6)
 
 **KG Score:** 99.9th percentile | **Status:** Dropped (Phase 3) | **Phase 2 GBM Data:** Yes
 
-**Clinical Trial Classification:** ✅ **BUSINESS/LOGISTICS** (GOLD STANDARD)
+**Clinical Trial Classification:** BUSINESS/LOGISTICS (GOLD STANDARD)
 - NCT01310855: Phase 2 GBM trial TERMINATED because "AstraZeneca not developing cediranib further"
 - NOT terminated for safety or efficacy - pure corporate decision
 - This is the ideal repurposing scenario
@@ -41,14 +47,14 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 - Enhances BBB permeability for chemotherapy penetration
 
 **Clinical Evidence (27 citations):**
-- Phase II monotherapy: **27-57% response rate**, 6-month PFS 26%
+- Phase II monotherapy: 27-57% response rate, 6-month PFS 26%
 - Phase II + chemoradiation: Reduced pseudoprogression vs controls
 - Phase II + gefitinib: Median PFS 3.6 vs 2.8 months (HR 0.72)
-- **Case reports:** >5-6 year remissions in recurrent GBM
+- Case reports: >5-6 year remissions in recurrent GBM
 
 **2024-2026 Ongoing Trials:**
-- NCT05986805: Cediranib + pembrolizumab, **PFS6 28%**
-- NCT05663490: Cediranib + atezolizumab + bevacizumab, **ORR 35%**
+- NCT05986805: Cediranib + pembrolizumab, PFS6 28%
+- NCT05663490: Cediranib + atezolizumab + bevacizumab, ORR 35%
 - NCT06124356: Cediranib + regorafenib, mPFS 5.8 months
 
 **Regulatory:** Phase 3 multiple cancers, Orphan Drug Designation GBM (Jan 2024)
@@ -58,18 +64,18 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 **Molecular:** Structurally unrelated to approved GBM drugs (Tanimoto 0.08). Similar to other quinazoline TKIs (veonetinib, catequentinib).
 
 **STRENGTHS:**
-- ✅ Business termination = repurposing gold standard
-- ✅ Multiple Phase II trials with clinical activity
-- ✅ Vascular normalization directly addresses GBM pathology
-- ✅ 3 ongoing trials with immunotherapy showing promise
-- ✅ Long-term remission case reports
-- ✅ No safety red flags
+- Business termination = repurposing gold standard
+- Multiple Phase II trials with clinical activity
+- Vascular normalization directly addresses GBM pathology
+- 3 ongoing trials with immunotherapy showing promise
+- Long-term remission case reports
+- No safety red flags
 
 **WEAKNESSES:**
-- ⚠️ No Phase III GBM data
-- ⚠️ Limited BBB penetration (P-glycoprotein efflux)
-- ⚠️ Cardiac toxicity risk (hERG inhibition)
-- ⚠️ Single-agent PFS benefit modest
+- No Phase III GBM data
+- Limited BBB penetration (P-glycoprotein efflux)
+- Cardiac toxicity risk (hERG inhibition)
+- Single-agent PFS benefit modest
 
 **ADVOCATE AMMUNITION:**
 > "NCT01310855 stopped because AstraZeneca stopped ALL cediranib development - corporate decision, NOT GBM failure. 27% response rate in Phase II monotherapy is significant for recurrent GBM. Vascular normalization reduces deadly cerebral edema - immediate clinical benefit. 2024-2026 trials combining with immunotherapy show 28-35% response rates."
@@ -81,7 +87,7 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 
 ## Tier 2: Strong Candidates
 
-### 2. PERIFOSINE (RANK 2/6) 🥈
+### 2. PERIFOSINE (RANK 2/6)
 
 **KG Score:** 99.88th percentile | **Status:** Dropped (Phase 3) | **Phase I/II GBM Data:** Yes
 
@@ -90,19 +96,19 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 **Mechanism:**
 - Oral alkylphospholipid Akt/mTOR pathway inhibitor
 - Binds Akt PH domain → prevents membrane translocation
-- PI3K/Akt/mTOR dysregulated in **90% of GBMs** (EGFR amplification, PTEN loss)
+- PI3K/Akt/mTOR dysregulated in 90% of GBMs (EGFR amplification, PTEN loss)
 
 **Clinical Evidence (28 citations):**
-- Phase I/II NCT01051557: Perifosine + temsirolimus, **0/12 single-agent responses**, synergy in combos
+- Phase I/II NCT01051557: Perifosine + temsirolimus, 0/12 single-agent responses, synergy in combos
 - Well-tolerated (nausea, fatigue)
 
 **2024-2026 Ongoing Trials:**
 - NCT05919210: Perifosine + TMZ + RT for MGMT-unmethylated GBM
-  - **PFS6 75% vs 50% historical** (p=0.04)
+  - PFS6 75% vs 50% historical (p=0.04)
   - mPFS 10.2 vs 6.9 months historical
-  - **Phase III planning underway**
+  - Phase III planning underway
 - NCT06123480: Perifosine + regorafenib, ORR 29%, mOS 11.5 months
-  - **FDA Fast Track granted May 2024**
+  - FDA Fast Track granted May 2024
 - NCT06304589: Perifosine + bevacizumab + pembrolizumab, 40% stable disease
 
 **Regulatory:** Phase III, Orphan Drug GBM (Jan 2025), FDA Fast Track
@@ -112,18 +118,18 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 **Molecular:** Structurally unrelated to approved drugs (Tanimoto 0.08). Alkylphospholipid class (similar to oleylphosphocholine, edelfosine).
 
 **STRENGTHS:**
-- ✅ Targets PI3K/Akt/mTOR (dysregulated in 90% GBMs)
-- ✅ **FDA Fast Track** for GBM combo (May 2024)
-- ✅ **Phase III planning** for newly diagnosed GBM
-- ✅ 2024-2026 trials: PFS6 **75% vs 50% historical**
-- ✅ Oral formulation
-- ✅ Orphan Drug Designation
+- Targets PI3K/Akt/mTOR (dysregulated in 90% GBMs)
+- FDA Fast Track for GBM combo (May 2024)
+- Phase III planning for newly diagnosed GBM
+- 2024-2026 trials: PFS6 75% vs 50% historical
+- Oral formulation
+- Orphan Drug Designation
 
 **WEAKNESSES:**
-- ⚠️ **ZERO single-agent activity** (0/12 responses)
-- ⚠️ Only works in combinations - mechanism unclear
-- ⚠️ Preclinical intracranial hemorrhages - serious safety concern
-- ⚠️ GI toxicity limits dosing
+- ZERO single-agent activity (0/12 responses)
+- Only works in combinations - mechanism unclear
+- Preclinical intracranial hemorrhages - serious safety concern
+- GI toxicity limits dosing
 
 **ADVOCATE AMMUNITION:**
 > "FDA Fast Track shows regulators believe in this drug. Phase III planning means serious institutional support. 75% PFS6 in combination is exceptional for MGMT-unmethylated GBM. Targets THE pathway dysregulated in 90% of GBMs."
@@ -133,11 +139,11 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 
 ---
 
-### 3. TALAMPANEL (RANK 3/6) 🥉
+### 3. TALAMPANEL (RANK 3/6)
 
 **KG Score:** 99.96th percentile | **Status:** Dropped (Phase 2) | **Phase 2 GBM Data:** Yes
 
-**Clinical Trial Classification:** ⚠️ **UNKNOWN** termination reason
+**Clinical Trial Classification:** UNKNOWN termination reason
 - NCT00062504: Phase 2 recurrent high-grade gliomas, TERMINATED, "Not specified"
 - Could be business, efficacy, or other - no clarity
 
@@ -145,7 +151,7 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 - Non-competitive AMPA receptor antagonist
 - Blocks glutamate-mediated excitotoxicity
 - GBM cells overexpress AMPA receptors for proliferation/migration
-- **Excellent BBB penetration**
+- Excellent BBB penetration
 
 **Clinical Evidence (20 citations):**
 - Phase II newly diagnosed GBM: mPFS 6.4 months, mOS 15.8 months, 12-month OS 64% (missed 65% endpoint)
@@ -154,8 +160,8 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 
 **2024-2026 Ongoing Trials:**
 - NCT06345622: Talampanel + TMZ + RT for MGMT-unmethylated GBM
-  - Interim: **50% response rate**
-  - **PFS6 75% vs 50% historical** (p=0.04)
+  - Interim: 50% response rate
+  - PFS6 75% vs 50% historical (p=0.04)
 - NCT05849266: + bevacizumab combo, mPFS 4.2 months, 22% ORR
 - ChiCTR24000045: + CAR-T in China, 3/7 patients seizure-free at 6 months
 
@@ -166,18 +172,18 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 **Molecular:** Structurally unrelated to approved drugs (Tanimoto 0.13). Unique synthetic heterocycle scaffold.
 
 **STRENGTHS:**
-- ✅ **DUAL BENEFIT:** antitumor + seizure control (30-50% GBM have seizures)
-- ✅ AMPA blockade mechanistically relevant to GBM glutamate signaling
-- ✅ **Excellent BBB penetration** (critical for brain tumors)
-- ✅ 2024-2026 trials: PFS6 75% in combination
-- ✅ Well-tolerated (dizziness resolves)
-- ✅ Synergy with TMZ in preclinical models
+- DUAL BENEFIT: antitumor + seizure control (30-50% GBM have seizures)
+- AMPA blockade mechanistically relevant to GBM glutamate signaling
+- Excellent BBB penetration (critical for brain tumors)
+- 2024-2026 trials: PFS6 75% in combination
+- Well-tolerated (dizziness resolves)
+- Synergy with TMZ in preclinical models
 
 **WEAKNESSES:**
-- ⚠️ Single-agent activity **MINIMAL** (recurrent GBM trial failed)
-- ⚠️ **Unknown trial termination reason** (could be efficacy)
-- ⚠️ Modest survival benefit in earlier Phase II (mOS 15.8 vs 15 historical)
-- ⚠️ No Phase III data
+- Single-agent activity MINIMAL (recurrent GBM trial failed)
+- Unknown trial termination reason (could be efficacy)
+- Modest survival benefit in earlier Phase II (mOS 15.8 vs 15 historical)
+- No Phase III data
 
 **ADVOCATE AMMUNITION:**
 > "Seizures affect 30-50% of GBM patients - this drug treats BOTH problems. AMPA receptors drive GBM invasion - blocking them attacks the biology. BBB penetration is excellent - drug gets where it needs to go. 75% PFS6 in 2024-2026 trials is transformative."
@@ -201,19 +207,19 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 - Blocks angiogenesis
 
 **Clinical Evidence (25 citations):**
-- **NO GLIOBLASTOMA TRIALS IDENTIFIED** - major evidence gap
+- NO GLIOBLASTOMA TRIALS IDENTIFIED - major evidence gap
 - One vague mention: 45% ORR in 20 recurrent GBM patients (no NCT, no details)
 - Phase III gastric cancer: efficacy vs placebo
 - Phase II adenoid cystic carcinoma: 42.5% hypertension, manageable
 
 **STRENGTHS:**
-- ✅ Mechanistically relevant (anti-angiogenic)
-- ✅ Phase III experience in other cancers
+- Mechanistically relevant (anti-angiogenic)
+- Phase III experience in other cancers
 
 **WEAKNESSES:**
-- ❌ **NO GBM TRIALS** - massive evidence gap
-- ⚠️ Hypertension 42.5%
-- ⚠️ No BBB penetration data
+- NO GBM TRIALS - massive evidence gap
+- Hypertension 42.5%
+- No BBB penetration data
 
 ---
 
@@ -233,15 +239,15 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 - Natural product, generally safe
 
 **WEAKNESSES:**
-- ❌ No GBM trials
-- ⚠️ Poor PK (low bioavailability)
-- ⚠️ Phytoestrogen - hormonal effects unclear
+- No GBM trials
+- Poor PK (low bioavailability)
+- Phytoestrogen - hormonal effects unclear
 
 ---
 
 ## Tier 4: Weak Candidates
 
-### 6. EDOTECARIN (RANK 6/6) ❌ DO NOT PURSUE
+### 6. EDOTECARIN (RANK 6/6) - DO NOT PURSUE
 
 **KG Score:** 99.91st percentile | **Status:** Dropped (Phase 3)
 
@@ -251,7 +257,7 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 - Non-camptothecin topoisomerase I inhibitor
 
 **Clinical Evidence (27 citations):**
-- **Phase 3 trial vs TMZ/BCNU/CCNU: TERMINATED EARLY for LACK OF EFFICACY**
+- Phase 3 trial vs TMZ/BCNU/CCNU: TERMINATED EARLY for LACK OF EFFICACY
 - Failed to beat standards of care in recurrent GBM
 - Case report: 18-year-old with 17-month response (anecdotal)
 - Preclinical: 83% survival increase in mice
@@ -260,9 +266,9 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 - Phase 3 reached (serious investment)
 
 **WEAKNESSES:**
-- ❌ **PHASE 3 EFFICACY FAILURE** - dealbreaker
-- ❌ Grade 4 granulocytopenia, Grade 3 seizures
-- ❌ Failed to beat TMZ/BCNU/CCNU
+- PHASE 3 EFFICACY FAILURE - dealbreaker
+- Grade 4 granulocytopenia, Grade 3 seizures
+- Failed to beat TMZ/BCNU/CCNU
 
 **VERDICT:** This drug has been tested at the highest level and FAILED. Do not pursue.
 
@@ -346,13 +352,15 @@ Investigated 6 dropped drug candidates for glioblastoma repurposing using:
 
 ---
 
-**Investigation Complete**
-**Files Generated:**
-- `/files/evidence/clinical_trials.json`
-- `/files/evidence/faers_signals.json`
-- `/files/evidence/literature.json`
-- `/files/evidence/molecular.json`
-- `/files/evidence/summary.json`
-- `/files/evidence/summary.md`
+**Investigation Complete - Evidence Cached and Reused**
+
+**Files Available:**
+- `/Users/ananyapurwar/Coder_Boi/TreeHacks/files/evidence/clinical_trials.json`
+- `/Users/ananyapurwar/Coder_Boi/TreeHacks/files/evidence/faers_signals.json`
+- `/Users/ananyapurwar/Coder_Boi/TreeHacks/files/evidence/literature.json`
+- `/Users/ananyapurwar/Coder_Boi/TreeHacks/files/evidence/molecular.json`
+- `/Users/ananyapurwar/Coder_Boi/TreeHacks/files/evidence/summary.json`
+- `/Users/ananyapurwar/Coder_Boi/TreeHacks/files/evidence/summary.md`
+- `/Users/ananyapurwar/Coder_Boi/TreeHacks/files/evidence/CACHE_STATUS.md`
 
 **Next Steps:** Advocate and Skeptic agents should read these files to prepare arguments for the Judge.

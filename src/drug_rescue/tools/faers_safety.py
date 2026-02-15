@@ -27,6 +27,8 @@ import json
 import logging
 from typing import Any
 
+from ._cache import load_cached_output, save_cached_output
+
 try:
     from claude_agent_sdk import tool
     SDK_AVAILABLE = True
@@ -112,6 +114,21 @@ def _get_engine():
 )
 async def faers_inverse_signal_tool(args: dict[str, Any]) -> dict[str, Any]:
     """FAERS inverse signal screening — async-native, no executor needed."""
+    cache_args = {
+        "disease": str(args["disease"]).strip().lower(),
+        "candidate_drugs": sorted(
+            str(x).strip().upper() for x in args.get("candidate_drugs", []) if str(x).strip()
+        ),
+        "disease_events": sorted(
+            str(x).strip().upper() for x in (args.get("disease_events") or []) if str(x).strip()
+        ),
+        "alpha": float(args.get("alpha", 0.05)),
+        "correction": str(args.get("correction", "none")).strip().lower(),
+    }
+    cached = load_cached_output("faers_inverse_signal", cache_args)
+    if cached is not None:
+        return {"content": [{"type": "text", "text": json.dumps(cached, indent=2)}]}
+
     try:
         engine = _get_engine()
         result = await engine.screen(
@@ -155,6 +172,7 @@ async def faers_inverse_signal_tool(args: dict[str, Any]) -> dict[str, Any]:
                 "interpretation": sig.interpretation,
             }
 
+        save_cached_output("faers_inverse_signal", cache_args, output)
         return {"content": [{"type": "text", "text": json.dumps(output, indent=2)}]}
 
     except Exception as e:
@@ -191,6 +209,14 @@ async def faers_inverse_signal_tool(args: dict[str, Any]) -> dict[str, Any]:
 )
 async def faers_suggest_events_tool(args: dict[str, Any]) -> dict[str, Any]:
     """Suggest MedDRA event terms from FAERS — async-native."""
+    cache_args = {
+        "drug": (str(args["drug"]).strip().upper() if args.get("drug") else ""),
+        "limit": int(args.get("limit", 25)),
+    }
+    cached = load_cached_output("faers_suggest_events", cache_args)
+    if cached is not None:
+        return {"content": [{"type": "text", "text": json.dumps(cached, indent=2)}]}
+
     try:
         engine = _get_engine()
         terms = await engine.suggest_events(
@@ -202,6 +228,7 @@ async def faers_suggest_events_tool(args: dict[str, Any]) -> dict[str, Any]:
             "events_found": len(terms),
             "events": [{"term": t, "count": c} for t, c in terms],
         }
+        save_cached_output("faers_suggest_events", cache_args, output)
         return {"content": [{"type": "text", "text": json.dumps(output, indent=2)}]}
 
     except Exception as e:

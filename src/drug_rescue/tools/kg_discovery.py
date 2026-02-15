@@ -29,6 +29,8 @@ import logging
 from pathlib import Path
 from typing import Any
 
+from ._cache import load_cached_output, load_latest_by_field, save_cached_output
+
 # ── SDK import (graceful fallback for testing without SDK) ──────────────
 try:
     from claude_agent_sdk import tool
@@ -293,6 +295,25 @@ def _run_get_info() -> dict:
 )
 async def discover_candidates_tool(args: dict[str, Any]) -> dict[str, Any]:
     """Discovery tool handler. Offloads numpy computation to thread pool."""
+    cache_args = {
+        "disease": str(args["disease"]).strip().lower(),
+        "max_candidates": int(args.get("max_candidates", 20)),
+        "min_percentile": float(args.get("min_percentile", 75.0)),
+        "include_novel": bool(args.get("include_novel", False)),
+    }
+    cached = load_cached_output("discover_candidates", cache_args)
+    if cached is not None:
+        return {"content": [{"type": "text", "text": json.dumps(cached, indent=2)}]}
+    # Demo-friendly fallback: reuse latest cached discovery for same disease
+    # even if params differ (e.g., caller omitted optional args).
+    cached_by_disease = load_latest_by_field(
+        "discover_candidates",
+        "disease",
+        cache_args["disease"],
+    )
+    if cached_by_disease is not None:
+        return {"content": [{"type": "text", "text": json.dumps(cached_by_disease, indent=2)}]}
+
     loop = asyncio.get_running_loop()
     try:
         result = await loop.run_in_executor(
@@ -315,6 +336,7 @@ async def discover_candidates_tool(args: dict[str, Any]) -> dict[str, Any]:
                 "is_error": True,
             }
 
+        save_cached_output("discover_candidates", cache_args, result)
         return {"content": [{"type": "text", "text": json.dumps(result, indent=2)}]}
 
     except Exception as e:

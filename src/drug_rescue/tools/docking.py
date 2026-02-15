@@ -36,6 +36,8 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
+from ._cache import load_cached_output, save_cached_output
+
 try:
     from claude_agent_sdk import tool
     SDK_AVAILABLE = True
@@ -395,6 +397,17 @@ def _run_docking_screen(drug_smiles: str, drug_name: str | None,
 )
 async def molecular_docking_tool(args: dict[str, Any]) -> dict[str, Any]:
     """Molecular docking tool handler."""
+    cache_args = {
+        "drug_smiles": str(args["drug_smiles"]).strip(),
+        "drug_name": str(args.get("drug_name", "")).strip().upper(),
+        "disease": str(args["disease"]).strip().lower(),
+        "num_poses": int(args.get("num_poses", 3)),
+        "max_targets": int(args.get("max_targets", 3)),
+    }
+    cached = load_cached_output("molecular_docking", cache_args)
+    if cached is not None:
+        return {"content": [{"type": "text", "text": json.dumps(cached, indent=2)}]}
+
     loop = asyncio.get_running_loop()
 
     # Auto-resolve drug names to SMILES via PubChem
@@ -426,6 +439,8 @@ async def molecular_docking_tool(args: dict[str, Any]) -> dict[str, Any]:
         )
 
         is_err = "error" in result and "results" not in result
+        if not is_err:
+            save_cached_output("molecular_docking", cache_args, result)
         return {
             "content": [{"type": "text", "text": json.dumps(result, indent=2)}],
             **({"is_error": True} if is_err else {}),

@@ -28,7 +28,9 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import shutil
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -174,13 +176,14 @@ PHASE_MAP = {
 class PipelineLogger:
     """Logs pipeline progress to console and transcript file."""
 
-    def __init__(self):
+    def __init__(self, print_delay: float = 0.0):
         self.start_time = datetime.now()
         self.log_dir = Path("logs") / f"session_{self.start_time:%Y%m%d_%H%M%S}"
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self._log = open(self.log_dir / "transcript.txt", "w", encoding="utf-8")
         self._current_agent = "ORCHESTRATOR"
         self._agents_spawned = []
+        self._print_delay = max(0.0, float(print_delay))
 
     def agent_spawned(self, agent_type: str, description: str):
         emoji, phase = PHASE_MAP.get(agent_type, ("🤖", agent_type))
@@ -197,9 +200,17 @@ class PipelineLogger:
         self._write(text)
 
     def _write(self, text: str):
-        print(text, end="", flush=True)
-        self._log.write(text)
-        self._log.flush()
+        if not text:
+            return
+        chunks = text.splitlines(keepends=True)
+        if not chunks:
+            chunks = [text]
+        for chunk in chunks:
+            print(chunk, end="", flush=True)
+            self._log.write(chunk)
+            self._log.flush()
+            if self._print_delay > 0:
+                time.sleep(self._print_delay)
 
     def close(self):
         elapsed = datetime.now() - self.start_time
@@ -281,6 +292,8 @@ async def run_agent(disease: str, data_dir: str = "./data") -> str:
     print(f"  Pipeline: discovery → investigator → advocate|skeptic → judge")
     print(f"{'='*60}\n")
 
+    archived_count = 0
+    archived_bundle = Path("files") / _normalize_disease_name(disease).replace(" ", "_")
     try:
         async with ClaudeSDKClient(options=options) as client:
             await client.query(prompt)
@@ -296,9 +309,15 @@ async def run_agent(disease: str, data_dir: str = "./data") -> str:
                         f"cost: ${msg.total_cost_usd:.4f}\n"
                     )
     finally:
+        try:
+            archived_count, archived_bundle = _archive_live_outputs(disease, Path("files"))
+        except Exception:
+            archived_count = 0
         logger.close()
         print(f"\nSession logs: {logger.log_dir}")
         print(f"Verdict: files/court/verdict.md")
+        if archived_count > 0:
+            print(f"Saved demo bundle: {archived_bundle} ({archived_count} files)")
 
     return result_text
 
@@ -381,6 +400,248 @@ async def run_standalone(disease: str, data_dir: str = "./data"):
     print(f"\nFull pipeline: python -m drug_rescue -d \"{disease}\"\n")
 
 
+def _normalize_disease_name(value: str) -> str:
+    return " ".join(value.lower().strip().replace("_", " ").replace("-", " ").split())
+
+
+def _find_precomputed_bundle(disease: str, root: Path) -> Path | None:
+    if not root.exists():
+        return None
+
+    normalized = _normalize_disease_name(disease)
+    candidates = [
+        disease.strip(),
+        normalized,
+        normalized.replace(" ", "_"),
+        normalized.replace(" ", "-"),
+    ]
+
+    for name in candidates:
+        p = root / name
+        if p.is_dir():
+            return p
+
+    # Fallback: normalize existing folder names and compare.
+    for p in root.iterdir():
+        if p.is_dir() and _normalize_disease_name(p.name) == normalized:
+            return p
+    return None
+
+
+def _copy_if_exists(src: Path, dst: Path) -> bool:
+    if not src.exists():
+        return False
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dst)
+    return True
+
+
+def _archive_live_outputs(disease: str, root: Path = Path("files")) -> tuple[int, Path]:
+    """
+    Snapshot current pipeline outputs from files/ into files/<disease_slug>/...
+    using the same layout as precomputed demo bundles.
+    """
+    normalized = _normalize_disease_name(disease)
+    slug = normalized.replace(" ", "_")
+    bundle = root / slug
+
+    # Avoid archiving stale outputs from a previous disease run.
+    candidates_path = root / "candidates.json"
+    if not candidates_path.exists():
+        return 0, bundle
+    try:
+        payload = json.loads(candidates_path.read_text(encoding="utf-8"))
+        seen_disease = _normalize_disease_name(str(payload.get("disease", "")).strip())
+        if seen_disease and seen_disease != normalized:
+            return 0, bundle
+    except Exception:
+        return 0, bundle
+
+    copied = 0
+    mappings: list[tuple[Path, Path]] = [
+        (root / "candidates.json", bundle / "candidates.json"),
+        (root / "candidates_summary.md", bundle / "candidates_summary.md"),
+        (root / "candidates.json", bundle / f"{slug}_candidates.json"),
+        (root / "candidates_summary.md", bundle / f"{slug}_candidates_summary.md"),
+        (root / "evidence" / "clinical_trials.json", bundle / "evidence" / "clinical_trials.json"),
+        (root / "evidence" / "faers_signals.json", bundle / "evidence" / "faers_signals.json"),
+        (root / "evidence" / "literature.json", bundle / "evidence" / "literature.json"),
+        (root / "evidence" / "molecular.json", bundle / "evidence" / "molecular.json"),
+        (root / "evidence" / "summary.json", bundle / "evidence" / "summary.json"),
+        (root / "evidence" / "summary.md", bundle / "evidence" / "summary.md"),
+        (root / "court" / "advocate_brief.md", bundle / "court" / "advocate_brief.md"),
+        (root / "court" / "skeptic_brief.md", bundle / "court" / "skeptic_brief.md"),
+        (root / "court" / "verdict.md", bundle / "court" / "verdict.md"),
+        (root / "court" / "verdict_scores.json", bundle / "court" / "verdict_scores.json"),
+    ]
+
+    for src, dst in mappings:
+        if _copy_if_exists(src, dst):
+            copied += 1
+
+    if copied:
+        manifest = {
+            "disease": normalized,
+            "bundle": str(bundle),
+            "created_at": datetime.now().isoformat(),
+            "files_copied": copied,
+        }
+        (bundle / "bundle_manifest.json").write_text(
+            json.dumps(manifest, indent=2),
+            encoding="utf-8",
+        )
+        copied += 1
+
+    return copied, bundle
+
+
+def run_fast(disease: str, precomputed_root: str = "files") -> int:
+    """Fast demo mode: replay full pipeline output from precomputed files."""
+    root = Path(precomputed_root)
+    bundle = _find_precomputed_bundle(disease, root)
+    if bundle is None:
+        print(f"❌ No precomputed bundle found for disease '{disease}' under {root}/")
+        print("Expected e.g. files/<disease>/court/verdict.md")
+        return 1
+
+    normalized = _normalize_disease_name(disease).replace(" ", "_")
+    logger = PipelineLogger(print_delay=1.0)
+    copied = 0
+
+    def copy_any(src_candidates: list[Path], dst: Path) -> bool:
+        nonlocal copied
+        for src in src_candidates:
+            if _copy_if_exists(src, dst):
+                copied += 1
+                return True
+        return False
+
+    print(f"\n{'='*60}")
+    print("  🧬 DrugRescue AI — Adversarial Evidence Court")
+    print(f"  Disease: {disease}")
+    print("  Pipeline: discovery → investigator → advocate|skeptic → judge")
+    print(f"{'='*60}\n")
+
+    logger.text(
+        f"I'll run the complete DrugRescue pipeline for **{disease}**. "
+        "Using precomputed artifacts for a fast demo replay.\n"
+    )
+
+    try:
+        # Phase 1 — Discovery
+        logger.agent_spawned("discovery", f"Discover {disease} candidates")
+        logger.tool_call("mcp__drugrescue__discover_candidates")
+        copy_any(
+            [bundle / "candidates.json", bundle / f"{normalized}_candidates.json"],
+            Path("files") / "candidates.json",
+        )
+        logger.tool_call("Write")
+        copy_any(
+            [bundle / "candidates_summary.md", bundle / f"{normalized}_candidates_summary.md"],
+            Path("files") / "candidates_summary.md",
+        )
+        logger.tool_call("Write")
+        logger.text("Phase 1 complete! Loaded precomputed candidate artifacts.\n")
+
+        # Phase 2 — Investigation
+        logger.agent_spawned("investigator", f"Investigate {disease} candidates")
+
+        if _copy_if_exists(bundle / "evidence/clinical_trials.json", Path("files/evidence/clinical_trials.json")):
+            copied += 1
+            logger.tool_call("mcp__drugrescue__clinical_trial_failure")
+            logger.text("  [INVESTIGATOR]   PRECOMPUTED HIT clinical_trials.json\n")
+
+        if _copy_if_exists(bundle / "evidence/faers_signals.json", Path("files/evidence/faers_signals.json")):
+            copied += 1
+            logger.tool_call("mcp__drugrescue__faers_inverse_signal")
+            logger.text("  [INVESTIGATOR]   PRECOMPUTED HIT faers_signals.json\n")
+
+        if _copy_if_exists(bundle / "evidence/literature.json", Path("files/evidence/literature.json")):
+            copied += 1
+            logger.tool_call("mcp__drugrescue__literature_search")
+            logger.text("  [INVESTIGATOR]   PRECOMPUTED HIT literature.json\n")
+
+        if _copy_if_exists(bundle / "evidence/molecular.json", Path("files/evidence/molecular.json")):
+            copied += 1
+            logger.tool_call("mcp__drugrescue__molecular_similarity")
+            logger.tool_call("mcp__drugrescue__molecular_docking")
+            logger.text("  [INVESTIGATOR]   PRECOMPUTED HIT molecular.json\n")
+
+        for rel in ["evidence/summary.json", "evidence/summary.md"]:
+            if _copy_if_exists(bundle / rel, Path("files") / rel):
+                copied += 1
+                logger.tool_call("Write")
+
+        logger.text("Phase 2 complete! Evidence loaded from precomputed artifacts.\n")
+
+        # Phase 3 — Adversarial Court
+        logger.agent_spawned("advocate", "Build case FOR repurposing")
+        if _copy_if_exists(bundle / "court/advocate_brief.md", Path("files/court/advocate_brief.md")):
+            copied += 1
+        logger.tool_call("Read")
+        logger.tool_call("Write")
+
+        logger.agent_spawned("skeptic", "Build case AGAINST repurposing")
+        if _copy_if_exists(bundle / "court/skeptic_brief.md", Path("files/court/skeptic_brief.md")):
+            copied += 1
+        logger.tool_call("Read")
+        logger.tool_call("Write")
+        logger.text("Phase 3 complete! Advocate and skeptic briefs loaded.\n")
+
+        # Phase 4 — Judgment
+        logger.agent_spawned("judge", "Deliver final verdict")
+        verdict_exists = _copy_if_exists(bundle / "court/verdict.md", Path("files/court/verdict.md"))
+        if verdict_exists:
+            copied += 1
+        scores_exists = _copy_if_exists(
+            bundle / "court/verdict_scores.json",
+            Path("files/court/verdict_scores.json"),
+        )
+        if scores_exists:
+            copied += 1
+        logger.tool_call("Read")
+        logger.tool_call("Write")
+
+        verdict_path = Path("files/court/verdict.md")
+        if not verdict_path.exists():
+            logger.text("\n❌ Precomputed bundle missing court/verdict.md\n")
+            return 1
+
+        logger.text(f"\nHydrated {copied} precomputed artifact(s) into files/.\n")
+
+        # Print top scores if available.
+        scores_path = Path("files/court/verdict_scores.json")
+        if scores_path.exists():
+            try:
+                payload = json.loads(scores_path.read_text(encoding="utf-8"))
+                verdicts = payload.get("verdicts", [])
+                if isinstance(verdicts, list) and verdicts:
+                    ranked = sorted(
+                        [v for v in verdicts if isinstance(v, dict)],
+                        key=lambda v: float(v.get("rescue_score", 0)),
+                        reverse=True,
+                    )
+                    logger.text("\nTop Rescue Scores:\n")
+                    for i, v in enumerate(ranked[:3], 1):
+                        logger.text(
+                            f"{i}. {v.get('drug_name', '?')} — "
+                            f"{v.get('rescue_score', '?')}/100 "
+                            f"({v.get('verdict', 'N/A')})\n"
+                        )
+            except Exception:
+                pass
+
+        logger.text(
+            "\n\n  ✅ Court adjourned — turns: 6, cost: $0.0000\n"
+            "\nInvestigation complete. Verdict: files/court/verdict.md\n"
+        )
+        return 0
+    finally:
+        logger.close()
+        print(f"\nSession logs: {logger.log_dir}")
+        print("Verdict: files/court/verdict.md")
+
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  CLI
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -394,8 +655,24 @@ def main():
     parser.add_argument("--data-dir", type=str, default="./data")
     parser.add_argument("--standalone", "-s", action="store_true",
                         help="KG only, no SDK")
+    parser.add_argument(
+        "--fast",
+        action="store_true",
+        help="Skip pipeline and load precomputed artifacts from files/<disease>/",
+    )
+    parser.add_argument(
+        "--precomputed-root",
+        type=str,
+        default="files",
+        help="Root directory containing precomputed disease bundles (default: files)",
+    )
     args = parser.parse_args()
 
+    if args.fast:
+        if not args.disease:
+            print("error: --fast requires --disease")
+            return
+        raise SystemExit(run_fast(args.disease, args.precomputed_root))
     if args.standalone or not SDK_AVAILABLE:
         if not SDK_AVAILABLE and not args.standalone:
             print("⚠️  claude-agent-sdk not installed — standalone mode")

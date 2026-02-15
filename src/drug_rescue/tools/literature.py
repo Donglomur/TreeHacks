@@ -29,6 +29,8 @@ import json
 import logging
 from typing import Any
 
+from ._cache import load_cached_output, save_cached_output
+
 try:
     from claude_agent_sdk import tool
     SDK_AVAILABLE = True
@@ -92,6 +94,14 @@ def _get_engine():
 )
 async def literature_search_tool(args: dict[str, Any]) -> dict[str, Any]:
     """Literature research tool — async-native, no executor needed."""
+    cache_args = {
+        "drug_name": str(args["drug_name"]).strip().upper(),
+        "disease": str(args["disease"]).strip().lower(),
+    }
+    cached = load_cached_output("literature_search", cache_args)
+    if cached is not None:
+        return {"content": [{"type": "text", "text": json.dumps(cached, indent=2)}]}
+
     try:
         engine = _get_engine()
         report = await engine.research(
@@ -109,6 +119,7 @@ async def literature_search_tool(args: dict[str, Any]) -> dict[str, Any]:
             f"Cost: ${report.total_cost_estimate:.4f}."
         )
 
+        save_cached_output("literature_search", cache_args, output)
         return {"content": [{"type": "text", "text": json.dumps(output, indent=2)}]}
 
     except Exception as e:

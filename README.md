@@ -70,6 +70,73 @@ python -m drug_rescue --disease glioblastoma
 python -m drug_rescue
 ```
 
+## HTTP API (Frontend Integration)
+
+Install API dependencies:
+
+```bash
+pip install -e ".[api,agent]"
+```
+
+Run the backend API:
+
+```bash
+PYTHONPATH=src uvicorn drug_rescue.server:app --reload --port 8000
+```
+
+Alternative (explicit env file loading via uvicorn):
+
+```bash
+PYTHONPATH=src uvicorn drug_rescue.server:app --reload --port 8000 --env-file .env
+```
+
+Environment variables:
+
+- `DRUGRESCUE_PRECOMPUTED_ROOT` (default: `files`)
+- `DRUGRESCUE_ALLOW_LIVE_FALLBACK` (default: `true`)
+- `DRUGRESCUE_DEFAULT_CONVERSATION_ID` (default: `c_123`)
+- `DRUGRESCUE_CORS_ORIGINS` (optional, e.g. `http://localhost:3000`)
+
+Endpoints:
+
+- `GET /health`
+- `GET /v1/artifacts?disease=glioblastoma&subtype=...`
+- `POST /v1/chat`
+
+## Next.js Route Proxy Example
+
+In your separate frontend repo, your route handler can proxy directly:
+
+```ts
+import { NextRequest, NextResponse } from "next/server";
+
+const API_BASE = process.env.DRUGRESCUE_API_BASE_URL || "http://localhost:8000";
+
+export async function GET(request: NextRequest) {
+  const disease = request.nextUrl.searchParams.get("disease") || "glioblastoma";
+  const subtype = request.nextUrl.searchParams.get("subtype") || "";
+  const url = new URL(`${API_BASE}/v1/artifacts`);
+  url.searchParams.set("disease", disease);
+  if (subtype) url.searchParams.set("subtype", subtype);
+
+  const resp = await fetch(url.toString(), { cache: "no-store" });
+  const data = await resp.json();
+  return NextResponse.json(data, { status: resp.status });
+}
+
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  const resp = await fetch(`${API_BASE}/v1/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    cache: "no-store",
+  });
+  const data = await resp.json();
+  return NextResponse.json(data, { status: resp.status });
+}
+```
+
 ## License
 
 MIT — TreeHacks 2026

@@ -34,9 +34,9 @@ Tell the user: "Investigation complete. Verdict: files/court/verdict.md"
 </pipeline>
 
 <spawning_instructions>
-Phase 1: subagent_type="discovery", prompt="Discover candidates for {DISEASE}. Run discover_candidates with max_candidates=30, min_percentile=75. Write files/candidates.json with all fields including SMILES and status. Write files/candidates_summary.md."
+Phase 1: subagent_type="discovery", prompt="Discover candidates for {DISEASE}. CACHE-FIRST: check files/candidates.json and files/candidates_summary.md first. If both already exist and are non-empty for this disease, skip discover_candidates and reuse them. Otherwise run discover_candidates with max_candidates=30, min_percentile=75. Write files/candidates.json with all fields including SMILES and status. Write files/candidates_summary.md."
 
-Phase 2: subagent_type="investigator", prompt="Investigate top candidates for {DISEASE}. Read files/candidates.json. For each promising dropped drug: check clinical_trial_failure (why dropped?), run faers_inverse_signal (batch all drugs, correction=fdr), literature_search (top 3-5 candidates), molecular_similarity and molecular_docking (if SMILES available). Write structured evidence to files/evidence/. Be smart: skip safety-flagged drugs for expensive API calls."
+Phase 2: subagent_type="investigator", prompt="Investigate top candidates for {DISEASE}. CACHE-FIRST: before calling any expensive tool, check if output files already exist and are non-empty (files/evidence/clinical_trials.json, faers_signals.json, literature.json, molecular.json, summary.json, summary.md). Reuse existing files whenever valid; only run missing pieces. Read files/candidates.json. For each promising dropped drug: check clinical_trial_failure (why dropped?), run faers_inverse_signal (batch all drugs, correction=fdr), literature_search (top 3-5 candidates), molecular_similarity and molecular_docking (if SMILES available). Write structured evidence to files/evidence/. Be smart: skip safety-flagged drugs for expensive API calls."
 
 Phase 3 (PARALLEL — spawn BOTH at once):
   subagent_type="advocate", prompt="Read ALL evidence from files/candidates.json and files/evidence/. For each top candidate for {DISEASE}, build the STRONGEST possible case FOR repurposing. Write files/court/advocate_brief.md."

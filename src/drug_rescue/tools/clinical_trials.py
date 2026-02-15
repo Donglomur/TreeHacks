@@ -31,6 +31,8 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
+from ._cache import load_cached_output, save_cached_output
+
 # — SDK import (graceful fallback for testing without SDK) ——————————
 try:
     from claude_agent_sdk import tool
@@ -255,6 +257,15 @@ def _fetch_failed_trials(drug_name: str, disease: str | None,
 )
 async def clinical_trial_failure_tool(args: dict[str, Any]) -> dict[str, Any]:
     """Clinical trial failure tool handler. Offloads HTTP to thread pool."""
+    cache_args = {
+        "drug_name": str(args["drug_name"]).strip().upper(),
+        "disease": str(args.get("disease", "")).strip().lower(),
+        "max_results": int(args.get("max_results", 15)),
+    }
+    cached = load_cached_output("clinical_trial_failure", cache_args)
+    if cached is not None:
+        return {"content": [{"type": "text", "text": json.dumps(cached, indent=2)}]}
+
     loop = asyncio.get_running_loop()
     try:
         result = await loop.run_in_executor(
@@ -266,6 +277,8 @@ async def clinical_trial_failure_tool(args: dict[str, Any]) -> dict[str, Any]:
         )
 
         is_err = "error" in result and "trials" not in result
+        if not is_err:
+            save_cached_output("clinical_trial_failure", cache_args, result)
         return {
             "content": [{"type": "text", "text": json.dumps(result, indent=2)}],
             **({"is_error": True} if is_err else {}),

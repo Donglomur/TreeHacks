@@ -38,6 +38,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 import numpy as np
+from ._cache import load_cached_output, save_cached_output
 
 try:
     from claude_agent_sdk import tool
@@ -586,6 +587,17 @@ def _run_similarity(
 )
 async def molecular_similarity_tool(args: dict[str, Any]) -> dict[str, Any]:
     """Molecular similarity tool handler."""
+    cache_args = {
+        "disease": str(args["disease"]).strip().lower(),
+        "candidate_smiles": str(args.get("candidate_smiles", "")).strip(),
+        "candidate_name": str(args.get("candidate_name", "")).strip().upper(),
+        "min_similarity": float(args.get("min_similarity", 0.40)),
+        "top_k": int(args.get("top_k", 20)),
+    }
+    cached = load_cached_output("molecular_similarity", cache_args)
+    if cached is not None:
+        return {"content": [{"type": "text", "text": json.dumps(cached, indent=2)}]}
+
     loop = asyncio.get_running_loop()
 
     candidate = args.get("candidate_smiles")
@@ -627,6 +639,8 @@ async def molecular_similarity_tool(args: dict[str, Any]) -> dict[str, Any]:
         is_err = "error" in result and not any(
             k in result for k in ("similarities", "hits", "approved_drugs", "pairs")
         )
+        if not is_err:
+            save_cached_output("molecular_similarity", cache_args, result)
         return {
             "content": [{"type": "text", "text": json.dumps(result, indent=2)}],
             **({"is_error": True} if is_err else {}),
