@@ -1,7 +1,10 @@
 # RescueRX 
-## How many drugs have been shelved that could save lives for diseases they were never tested on? We use AI to find drugs abandoned for business reasons & pinpoint diseases they're best suited to fight. 
 
-## 🏆 Winner — Best Use of Clinical Information in TreeHacks 2026
+## 🏆 Winner: Best Use of Clinical Information in TreeHacks 2026
+
+### How many drugs have been shelved that could save lives for diseases they were never tested on? We use AI to find drugs abandoned for business reasons & pinpoint diseases they're best suited to fight. 
+
+
 
 ---
 
