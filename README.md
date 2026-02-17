@@ -1,75 +1,47 @@
-# DrugRescue AI
+# RescueRX 
+** How many drugs have been shelved that could save lives for diseases they were never tested on? We use AI to find drugs abandoned for business reasons & pinpoint diseases they're best suited to fight. **
 
-> AI-powered drug repurposing agent — TreeHacks 2026
-
-Built with the [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python)
+🏆 **Winner — Best Use of Clinical Information in TreeHacks 2026**
 
 ## What It Does
 
 Give it a disease. It scores all ~24,000 compounds in the DRKG biomedical
 knowledge graph using trained RotatE embeddings, cross-references a database
 of dropped clinical trials, and returns ranked repurposing candidates.
+---
 
-## Project Structure
+## Overview
 
-```
-TreeHacks/                          ← repo root (you are here)
-├── pyproject.toml
-├── .gitignore
-├── .env.example
-├── README.md
-├── test_drugrescue.py
-├── scripts/
-│   └── download_data.py
-├── data/                           ← your 9 Modal files (gitignored)
-│   ├── embeddings/
-│   ├── database/
-│   ├── fingerprints/
-│   └── models/
-└── src/
-    └── drug_rescue/                ← the Python package
-        ├── __init__.py
-        ├── __main__.py
-        ├── agent.py
-        ├── engines/
-        │   ├── __init__.py
-        │   ├── scorer.py
-        │   └── discover.py
-        ├── tools/
-        │   ├── __init__.py
-        │   └── kg_discovery.py
-        └── prompts/
-            ├── __init__.py
-            └── system.py
-```
+**RescueRX** is a multi-agent drug repurposing system that finds **high-potential, previously-shelved drugs** for a target disease and explains *why* they’re worth pursuing.
 
-## Data Setup
+It combines:
+- **Knowledge graph discovery** (biological plausibility)
+- **Clinical trials scanning** (why drugs were dropped)
+- **Real-world safety signals** (FAERS inverse signals)
+- **Literature grounding** (citations-backed mechanisms)
+- **Molecular confirmation** (fingerprints + optional docking)
+- **Adversarial “evidence court”** (Advocate vs Skeptic → Judge verdict)
 
-```bash
-mkdir -p data/{embeddings,fingerprints,models,database}
-cp rotate_entity_embeddings.npy rotate_relation_embeddings.npy \
-   entity_to_idx.json relation_to_idx.json        data/embeddings/
-cp morgan_fps.npy fp_drug_index.json               data/fingerprints/
-cp metadata.json trained_model.pt                   data/models/
-cp dropped_drugs.db                                 data/database/
-```
+The result is a **ranked list of candidates** with **tiered confidence**, safety considerations, and transparent reasoning clinicians can inspect.
 
-## Install & Run
+---
 
-```bash
-pip install -e .
+## How It Works (3 Layers • 9 Agents)
 
-# Standalone — runs KG tool directly, no Claude needed
-python -m drug_rescue --disease glioblastoma --standalone
+### Layer 1 — Discovery
+1) **Knowledge Graph Agent**: scores drugs vs. the disease using learned graph embeddings (RotatE-style scoring)
 
-# Full agent — Claude reasons + uses tools
-pip install -e ".[agent]"
-python -m drug_rescue --disease glioblastoma
+### Layer 2 — Evidence Wall (runs in parallel)
+2) **Trial Scanner**: queries ClinicalTrials.gov for terminated/withdrawn trials and classifies whether failure was *scientific* vs *non-scientific*  
+3) **FAERS Inverse Signal Agent**: asks “what does this drug *prevent*?” via reporting odds ratios  
+4) **Literature Agent**: produces citation-backed mechanism + prior evidence summaries  
+5) **Molecular Similarity Agent**: Morgan fingerprints + Tanimoto similarity vs known treatments  
+6) **Safety Arbitration**: excludes candidates with strong risk signals / contraindication concerns
 
-# Interactive chat
-python -m drug_rescue
-```
+### Layer 3 — Adversarial Court
+7) **Advocate**: best case *for* rescuing the drug  
+8) **Skeptic**: best case *against* rescuing the drug  
+9) **Judge**: weighs both sides → assigns a final **Rescue Score** and recommended next steps
 
-## License
-
-MIT — TreeHacks 2026
+---
+Built with ❤️ during TreeHacks 2026
